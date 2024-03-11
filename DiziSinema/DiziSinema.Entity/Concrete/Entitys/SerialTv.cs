@@ -10,7 +10,9 @@ namespace DiziSinema.Entity.Concrete.Entitys
 {
     public class SerialTv:BaseEntity
     {
-        public string SerialName { get; set; }
+        public string Title { get; set; }
+        public string Intro { get; set; }
+        public string Language { get; set; }
         public List<SerialTvGenre> SerialTvGenres { get; set; }
     }
 }

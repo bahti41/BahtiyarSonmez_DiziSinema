@@ -10,7 +10,9 @@ namespace DiziSinema.Entity.Concrete.Entitys
 {
     public class Movie:BaseEntity
     {
-        public string MovieName { get; set; }
+        public string Title { get; set; }
+        public string Intro { get; set; }
+        public string Language { get; set; }
         public List<MovieGenre> MovieGenres { get; set; }
     }
 }
