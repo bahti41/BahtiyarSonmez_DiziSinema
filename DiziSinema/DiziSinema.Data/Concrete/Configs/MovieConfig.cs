@@ -13,7 +13,8 @@ namespace DiziSinema.Data.Concrete.Configs
     {
         public void Configure(EntityTypeBuilder<Movie> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(m => m.Id);
+            builder.Property(m => m.Id).ValueGeneratedNever();
         }
     }
 }

@@ -16,8 +16,23 @@ namespace DiziSinema.Data.Concrete.Configs
             builder.HasKey(m => new {m.MovieId, m.GenreId});
             builder.ToTable("MovieGenres");
             builder.HasData(
-                new MovieGenre { MovieId = 1, GenreId = 1 });
+                new MovieGenre { MovieId = 1, GenreId = 1 },
+                new MovieGenre { MovieId = 1, GenreId = 4 },
 
+                new MovieGenre { MovieId = 2, GenreId = 2 },
+                new MovieGenre { MovieId = 2, GenreId = 3 },
+
+                new MovieGenre { MovieId = 3, GenreId = 2 },
+                new MovieGenre { MovieId = 3, GenreId = 3 },
+                new MovieGenre { MovieId = 3, GenreId = 4 },
+
+                new MovieGenre { MovieId = 4, GenreId = 1 },
+                new MovieGenre { MovieId = 4, GenreId = 3 },
+
+                new MovieGenre { MovieId = 5, GenreId = 5 },
+                new MovieGenre { MovieId = 5, GenreId = 3 },
+
+                new MovieGenre { MovieId = 6, GenreId = 5 });
         }
     }
 }

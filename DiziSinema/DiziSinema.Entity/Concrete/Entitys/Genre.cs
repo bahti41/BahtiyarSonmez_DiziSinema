@@ -1,4 +1,5 @@
-﻿using DiziSinema.Entity.Concrete.JunctionClasses;
+﻿using DiziSinema.Entity.Absratct;
+using DiziSinema.Entity.Concrete.JunctionClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DiziSinema.Entity.Concrete.Entitys
 {
-    public class Genre
+    public class Genre:BaseEntity
     {
-        public int Id { get; set; }
         public string GenreName { get; set; }
+        public string Description { get; set; }
         public List<MovieGenre> MovieGenres { get; set; }
         public List<SerialTvGenre> SerialTvGenres { get; set; }
     }
