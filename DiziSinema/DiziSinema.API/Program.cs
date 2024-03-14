@@ -1,10 +1,13 @@
+using DiziSinema.Data.Concrete.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
 
 
-
+builder.Services.AddDbContext<DiziSinemaDbContext>(option => option.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnectiom")));
 
 
 
