@@ -20,6 +20,7 @@ namespace DiziSinema.Data.Concrete.Configs
             builder.Property(s => s.SerIntro).IsRequired().HasMaxLength(500);
             builder.Property(s => s.SerLanguage).IsRequired().HasMaxLength(70);
             builder.Property(s => s.Url).IsRequired().HasMaxLength(100);
+            builder.Property(s => s.ImageUrl).IsRequired().HasMaxLength(100);
             builder.Property(s => s.CreatedDate).HasDefaultValueSql("Data('now')");
             builder.Property(s => s.ModifiedDate).HasDefaultValueSql("Data('now')");
             builder.ToTable("SerialTvs");
@@ -27,61 +28,61 @@ namespace DiziSinema.Data.Concrete.Configs
                 new SerialTv
                 {
                     Id = 1,
-                    SerTitle = "Title",
+                    SerTitle = "Dizi1",
                     SerIntro = "Title",
-                    SerLanguage = "Title",
-                    Url = "URL",
-                    ImageUrl = "URL",
+                    SerLanguage = "Türkce dublaj",
+                    Url = "dizi-1",
+                    ImageUrl = "d1.jpg",
                     IsActive = true,
                 },
                 new SerialTv
                 {
                     Id = 2,
-                    SerTitle = "Title",
+                    SerTitle = "Dizi2",
                     SerIntro = "Title",
-                    SerLanguage = "Title",
-                    Url = "URL",
-                    ImageUrl = "URL",
+                    SerLanguage = "Türkce dublaj",
+                    Url = "dizi-2",
+                    ImageUrl = "d2.jpg",
                     IsActive = true,
                 },
                 new SerialTv
                 {
                     Id = 3,
-                    SerTitle = "Title",
+                    SerTitle = "Dizi3",
                     SerIntro = "Title",
-                    SerLanguage = "Title",
-                    Url = "URL",
-                    ImageUrl = "URL",
+                    SerLanguage = "Türkce dublaj",
+                    Url = "dizi-3",
+                    ImageUrl = "d3.jpg",
                     IsActive = true,
                 },
                 new SerialTv
                 {
                     Id = 4,
-                    SerTitle = "Title",
+                    SerTitle = "Dizi4",
                     SerIntro = "Title",
-                    SerLanguage = "Title",
-                    Url = "URL",
-                    ImageUrl = "URL",
+                    SerLanguage = "Türkce dublaj",
+                    Url = "dizi-4",
+                    ImageUrl = "d4.jpg",
                     IsActive = true,
                 },
                 new SerialTv
                 {
                     Id = 5,
-                    SerTitle = "Title",
+                    SerTitle = "Dizi5",
                     SerIntro = "Title",
-                    SerLanguage = "Title",
-                    Url = "URL",
-                    ImageUrl = "URL",
+                    SerLanguage = "Türkce dublaj",
+                    Url = "dizi-5",
+                    ImageUrl = "d5.jpg",
                     IsActive = true,
                 },
                 new SerialTv
                 {
                     Id = 6,
-                    SerTitle = "Title",
+                    SerTitle = "Dizi6",
                     SerIntro = "Title",
-                    SerLanguage = "Title",
-                    Url = "URL",
-                    ImageUrl = "URL",
+                    SerLanguage = "Türkce dublaj",
+                    Url = "dizi-6",
+                    ImageUrl = "d6.jpg",
                     IsActive = true,
                 }
             );

@@ -1,4 +1,5 @@
-﻿using DiziSinema.Entity.Concrete.Entitys;
+﻿using DiziSinema.Data.Concrete.Configs;
+using DiziSinema.Entity.Concrete.Entitys;
 using DiziSinema.Entity.Concrete.JunctionClasses;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,11 +18,12 @@ namespace DiziSinema.Data.Concrete.Context
         }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<SerialTv> SerialTvs { get; set; }
-        public DbSet<Genre> genres { get; set; }
-        public DbSet<MovieGenre> movieGenres { get; set; }
-        public DbSet<SerialTvGenre> serialTvGenres { get; set;}
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<MovieGenre> MovieGenres { get; set; }
+        public DbSet<SerialTvGenre> SerialTvGenres { get; set;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(GenreConfig).Assembly);
             base.OnModelCreating(modelBuilder);
         }
     }
