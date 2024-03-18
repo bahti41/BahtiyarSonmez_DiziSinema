@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace DiziSinema.Data.Abstract
 {
-    public interface ISerialTvRepository:IGenericRepository<SerialTv>
+    public interface IGenreRepository: IGenericRepository<Genre>
     {
-        Task<List<SerialTv>> GetAllSerialTvWithGenreAsync();
-        Task<SerialTv> GetSerialTvWithGenreAsync();
+
     }
 }
