@@ -1,6 +1,8 @@
 ﻿using DiziSinema.Data.Abstract;
 using DiziSinema.Data.Concrete.Context;
 using DiziSinema.Entity.Concrete.Entitys;
+using DiziSinema.Entity.Concrete.JunctionClasses;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +21,26 @@ namespace DiziSinema.Data.Concrete.Repositories
         {
             get { return _dbContext as DiziSinemaDbContext; }
         }
-        public Task<List<SerialTv>> GetAllSerialTvWithGenreAsync()
+
+        public async Task ClearSerialTvGenreAsync(int serialTvId, int[] genreIds)
         {
-            throw new NotImplementedException();
+            List<SerialTvGenre> serialTvGenres = await DiziSinemaDbContext
+                .SerialTvGenres
+                .Where(sg => sg.SerialTvId == serialTvId)
+                .ToListAsync();
+            DiziSinemaDbContext.SerialTvGenres.RemoveRange(serialTvGenres);
+            await DiziSinemaDbContext.SaveChangesAsync();
         }
 
-        public Task<SerialTv> GetSerialTvWithGenreAsync()
+        public async Task<List<SerialTv>> GetSerialTvByGenreIdAsync(int genreId)
         {
-            throw new NotImplementedException();
+            List<SerialTv> serialTvs = await DiziSinemaDbContext
+                .SerialTvs
+                .Include(s => s.SerialTvGenres)
+                .ThenInclude(sg => sg.Genre)
+                .Where(s => s.SerialTvGenres.Any(sg => sg.GenreId == genreId))
+                .ToListAsync();
+            return serialTvs;
         }
     }
 }

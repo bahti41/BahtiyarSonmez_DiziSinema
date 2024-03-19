@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace DiziSinema.Business.Concrete
 {
-    public class MovieManager : IMovieService
+    public class GenreManager : IGenreService
     {
-        public Task<Response<MovieDTO>> CreateAsync(AddMovieDTO addMovieDTO)
+        public Task<Response<GenreDTO>> CreateAsync(AddGenreDTO addGenreDTO)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Response<List<MovieDTO>>> GetAllAsync()
+        public Task<Response<List<GenreDTO>>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Response<MovieDTO>> GetByIdAsync(int id)
+        public Task<Response<GenreDTO>> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
@@ -36,7 +36,7 @@ namespace DiziSinema.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<Response<MovieDTO>> Update(EditMovieDTO editMovieDTO)
+        public Task<Response<GenreDTO>> Update(EditGenreDTO editGenreDTO)
         {
             throw new NotImplementedException();
         }

@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace DiziSinema.Business.Absract
 {
-    public interface ISerialTvSevice
+    public interface IGenreService
     {
         #region Generic
-        Task<Response<SerialTvDTO>> GetByIdAsync(int id);
-        Task<Response<List<SerialTvDTO>>> GetAllAsync();
-        Task<Response<SerialTvDTO>> CreateAsync(AddSerialTvDTO addSerialTvDTO);
-        Task<Response<SerialTvDTO>> Update(EditSerialTvDTO editSerialTvDTO);
+        Task<Response<GenreDTO>> GetByIdAsync(int id);
+        Task<Response<List<GenreDTO>>> GetAllAsync();
+        Task<Response<GenreDTO>> CreateAsync(AddGenreDTO addGenreDTO);
+        Task<Response<GenreDTO>> Update(EditGenreDTO editGenreDTO);
         Task<Response<NoContent>> HardDelete(int id);
         Task<Response<NoContent>> SoftDeleteAsync(int id);
         #endregion
 
-        #region SerialTv
-        //Task<Response<List<SerialTvDTO>>> GetSerialTvByGenreIdAsync(int GenreId);
+        #region Genre
+
         #endregion
     }
 }

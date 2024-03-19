@@ -1,6 +1,8 @@
 ﻿using DiziSinema.Data.Abstract;
 using DiziSinema.Data.Concrete.Context;
 using DiziSinema.Entity.Concrete.Entitys;
+using DiziSinema.Entity.Concrete.JunctionClasses;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +21,26 @@ namespace DiziSinema.Data.Concrete.Repositories
         {
             get { return _dbContext as DiziSinemaDbContext; }
         }
-        public Task<List<Movie>> GetAllMovieWithGenreAsync()
+
+        public async Task CleaarMovieGenreAsync(int movieId, int[] genreIds)
         {
-            throw new NotImplementedException();
+            List<MovieGenre> movieGenres = await DiziSinemaDbContext
+                .MovieGenres
+                .Where(mg => mg.MovieId == movieId)
+                .ToListAsync();
+            DiziSinemaDbContext.MovieGenres.RemoveRange(movieGenres);
+            await DiziSinemaDbContext.SaveChangesAsync();
         }
 
-        public Task<Movie> GetMovieWithGenreAsync()
+        public async Task<List<Movie>> GetMovieByGenreIdAsync(int genreId)
         {
-            throw new NotImplementedException();
+            List<Movie> Movies = await DiziSinemaDbContext
+                .Movies
+                .Include(m => m.MovieGenres)
+                .ThenInclude(mg => mg.Genre)
+                .Where(m => m.MovieGenres.Any(mg => mg.GenreId == genreId))
+                .ToListAsync();
+            return Movies;
         }
     }
 }
