@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiziSinema.Shared.DTOs
+namespace DiziSinema.Shared.DTOs.Core.Add
 {
     public class AddGenreDTO
     {

@@ -1,4 +1,6 @@
 using DiziSinema.Shared.DTOs;
+using DiziSinema.Shared.DTOs.Core.Add;
+using DiziSinema.Shared.DTOs.Core.Edit;
 using DiziSinema.Shared.ReponseDTOs;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
@@ -16,8 +18,8 @@ namespace DiziSinema.Business.Absract
         Task<Response<GenreDTO>> GetByIdAsync(int id);
         Task<Response<List<GenreDTO>>> GetAllAsync();
         Task<Response<GenreDTO>> CreateAsync(AddGenreDTO addGenreDTO);
-        Task<Response<GenreDTO>> Update(EditGenreDTO editGenreDTO);
-        Task<Response<NoContent>> HardDelete(int id);
+        Task<Response<GenreDTO>> UpdateAsync(EditGenreDTO editGenreDTO);
+        Task<Response<NoContent>> HardDeleteAsync(int id);
         Task<Response<NoContent>> SoftDeleteAsync(int id);
         #endregion
 

@@ -54,13 +54,13 @@ namespace DiziSinema.Data.Concrete.Repositories
             return await query.SingleOrDefaultAsync();
         }
 
-        public async Task HardDelete(TEntity entity)
+        public async Task HardDeleteAsync(TEntity entity)
         {
             _dbContext.Set<TEntity>().Remove(entity);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task Update(TEntity entity)
+        public async Task UpdateAsync(TEntity entity)
         {
             _dbContext.Set<TEntity>().Update(entity);
             await _dbContext.SaveChangesAsync();

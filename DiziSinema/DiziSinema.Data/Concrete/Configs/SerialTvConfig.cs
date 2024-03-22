@@ -16,7 +16,7 @@ namespace DiziSinema.Data.Concrete.Configs
             builder.HasKey(s=>s.Id);
             builder.Property(s=>s.Id).IsRequired();
 
-            builder.Property(s=>s.SerTitle).IsRequired().HasMaxLength(70);
+            builder.Property(s=>s.SerName).IsRequired().HasMaxLength(70);
             builder.Property(s => s.SerIntro).IsRequired().HasMaxLength(500);
             builder.Property(s => s.SerLanguage).IsRequired().HasMaxLength(70);
             builder.Property(s => s.Url).IsRequired().HasMaxLength(100);
@@ -28,7 +28,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new SerialTv
                 {
                     Id = 1,
-                    SerTitle = "Dizi1",
+                    SerName = "Dizi1",
                     SerIntro = "Title",
                     SerLanguage = "Türkce dublaj",
                     Url = "dizi-1",
@@ -38,7 +38,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new SerialTv
                 {
                     Id = 2,
-                    SerTitle = "Dizi2",
+                    SerName = "Dizi2",
                     SerIntro = "Title",
                     SerLanguage = "Türkce dublaj",
                     Url = "dizi-2",
@@ -48,7 +48,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new SerialTv
                 {
                     Id = 3,
-                    SerTitle = "Dizi3",
+                    SerName = "Dizi3",
                     SerIntro = "Title",
                     SerLanguage = "Türkce dublaj",
                     Url = "dizi-3",
@@ -58,7 +58,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new SerialTv
                 {
                     Id = 4,
-                    SerTitle = "Dizi4",
+                    SerName = "Dizi4",
                     SerIntro = "Title",
                     SerLanguage = "Türkce dublaj",
                     Url = "dizi-4",
@@ -68,7 +68,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new SerialTv
                 {
                     Id = 5,
-                    SerTitle = "Dizi5",
+                    SerName = "Dizi5",
                     SerIntro = "Title",
                     SerLanguage = "Türkce dublaj",
                     Url = "dizi-5",
@@ -78,7 +78,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new SerialTv
                 {
                     Id = 6,
-                    SerTitle = "Dizi6",
+                    SerName = "Dizi6",
                     SerIntro = "Title",
                     SerLanguage = "Türkce dublaj",
                     Url = "dizi-6",

@@ -16,7 +16,7 @@ namespace DiziSinema.Data.Concrete.Configs
             builder.HasKey(m => m.Id);
             builder.Property(m => m.Id).ValueGeneratedNever();
 
-            builder.Property(m => m.MovTitle).IsRequired().HasMaxLength(60);
+            builder.Property(m => m.MovName).IsRequired().HasMaxLength(60);
             builder.Property(m => m.MovIntro).IsRequired().HasMaxLength(500);
             builder.Property(m => m.MovLanguage).IsRequired().HasMaxLength(60);
             builder.Property(m => m.Url).IsRequired().HasMaxLength(80);
@@ -28,7 +28,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new Movie
                 {
                     Id = 1,
-                    MovTitle = "Film1",
+                    MovName = "Film1",
                     MovIntro = "Title",
                     MovLanguage = "türkce dublaj",
                     Url = "film-1",
@@ -38,7 +38,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new Movie
                 {
                     Id = 2,
-                    MovTitle = "Film2",
+                    MovName = "Film2",
                     MovIntro = "Title",
                     MovLanguage = "türkce dublaj",
                     Url = "film-2",
@@ -48,7 +48,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new Movie
                 {
                     Id = 3,
-                    MovTitle = "Film3",
+                    MovName = "Film3",
                     MovIntro = "Title",
                     MovLanguage = "türkce dublaj",
                     Url = "film-3",
@@ -58,7 +58,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new Movie
                 {
                     Id = 4,
-                    MovTitle = "Film4",
+                    MovName = "Film4",
                     MovIntro = "Title",
                     MovLanguage = "türkce dublaj",
                     Url = "film-4",
@@ -68,7 +68,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new Movie
                 {
                     Id = 5,
-                    MovTitle = "Film5",
+                    MovName = "Film5",
                     MovIntro = "Title",
                     MovLanguage = "türkce dublaj",
                     Url = "film-5",
@@ -78,7 +78,7 @@ namespace DiziSinema.Data.Concrete.Configs
                 new Movie
                 {
                     Id = 6,
-                    MovTitle = "Film6",
+                    MovName = "Film6",
                     MovIntro = "Title",
                     MovLanguage = "türkce dublaj",
                     Url = "film-6",
