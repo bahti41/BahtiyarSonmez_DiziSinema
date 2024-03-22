@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DiziSinema.Business.Absract;
 using DiziSinema.Data.Abstract;
+using DiziSinema.Entity.Concrete.Entitys;
 using DiziSinema.Shared.DTOs;
 using DiziSinema.Shared.DTOs.Core.Add;
 using DiziSinema.Shared.DTOs.Core.Edit;
@@ -25,9 +26,16 @@ namespace DiziSinema.Business.Concrete
             _repository = movieRepository;
         }
 
-        public Task<Response<MovieDTO>> CreateAsync(AddMovieDTO addMovieDTO)
+        public async Task<Response<MovieDTO>> CreateAsync(AddMovieDTO addMovieDTO)
         {
-            throw new NotImplementedException();
+            var movie = _mapper.Map<Movie>(addMovieDTO);
+            var addMovie = await _repository.CreateAsync(movie);
+            if(addMovie == null)
+            {
+                return Response<MovieDTO>.Fail("Film Oluşturulamadı", 301);
+            }
+            var addMovieDto = _mapper.Map<MovieDTO>(addMovie);
+            return Response<MovieDTO>.Success(addMovieDto, 200);
         }
 
         public async Task<Response<List<MovieDTO>>> GetAllAsync()
@@ -41,14 +49,26 @@ namespace DiziSinema.Business.Concrete
             return Response<List<MovieDTO>>.Success(movieDtoList, 200);
         }
 
-        public Task<Response<MovieDTO>> GetByIdAsync(int id)
+        public async Task<Response<MovieDTO>> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var movie = await _repository.GetByIdAsync(c=>c.Id == id);
+            if (movie == null)
+            {
+                return Response<MovieDTO>.Fail("ilgili Film bulunamadı.", 404);
+            }
+            var movieDto = _mapper.Map<MovieDTO>(movie);
+            return Response<MovieDTO>.Success(movieDto, 200);
         }
 
-        public Task<Response<NoContent>> HardDeleteAsync(int id)
+        public async Task<Response<NoContent>> HardDeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var movie = await _repository.GetByIdAsync(c=>c.Id == id);
+            if (movie == null)
+            {
+                return Response<NoContent>.Fail("ilgili Film bulunamadı.", 404);
+            }
+            await _repository.HardDeleteAsync(movie);
+            return Response<NoContent>.Success(200);
         }
 
         public Task<Response<NoContent>> SoftDeleteAsync(int id)

@@ -30,9 +30,15 @@ namespace DiziSinema.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<Response<List<SerialTvDTO>>> GetAllAsync()
+        public async Task<Response<List<SerialTvDTO>>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var serialTvList = await _repository.GetAllAsync();
+            if (serialTvList == null)
+            {
+                return Response<List<SerialTvDTO>>.Fail("Hiç ürün bulunamadı", 301);
+            }
+            var serialTvListDtoList = _mapper.Map<List<SerialTvDTO>>(serialTvList);
+            return Response<List<SerialTvDTO>>.Success(serialTvListDtoList, 200);
         }
 
         public Task<Response<SerialTvDTO>> GetByIdAsync(int id)
