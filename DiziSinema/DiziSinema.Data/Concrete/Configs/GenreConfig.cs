@@ -14,7 +14,7 @@ namespace DiziSinema.Data.Concrete.Configs
         public void Configure(EntityTypeBuilder<Genre> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x=>x.Id).IsRequired();
+            builder.Property(x=>x.Id).ValueGeneratedOnAdd();
 
             builder.Property(x => x.GenreName).IsRequired().HasMaxLength(50);
             builder.Property(x => x.Description).IsRequired().HasMaxLength(500);

@@ -1,5 +1,6 @@
 ﻿using DiziSinema.Business.Absract;
 using DiziSinema.Shared.DTOs.Core.Add;
+using DiziSinema.Shared.DTOs.Core.Edit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
@@ -40,10 +41,26 @@ namespace DiziSinema.API.Controllers
             return Ok(jsonResponse);
         }
 
-        [HttpGet("HardDeleted/{id}")]
+        [HttpDelete("HardDeleted/{id}")]
         public async Task<IActionResult> HardDeleted(int id)
         {
             var response = await _movieManager.HardDeleteAsync(id);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpGet("SoftDeleted/{id}")]
+        public async Task<IActionResult> SoftDeleted(int id)
+        {
+            var response = await _movieManager.SoftDeleteAsync(id);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update(EditMovieDTO editMovieDTO)
+        {
+            var response = await _movieManager.UpdateAsync(editMovieDTO);
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }

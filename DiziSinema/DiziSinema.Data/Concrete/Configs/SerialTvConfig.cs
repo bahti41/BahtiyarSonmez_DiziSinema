@@ -14,7 +14,7 @@ namespace DiziSinema.Data.Concrete.Configs
         public void Configure(EntityTypeBuilder<SerialTv> builder)
         {
             builder.HasKey(s=>s.Id);
-            builder.Property(s=>s.Id).IsRequired();
+            builder.Property(s=>s.Id).ValueGeneratedOnAdd();
 
             builder.Property(s=>s.SerName).IsRequired().HasMaxLength(70);
             builder.Property(s => s.SerIntro).IsRequired().HasMaxLength(500);

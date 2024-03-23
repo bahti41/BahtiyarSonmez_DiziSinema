@@ -20,10 +20,10 @@ namespace DiziSinema.Business.Concrete
         private readonly IMapper _mapper;
         private readonly IMovieRepository _repository;
 
-        public MovieManager(IMapper mapper, IMovieRepository movieRepository)
+        public MovieManager(IMapper mapper, IMovieRepository repository)
         {
             _mapper = mapper;
-            _repository = movieRepository;
+            _repository = repository;
         }
 
         public async Task<Response<MovieDTO>> CreateAsync(AddMovieDTO addMovieDTO)
@@ -43,7 +43,7 @@ namespace DiziSinema.Business.Concrete
             var movietList = await _repository.GetAllAsync();
             if (movietList == null)
             {
-                return Response<List<MovieDTO>>.Fail("Hiç ürün bulunamadı", 301);
+                return Response<List<MovieDTO>>.Fail("Hiç film bulunamadı", 301);
             }
             var movieDtoList = _mapper.Map<List<MovieDTO>>(movietList);
             return Response<List<MovieDTO>>.Success(movieDtoList, 200);
@@ -51,7 +51,7 @@ namespace DiziSinema.Business.Concrete
 
         public async Task<Response<MovieDTO>> GetByIdAsync(int id)
         {
-            var movie = await _repository.GetByIdAsync(c=>c.Id == id);
+            var movie = await _repository.GetByIdAsync(m=>m.Id == id);
             if (movie == null)
             {
                 return Response<MovieDTO>.Fail("ilgili Film bulunamadı.", 404);
@@ -71,14 +71,35 @@ namespace DiziSinema.Business.Concrete
             return Response<NoContent>.Success(200);
         }
 
-        public Task<Response<NoContent>> SoftDeleteAsync(int id)
+        public async Task<Response<NoContent>> SoftDeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var deletedMovie = await _repository.GetByIdAsync(c=>c.Id==id);
+            if (deletedMovie == null)
+            {
+                return Response<NoContent>.Fail("ilgili Film Bulunamadı.", 404);
+            }
+            if (deletedMovie.IsDeleted)
+            {
+                return Response<NoContent>.Fail("Bu Film Zaten Silinmiş.", 404);
+            }
+            deletedMovie.IsDeleted=true;
+            deletedMovie.IsActive=false;
+            deletedMovie.ModifiedDate=DateTime.Now;
+            await _repository.UpdateAsync(deletedMovie);
+            return Response<NoContent>.Success(200);
         }
 
-        public Task<Response<MovieDTO>> UpdateAsync(EditMovieDTO editMovieDTO)
+        public async Task<Response<MovieDTO>> UpdateAsync(EditMovieDTO editMovieDTO)
         {
-            throw new NotImplementedException();
+            var editedMovie = _mapper.Map<Movie>(editMovieDTO);
+            if (editedMovie == null)
+            {
+                return Response<MovieDTO>.Fail("Böyle Bir film Bulunamadı", 404);
+            }
+            editedMovie.ModifiedDate = DateTime.Now;
+            await _repository.UpdateAsync(editedMovie);
+            var editedMovieDto = _mapper.Map<MovieDTO>(editedMovie);
+            return Response<MovieDTO>.Success(editedMovieDto, 200);
         }
     }
 }

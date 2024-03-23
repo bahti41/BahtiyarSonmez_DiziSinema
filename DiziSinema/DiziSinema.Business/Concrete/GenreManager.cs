@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DiziSinema.Business.Absract;
 using DiziSinema.Data.Abstract;
+using DiziSinema.Entity.Concrete.Entitys;
 using DiziSinema.Shared.DTOs;
 using DiziSinema.Shared.DTOs.Core.Add;
 using DiziSinema.Shared.DTOs.Core.Edit;
@@ -25,34 +26,80 @@ namespace DiziSinema.Business.Concrete
             _repository = repository;
         }
 
-        public Task<Response<GenreDTO>> CreateAsync(AddGenreDTO addGenreDTO)
+        public async Task<Response<GenreDTO>> CreateAsync(AddGenreDTO addGenreDTO)
         {
-            throw new NotImplementedException();
+            var genre = _mapper.Map<Genre>(addGenreDTO);
+            var addGenre = await _repository.CreateAsync(genre);
+            if (addGenre == null)
+            {
+                return Response<GenreDTO>.Fail("Film Oluşturulamadı", 301);
+            }
+            var addGenreDto = _mapper.Map<GenreDTO>(addGenre);
+            return Response<GenreDTO>.Success(addGenreDto, 200);
         }
 
-        public Task<Response<List<GenreDTO>>> GetAllAsync()
+        public async Task<Response<List<GenreDTO>>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var genreList = await _repository.GetAllAsync();
+            if (genreList == null)
+            {
+                return Response<List<GenreDTO>>.Fail("Hiç tür bulunamadı", 301);
+            }
+            var genreDtoList = _mapper.Map<List<GenreDTO>>(genreList);
+            return Response<List<GenreDTO>>.Success(genreDtoList, 200);
         }
 
-        public Task<Response<GenreDTO>> GetByIdAsync(int id)
+        public async Task<Response<GenreDTO>> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var genre = await _repository.GetByIdAsync(g => g.Id == id);
+            if (genre == null)
+            {
+                return Response<GenreDTO>.Fail("ilgili tür bulunamadı.", 404);
+            }
+            var genreDto = _mapper.Map<GenreDTO>(genre);
+            return Response<GenreDTO>.Success(genreDto, 200);
         }
 
-        public Task<Response<NoContent>> HardDeleteAsync(int id)
+        public async Task<Response<NoContent>> HardDeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var genre = await _repository.GetByIdAsync(c => c.Id == id);
+            if (genre == null)
+            {
+                return Response<NoContent>.Fail("ilgili tür bulunamadı.", 404);
+            }
+            await _repository.HardDeleteAsync(genre);
+            return Response<NoContent>.Success(200);
         }
 
-        public Task<Response<NoContent>> SoftDeleteAsync(int id)
+        public async Task<Response<NoContent>> SoftDeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var deletedGenre = await _repository.GetByIdAsync(c => c.Id == id);
+            if (deletedGenre == null)
+            {
+                return Response<NoContent>.Fail("ilgili tür Bulunamadı.", 404);
+            }
+            if (deletedGenre.IsDeleted)
+            {
+                return Response<NoContent>.Fail("Bu tür Zaten Silinmiş.", 404);
+            }
+            deletedGenre.IsDeleted = true;
+            deletedGenre.IsActive = false;
+            deletedGenre.ModifiedDate = DateTime.Now;
+            await _repository.UpdateAsync(deletedGenre);
+            return Response<NoContent>.Success(200);
         }
 
-        public Task<Response<GenreDTO>> UpdateAsync(EditGenreDTO editGenreDTO)
+        public async Task<Response<GenreDTO>> UpdateAsync(EditGenreDTO editGenreDTO)
         {
-            throw new NotImplementedException();
+            var editedGenre = _mapper.Map<Genre>(editGenreDTO);
+            if (editedGenre == null)
+            {
+                return Response<GenreDTO>.Fail("Böyle Bir film Bulunamadı", 404);
+            }
+            editedGenre.ModifiedDate = DateTime.Now;
+            await _repository.UpdateAsync(editedGenre);
+            var editedGenreDto = _mapper.Map<GenreDTO>(editedGenre);
+            return Response<GenreDTO>.Success(editedGenreDto, 200);
         }
     }
 }

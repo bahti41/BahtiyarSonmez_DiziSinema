@@ -14,6 +14,6 @@ namespace DiziSinema.Shared.DTOs.Core.Add
         public string Movlanguage { get; set; }
         public string Url { get; set; }
         public bool IsActive { get; set; }
-        public int[] GenreIds { get; set; }
+        //public int[] GenreIds { get; set; }
     }
 }

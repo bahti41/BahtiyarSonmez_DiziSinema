@@ -14,7 +14,7 @@ namespace DiziSinema.Data.Concrete.Configs
         public void Configure(EntityTypeBuilder<Movie> builder)
         {
             builder.HasKey(m => m.Id);
-            builder.Property(m => m.Id).ValueGeneratedNever();
+            builder.Property(m => m.Id).ValueGeneratedOnAdd();
 
             builder.Property(m => m.MovName).IsRequired().HasMaxLength(60);
             builder.Property(m => m.MovIntro).IsRequired().HasMaxLength(500);
