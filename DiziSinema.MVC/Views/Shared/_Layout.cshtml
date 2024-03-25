@@ -1,19 +1,29 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DiziSinema.com</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>DiziSinema</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
     @await Html.PartialAsync("_TemStyles")
     @await RenderSectionAsync("Styles", false)
 </head>
 
 <body class ="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
-    <div>
-        @await Component.InvokeAsync("TemNavbar")
+    <section id="recent-posts" class="recent-posts"></section>
+        <div class="container">
+        @await Html.PartialAsync("_NavbarPartial")
         @RenderBody()
-        @await Component.InvokeAsync("TemFooter")
+
+        @await Html.PartialAsync("_Contant")
+        @await Html.PartialAsync("_FooterPartial")
     </div>
+
+
+    </section>
 
     @await Html.PartialAsync("_TemScripts")
     @await RenderSectionAsync("Scripts", false)
