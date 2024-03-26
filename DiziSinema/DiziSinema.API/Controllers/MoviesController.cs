@@ -64,5 +64,28 @@ namespace DiziSinema.API.Controllers
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
+
+        [HttpPost("UpdateIsActive/{id}")]
+        public async Task<IActionResult> UpdateIsActive(int id)
+        {
+            var response = await _movieManager.UpdateIsActiveAsync(id);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpGet("ActiveCount")]
+        public async Task<IActionResult> GetActiveCount()
+        {
+            var response = await _movieManager.GetActiveMovieCount();
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+        [HttpGet("Count")]
+        public async Task<IActionResult> GetCount()
+        {
+            var response = await _movieManager.GetMovieCount();
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
     }
 }

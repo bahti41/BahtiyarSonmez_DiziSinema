@@ -101,5 +101,42 @@ namespace DiziSinema.Business.Concrete
             var editedGenreDto = _mapper.Map<GenreDTO>(editedGenre);
             return Response<GenreDTO>.Success(editedGenreDto, 200);
         }
+
+        public async Task<Response<int>> GetActiveGenreCount()
+        {
+            var count = await _repository.GetCountAsync(c => c.IsActive && !c.IsDeleted);
+            return Response<int>.Success(count, 200);
+        }
+
+        public async Task<Response<int>> GetGenreCount()
+        {
+            var count = await _repository.GetCountAsync(c => !c.IsDeleted);
+            return Response<int>.Success(count, 200);
+        }
+
+        public async Task<Response<List<GenreDTO>>> GetNonDeletedGenre(bool isDeleted = false)
+        {
+            var genreList = await _repository.GetAllAsync(g => g.IsDeleted == isDeleted);
+            string status = isDeleted ? "silinmiş" : "silinmemiş";
+            if (genreList.Count == 0)
+            {
+                return Response<List<GenreDTO>>.Fail($"Hiç {status} kategori bulunamadı", 301);
+            }
+            var genreDtoList = _mapper.Map<List<GenreDTO>>(genreList);
+            return Response<List<GenreDTO>>.Success(genreDtoList, 200);
+        }
+
+        public async Task<Response<List<GenreDTO>>> GetActiveGenre(bool isActive = true)
+        {
+            var GenreList = await _repository.GetAllAsync(g => g.IsActive == isActive && g.IsDeleted == !isActive);
+            string status = isActive ? "aktif" : "aktif olmayan";
+            if (GenreList.Count == 0)
+            {
+                return Response<List<GenreDTO>>.Fail($"Hiç {status} kategori bulunamadı", 301);
+            }
+            var GenreDtoList = _mapper.Map<List<GenreDTO>>(GenreList);
+            return Response<List<GenreDTO>>.Success(GenreDtoList, 200);
+        }
+
     }
 }

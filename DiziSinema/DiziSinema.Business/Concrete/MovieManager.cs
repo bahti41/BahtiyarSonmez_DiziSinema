@@ -101,5 +101,31 @@ namespace DiziSinema.Business.Concrete
             var editedMovieDto = _mapper.Map<MovieDTO>(editedMovie);
             return Response<MovieDTO>.Success(editedMovieDto, 200);
         }
+
+        public async Task<Response<NoContent>> UpdateIsActiveAsync(int id)
+        {
+            var movie = await _repository.GetByIdAsync(p => p.Id == id);
+            if (movie == null)
+            {
+                return Response<NoContent>.Fail("İlgili ürün bulunamadı.", 404);
+            }
+            movie.IsActive = !movie.IsActive;
+            movie.ModifiedDate = DateTime.Now;
+            await _repository.UpdateAsync(movie);
+            return Response<NoContent>.Success(200);
+        }
+
+        public async Task<Response<int>> GetActiveMovieCount()
+        {
+            var count = await _repository.GetCountAsync(p => p.IsActive && !p.IsDeleted);
+            return Response<int>.Success(count, 200);
+        }
+
+        public async Task<Response<int>> GetMovieCount()
+        {
+            var count = await _repository.GetCountAsync(m => !m.IsDeleted);
+            return Response<int>.Success(count, 200);
+        }
+
     }
 }

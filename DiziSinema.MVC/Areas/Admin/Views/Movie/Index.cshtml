@@ -1,0 +1,98 @@
+﻿@model List<MovieViewModel>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Ürün Listesi</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="myDataTable" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Ürün</th>
+                                            <th>Fiyat</th>
+                                            <th>Ana Sayfa</th>
+                                            <th>Aktif</th>
+                                            <th width="55">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var m in Model)
+                                        {
+                                            <tr>
+                                                <td>@m.Id</td>
+                                                <td>@m.MovName</td>
+                                                <td>@m.Movlanguage</td>
+                                                <td>
+                                                    <form id="isActiveForm_@m.Id"
+                                                          asp-area="Admin"
+                                                          asp-controller="Movie"
+                                                          asp-action="UpdateIsActive"
+                                                          asp-route-id="@m.Id"
+                                                          method="post">
+                                                        <div class="custom-control custom-switch">
+                                                        <input onchange="document.getElementById('isActiveForm_@m.Id').submit();"
+                                                               type="checkbox" class="custom-control-input" id="isActive_@m.Id"
+                                                            @(m.IsActive ? "checked" : "") />
+                                                            <label class="custom-control-label" for="isActive_@m.Id"></label>
+                                                        </div>
+                                                    </form>
+
+                                                </td>
+                                            <td>
+                                                class="text-center">
+                                                <a asp-area="Admin"
+                                                   asp-controller="Product"
+                                                   asp-action="Edit"
+                                                   asp-route-id="@m.Id"
+                                                   class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
+                                                <a asp-area="Admin"
+                                                   asp-controller="Product"
+                                                   asp-action="Delete"
+                                                   asp-route-id="@m.Id"
+                                                   class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    @section Styles {
+        @await Html.PartialAsync("_DataTablesCssPartial")
+    }
+
+    @section Scripts {
+        @await Html.PartialAsync("_DataTablesJsPartial")
+    }

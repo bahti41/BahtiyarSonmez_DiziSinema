@@ -9,10 +9,8 @@ namespace DiziSinema.Shared.DTOs.In
     public class InGenreDTO
     {
         public int Id { get; set; }
-        public string SerName { get; set; }
-        public string SerIntro { get; set; }
-        public string ImageUrl { get; set; }
-        public string Serlanguage { get; set; }
+        public string GenreName { get; set; }
+        public string Description { get; set; }
         public string Url { get; set; }
     }
 }

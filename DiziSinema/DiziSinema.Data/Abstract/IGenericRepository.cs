@@ -16,5 +16,9 @@ namespace DiziSinema.Data.Abstract
         Task<TEntity> CreateAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
         Task HardDeleteAsync(TEntity entity);
+        Task<int> GetCountAsync(
+            Expression<Func<TEntity, bool>> options = null, Func<IQueryable<TEntity>,
+            IIncludableQueryable<TEntity, object>> include = null
+        );
     }
 }

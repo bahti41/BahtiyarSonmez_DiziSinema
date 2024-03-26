@@ -101,5 +101,31 @@ namespace DiziSinema.Business.Concrete
             var editedSerialTvDto = _mapper.Map<SerialTvDTO>(editedSerialTv);
             return Response<SerialTvDTO>.Success(editedSerialTvDto, 200);
         }
+
+        public async Task<Response<NoContent>> UpdateIsActiveAsync(int id)
+        {
+            var serialTv = await _repository.GetByIdAsync(s => s.Id == id);
+            if (serialTv == null)
+            {
+                return Response<NoContent>.Fail("İlgili ürün bulunamadı.", 404);
+            }
+            serialTv.IsActive = !serialTv.IsActive;
+            serialTv.ModifiedDate = DateTime.Now;
+            await _repository.UpdateAsync(serialTv);
+            return Response<NoContent>.Success(200);
+        }
+
+        public async Task<Response<int>> GetActiveSerialTvCount()
+        {
+            var count = await _repository.GetCountAsync(s => s.IsActive && !s.IsDeleted);
+            return Response<int>.Success(count, 200);
+        }
+
+
+        public async Task<Response<int>> GetSerialTvCount()
+        {
+            var count = await _repository.GetCountAsync(s => !s.IsDeleted);
+            return Response<int>.Success(count, 200);
+        }
     }
 }

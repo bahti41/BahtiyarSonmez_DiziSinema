@@ -66,5 +66,28 @@ namespace DiziSinema.API.Controllers
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
+
+        [HttpPost("UpdateIsActive/{id}")]
+        public async Task<IActionResult> UpdateIsActive(int id)
+        {
+            var response = await _serialTvManager.UpdateIsActiveAsync(id);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpGet("ActiveCount")]
+        public async Task<IActionResult> GetActiveCount()
+        {
+            var response = await _serialTvManager.GetActiveSerialTvCount();
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+        [HttpGet("Count")]
+        public async Task<IActionResult> GetCount()
+        {
+            var response = await _serialTvManager.GetSerialTvCount();
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
     }
 }

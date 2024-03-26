@@ -24,7 +24,10 @@ namespace DiziSinema.Business.Absract
         #endregion
 
         #region Genre
-
+        Task<Response<List<GenreDTO>>> GetActiveGenre(bool isActive = true);
+        Task<Response<List<GenreDTO>>> GetNonDeletedGenre(bool isDeleted = false);
+        Task<Response<int>> GetActiveGenreCount();
+        Task<Response<int>> GetGenreCount();
         #endregion
     }
 }

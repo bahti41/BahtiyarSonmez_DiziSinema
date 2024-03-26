@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace DiziSinema.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class GenresController : ControllerBase
     {
@@ -63,6 +63,39 @@ namespace DiziSinema.API.Controllers
         public async Task<IActionResult> Update(EditGenreDTO editGenreDTO)
         {
             var response = await _genreManager.UpdateAsync(editGenreDTO);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+
+        [HttpGet("NonDeleteds/{isDeleted?}")]
+        public async Task<IActionResult> GetNonDeleted(bool isDeleted = false)
+        {
+            var response = await _genreManager.GetNonDeletedGenre(isDeleted);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpGet("Actives/{isActive?}")]
+        public async Task<IActionResult> GetActives(bool isActive = true)
+        {
+            var response = await _genreManager.GetActiveGenre(isActive);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpGet("ActiveCount")]
+        public async Task<IActionResult> GetActiveCount()
+        {
+            var response = await _genreManager.GetActiveGenreCount();
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpGet("Count")]
+        public async Task<IActionResult> GetCount()
+        {
+            var response = await _genreManager.GetGenreCount();
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
