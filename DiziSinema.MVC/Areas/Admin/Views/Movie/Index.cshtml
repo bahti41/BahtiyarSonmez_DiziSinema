@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Ürün Listesi</h1>
+                        <h1>Film Listeleri</h1>
                     </div>
                     <div class="col-sm-6">
                         
@@ -26,10 +26,9 @@
                                 <table id="myDataTable" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th width="55">Id</th>
                                             <th>Ürün</th>
-                                            <th>Fiyat</th>
-                                            <th>Ana Sayfa</th>
+                                            <th>Dublaj</th>
                                             <th>Aktif</th>
                                             <th width="55">#</th>
                                         </tr>
@@ -55,21 +54,19 @@
                                                             <label class="custom-control-label" for="isActive_@m.Id"></label>
                                                         </div>
                                                     </form>
-
                                                 </td>
-                                            <td>
-                                                class="text-center">
-                                                <a asp-area="Admin"
-                                                   asp-controller="Product"
-                                                   asp-action="Edit"
-                                                   asp-route-id="@m.Id"
-                                                   class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
-                                                <a asp-area="Admin"
-                                                   asp-controller="Product"
-                                                   asp-action="Delete"
-                                                   asp-route-id="@m.Id"
-                                                   class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                                            </td>
+                                                <td>
+                                                    <a asp-area="Admin"
+                                                       asp-controller="Movie"
+                                                       asp-action="Edit"
+                                                       asp-route-id="@m.Id"
+                                                       class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
+                                                    <a asp-area="Admin"
+                                                       asp-controller="Movie"
+                                                       asp-action="Delete"
+                                                       asp-route-id="@m.Id"
+                                                       class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                                </td>
                                             </tr>
                                         }
 

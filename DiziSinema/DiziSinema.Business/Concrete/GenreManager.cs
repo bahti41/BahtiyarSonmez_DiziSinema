@@ -94,7 +94,7 @@ namespace DiziSinema.Business.Concrete
             var editedGenre = _mapper.Map<Genre>(editGenreDTO);
             if (editedGenre == null)
             {
-                return Response<GenreDTO>.Fail("Böyle Bir film Bulunamadı", 404);
+                return Response<GenreDTO>.Fail("Böyle Bir Tür Bulunamadı", 404);
             }
             editedGenre.ModifiedDate = DateTime.Now;
             await _repository.UpdateAsync(editedGenre);
@@ -120,7 +120,7 @@ namespace DiziSinema.Business.Concrete
             string status = isDeleted ? "silinmiş" : "silinmemiş";
             if (genreList.Count == 0)
             {
-                return Response<List<GenreDTO>>.Fail($"Hiç {status} kategori bulunamadı", 301);
+                return Response<List<GenreDTO>>.Fail($"Hiç {status} Tür Bulunamadı", 301);
             }
             var genreDtoList = _mapper.Map<List<GenreDTO>>(genreList);
             return Response<List<GenreDTO>>.Success(genreDtoList, 200);
@@ -132,11 +132,10 @@ namespace DiziSinema.Business.Concrete
             string status = isActive ? "aktif" : "aktif olmayan";
             if (GenreList.Count == 0)
             {
-                return Response<List<GenreDTO>>.Fail($"Hiç {status} kategori bulunamadı", 301);
+                return Response<List<GenreDTO>>.Fail($"Hiç {status} Tür Bulunamadı", 301);
             }
             var GenreDtoList = _mapper.Map<List<GenreDTO>>(GenreList);
             return Response<List<GenreDTO>>.Success(GenreDtoList, 200);
         }
-
     }
 }
