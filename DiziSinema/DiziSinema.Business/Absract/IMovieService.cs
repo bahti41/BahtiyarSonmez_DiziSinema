@@ -17,6 +17,7 @@ namespace DiziSinema.Business.Absract
         #region Generic
         Task<Response<MovieDTO>> GetByIdAsync(int id);
         Task<Response<List<MovieDTO>>> GetAllAsync();
+        Task<Response<List<MovieDTO>>> GetAllNonDeletedAsync(bool isDeleted = false);
         Task<Response<MovieDTO>> CreateAsync(AddMovieDTO addMovieDTO);
         Task<Response<MovieDTO>> UpdateAsync(EditMovieDTO editMovieDTO);
         Task<Response<NoContent>> HardDeleteAsync(int id);

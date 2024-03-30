@@ -4,6 +4,8 @@ using DiziSinema.Data.Abstract;
 using DiziSinema.Data.Concrete.Context;
 using DiziSinema.Data.Concrete.Repositories;
 using Microsoft.EntityFrameworkCore;
+using MiniShop.Shared.Helpers.Abstract;
+using MiniShop.Shared.Helpers.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +25,7 @@ builder.Services.AddScoped<IGenreService, GenreManager>();
 builder.Services.AddScoped<IMovieService, MovieManager>();
 builder.Services.AddScoped<ISerialTvSevice, SerialTvManager>();
 
-
+builder.Services.AddScoped<IImageHelper, ImageHelper>();
 
 
 
@@ -49,6 +51,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
 
 app.UseAuthorization();
 

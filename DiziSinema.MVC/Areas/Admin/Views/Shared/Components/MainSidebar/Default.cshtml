@@ -30,6 +30,7 @@
                                 asp-area="Admin"
                                asp-controller="Movie"
                                asp-action="Index"
+                               asp-route-id="false"
                                 class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Filmler</p>
@@ -37,9 +38,9 @@
                         </li>
                         <li class="nav-item">
                             <a 
-                                asp-area=""
-                               asp-controller=""
-                               asp-action=""
+                                asp-area="Admin"
+                               asp-controller="Movie"
+                               asp-action="Create"
                                 class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Film Ekle</p>
@@ -47,9 +48,10 @@
                         </li>
                         <li class="nav-item">
                             <a 
-                                asp-area=""
-                               asp-controller=""
-                               asp-action=""
+                                asp-area="Admin"
+                               asp-controller="Movie"
+                               asp-action="Index"
+                               asp-route-id="true"
                                 class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Cöp Kutusu</p>

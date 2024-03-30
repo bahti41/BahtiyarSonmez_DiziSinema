@@ -3,6 +3,7 @@ using DiziSinema.Shared.DTOs.Core.Add;
 using DiziSinema.Shared.DTOs.Core.Edit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MiniShop.Shared.Helpers.Abstract;
 using System.Text.Json;
 
 namespace DiziSinema.API.Controllers
@@ -12,10 +13,12 @@ namespace DiziSinema.API.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly IMovieService _movieManager;
+        private readonly IImageHelper _imageHelper;
 
-        public MoviesController(IMovieService movieManager)
+        public MoviesController(IMovieService movieManager, IImageHelper imageHelper)
         {
             _movieManager = movieManager;
+            _imageHelper = imageHelper;
         }
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -80,12 +83,28 @@ namespace DiziSinema.API.Controllers
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
+
         [HttpGet("Count")]
         public async Task<IActionResult> GetCount()
         {
             var response = await _movieManager.GetMovieCount();
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
+        }
+
+        [HttpGet("GetAllNonDeleted/{isDeleted?}")]
+        public async Task<IActionResult> GetAllNonDeleted(bool isDeleted = false)
+        {
+            var response = await _movieManager.GetAllNonDeletedAsync(isDeleted);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpPost("ImageUpload")]
+        public async Task<IActionResult> ImageUpload(IFormFile image)
+        {
+            var response = await _imageHelper.UploadImage(image, "movies");
+            return Ok(response);
         }
     }
 }

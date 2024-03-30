@@ -3,12 +3,8 @@ using System.Text.Json.Serialization;
 
 namespace DiziSinema.MVC.Areas.Admin.Models.Movie
 {
-    public class MovieViewModel
+    public class AddMovieViewModel
     {
-        [JsonPropertyName("Id")]
-        public int Id { get; set; }
-
-
         [JsonPropertyName("MovName")]
         public string MovName { get; set; }
 
@@ -45,7 +41,11 @@ namespace DiziSinema.MVC.Areas.Admin.Models.Movie
         public DateTime ModifiedDate { get; set; }
 
 
-        [JsonPropertyName("GenreList")]
-        public List<GenreViewModel> Genres { get; set; }
+        [JsonPropertyName("GenreIds")]
+        public List<int> GenreIds { get; set; } = new List<int>();
+
+
+        [JsonPropertyName("Türler")]
+        public List<GenreViewModel> GenreList { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using DiziSinema.Business.Absract;
 using DiziSinema.Data.Abstract;
 using DiziSinema.Entity.Concrete.Entitys;
+using DiziSinema.Entity.Concrete.JunctionClasses;
 using DiziSinema.Shared.DTOs;
 using DiziSinema.Shared.DTOs.Core.Add;
 using DiziSinema.Shared.DTOs.Core.Edit;
@@ -29,11 +30,21 @@ namespace DiziSinema.Business.Concrete
         public async Task<Response<MovieDTO>> CreateAsync(AddMovieDTO addMovieDTO)
         {
             var movie = _mapper.Map<Movie>(addMovieDTO);
+            movie.CreatedDate = DateTime.Now;
+            movie.ModifiedDate = DateTime.Now;
             var addMovie = await _repository.CreateAsync(movie);
             if(addMovie == null)
             {
                 return Response<MovieDTO>.Fail("Film Oluşturulamadı", 301);
             }
+            addMovie.MovieGenres = addMovieDTO
+                .GenreIds
+                .Select(genId => new MovieGenre
+                {
+                    MovieId = addMovie.Id,
+                    GenreId = genId
+                }).ToList();
+            await _repository.UpdateAsync(addMovie);
             var addMovieDto = _mapper.Map<MovieDTO>(addMovie);
             return Response<MovieDTO>.Success(addMovieDto, 200);
         }
@@ -98,6 +109,15 @@ namespace DiziSinema.Business.Concrete
             }
             editedMovie.ModifiedDate = DateTime.Now;
             await _repository.UpdateAsync(editedMovie);
+            await _repository.CleaarMovieGenreAsync(editedMovie.Id,editMovieDTO.GenreIds);
+            editedMovie.MovieGenres = editMovieDTO
+                .GenreIds
+                .Select(genId => new MovieGenre
+                {
+                    MovieId = editedMovie.Id,
+                    GenreId = genId
+                }).ToList();
+            await _repository.UpdateAsync(editedMovie);
             var editedMovieDto = _mapper.Map<MovieDTO>(editedMovie);
             return Response<MovieDTO>.Success(editedMovieDto, 200);
         }
@@ -127,5 +147,15 @@ namespace DiziSinema.Business.Concrete
             return Response<int>.Success(count, 200);
         }
 
+        public async Task<Response<List<MovieDTO>>> GetAllNonDeletedAsync(bool isDeleted = false)
+        {
+            var movieList = await _repository.GetAllAsync(m => m.IsDeleted == isDeleted);
+            if (movieList == null)
+            {
+                return Response<List<MovieDTO>>.Fail("Hiç ürün bulunamadı", 301);
+            }
+            var movieDtoList = _mapper.Map<List<MovieDTO>>(movieList);
+            return Response<List<MovieDTO>>.Success(movieDtoList, 200);
+        }
     }
 }
