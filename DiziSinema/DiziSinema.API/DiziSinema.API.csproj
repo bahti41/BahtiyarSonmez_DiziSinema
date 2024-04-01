@@ -21,4 +21,8 @@
     <ProjectReference Include="..\DiziSinema.Shared\DiziSinema.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>

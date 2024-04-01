@@ -8,6 +8,7 @@ using DiziSinema.Shared.DTOs.Core.Add;
 using DiziSinema.Shared.DTOs.Core.Edit;
 using DiziSinema.Shared.DTOs.In;
 using DiziSinema.Shared.ReponseDTOs;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -147,15 +148,29 @@ namespace DiziSinema.Business.Concrete
             return Response<int>.Success(count, 200);
         }
 
-        public async Task<Response<List<MovieDTO>>> GetAllNonDeletedAsync(bool isDeleted = false)
+        public async Task<Response<List<MovieDTO>>> GetAllNonDeletedAsync(bool isDeleled = false)
         {
-            var movieList = await _repository.GetAllAsync(m => m.IsDeleted == isDeleted);
+            var movieList = await _repository.GetAllAsync(m => m.IsDeleted == isDeleled);
             if (movieList == null)
             {
                 return Response<List<MovieDTO>>.Fail("Hiç ürün bulunamadı", 301);
             }
             var movieDtoList = _mapper.Map<List<MovieDTO>>(movieList);
             return Response<List<MovieDTO>>.Success(movieDtoList, 200);
+        }
+
+        public async Task<Response<List<MovieDTO>>> GetMoviesByGenresIdAsync(int id)
+        {
+            var product = await _repository.GetByIdAsync(m => !m.IsDeleted && m.Id == id,
+     source => source
+         .Include(m => m.MovieGenres)
+         .ThenInclude(mg=> mg.Genre));
+            if (product == null)
+            {
+                return Response<MovieDTO>.Fail("İlgili ürün bulunamadı.", 404);
+            }
+            var productDto = _mapper.Map<MovieDTO>(product);
+            return Response<MovieDTO>.Success(productDto, 200);
         }
     }
 }

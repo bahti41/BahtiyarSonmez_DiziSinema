@@ -27,6 +27,7 @@ namespace DiziSinema.Business.Absract
         Task<Response<NoContent>> UpdateIsActiveAsync(int id);
         Task<Response<int>> GetActiveSerialTvCount();
         Task<Response<int>> GetSerialTvCount();
+        Task<Response<List<SerialTvDTO>>> GetSerialTvByGenreIdAsync(int genreId);
         #endregion
     }
 }

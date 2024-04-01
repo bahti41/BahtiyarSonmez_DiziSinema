@@ -30,25 +30,31 @@
                         </div>
                         <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-4">
+
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label asp-for="MovName"></label>
                                             <input asp-for="MovName" type="text" class="form-control" placeholder="Ürün adını giriniz...">
                                             <span asp-validation-for="MovName" class="text-danger"></span>
                                         </div>
-                                        <div class="form-group">
-                                            <label asp-for="Movlanguage"></label>
-                                            <input asp-for="Movlanguage" type="text" class="form-control" placeholder="Ürün adını giriniz...">
-                                            <span asp-validation-for="Movlanguage" class="text-danger"></span>
-                                        </div>
                                     </div>
-                                    <div class="col-sm-4">
+
+                                    <div class="col-sm-6">
                                         <label>Seçenekler</label>
                                         <div class="form-group d-flex">
                                             <div class="icheck-primary">
                                                 <input asp-for="IsActive" type="checkbox" />
                                                 <label asp-for="IsActive" for="IsActive"></label>
                                             </div>
+                                        </div>
+                                    </div>
+                                  
+                                    @* MovLanguage icin ayrı bir tablo yapılacak *@
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label asp-for="Movlanguage"></label>
+                                            <input asp-for="Movlanguage" type="text" class="form-control" placeholder="Ürün adını giriniz...">
+                                            <span asp-validation-for="Movlanguage" class="text-danger"></span>
                                         </div>
                                     </div>
 
@@ -82,8 +88,6 @@
                                 <h3 class="card-title">Tür Seç(En Az Bir Tür Seçmelisiniz!)</h3>
                             </div>
                             <div class="card-body">
-                                @foreach (var c in Model.GenreList)
-                                {
                                     <div class="card-body">
                                         @foreach (var g in Model.GenreList)
                                         {
@@ -94,7 +98,6 @@
                                             </div>
                                         }
                                     </div>
-                                }
                                 <div class="text-danger mt-2">@ViewBag.GenreErrorMessage</div>
                             </div>
                             

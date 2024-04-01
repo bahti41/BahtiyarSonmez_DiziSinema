@@ -9,7 +9,7 @@ namespace DiziSinema.Data.Abstract
 {
     public interface IMovieRepository:IGenericRepository<Movie>
     {
-        Task<List<Movie>> GetMovieByGenreIdAsync(int genreId);
+        Task<List<Movie>> GetMoviesByGenresIdAsync(int genreId);
         Task CleaarMovieGenreAsync(int movieId, int[] genreIds);
     }
 }

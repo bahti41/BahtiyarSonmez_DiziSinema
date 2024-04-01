@@ -4,8 +4,8 @@ using DiziSinema.Data.Abstract;
 using DiziSinema.Data.Concrete.Context;
 using DiziSinema.Data.Concrete.Repositories;
 using Microsoft.EntityFrameworkCore;
-using MiniShop.Shared.Helpers.Abstract;
-using MiniShop.Shared.Helpers.Concrete;
+using DiziSinema.Shared.Helpers.Abstract;
+using DiziSinema.Shared.Helpers.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 

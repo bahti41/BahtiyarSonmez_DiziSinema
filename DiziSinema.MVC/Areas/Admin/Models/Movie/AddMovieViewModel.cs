@@ -1,4 +1,6 @@
 ﻿using DiziSinema.MVC.Areas.Admin.Models.Genre;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace DiziSinema.MVC.Areas.Admin.Models.Movie
@@ -6,14 +8,18 @@ namespace DiziSinema.MVC.Areas.Admin.Models.Movie
     public class AddMovieViewModel
     {
         [JsonPropertyName("MovName")]
+        [DisplayName("Film")]
+        [Required(ErrorMessage = "{0} alanı boş bırakılamaz.")]
         public string MovName { get; set; }
 
 
         [JsonPropertyName("MovIntro")]
+        [DisplayName("Film Özellikleri")]
         public string MovIntro { get; set; }
 
 
         [JsonPropertyName("ImageUrl")]
+        [DisplayName("Resim")]
         public string ImageUrl { get; set; }
 
 
@@ -26,6 +32,7 @@ namespace DiziSinema.MVC.Areas.Admin.Models.Movie
 
 
         [JsonPropertyName("IsActive")]
+        [DisplayName("Aktif Filmler")]
         public bool IsActive { get; set; }
 
 
@@ -45,7 +52,8 @@ namespace DiziSinema.MVC.Areas.Admin.Models.Movie
         public List<int> GenreIds { get; set; } = new List<int>();
 
 
-        [JsonPropertyName("Türler")]
+        [DisplayName("Türler")]
+        [JsonPropertyName("GenreList")]
         public List<GenreViewModel> GenreList { get; set; }
     }
 }

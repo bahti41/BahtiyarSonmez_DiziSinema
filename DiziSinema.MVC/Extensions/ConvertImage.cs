@@ -1,4 +1,4 @@
-﻿namespace MiniShop.MVC.Extensions
+﻿namespace DiziSinema.MVC.Extensions
 {
     public static class ConvertImage
     {

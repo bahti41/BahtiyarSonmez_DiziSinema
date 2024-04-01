@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiniShop.Shared.Helpers.Abstract
+namespace DiziSinema.Shared.Helpers.Abstract
 {
     public interface IImageHelper
     {

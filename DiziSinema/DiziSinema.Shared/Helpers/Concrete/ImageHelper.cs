@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using MiniShop.Shared.Helpers.Abstract;
 using DiziSinema.Shared.ReponseDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DiziSinema.Shared.Helpers.Abstract;
 
-namespace MiniShop.Shared.Helpers.Concrete
+namespace DiziSinema.Shared.Helpers.Concrete
 {
     public class ImageHelper : IImageHelper
     {

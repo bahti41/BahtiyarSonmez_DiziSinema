@@ -3,8 +3,11 @@ using DiziSinema.Shared.DTOs.Core.Add;
 using DiziSinema.Shared.DTOs.Core.Edit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MiniShop.Shared.Helpers.Abstract;
+using DiziSinema.Shared.Helpers.Abstract;
 using System.Text.Json;
+using DiziSinema.Shared.ReponseDTOs;
+using DiziSinema.Shared.DTOs;
+using AutoMapper;
 
 namespace DiziSinema.API.Controllers
 {
@@ -96,6 +99,14 @@ namespace DiziSinema.API.Controllers
         public async Task<IActionResult> GetAllNonDeleted(bool isDeleted = false)
         {
             var response = await _movieManager.GetAllNonDeletedAsync(isDeleted);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpGet("GetWithGenres/{id}")]
+        public async Task<IActionResult> GetWithCategories(int id)
+        {
+            var response = await _movieManager.GetMoviesByGenresIdAsync(id);
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }

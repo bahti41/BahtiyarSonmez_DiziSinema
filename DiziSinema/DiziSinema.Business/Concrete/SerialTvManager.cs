@@ -115,6 +115,7 @@ namespace DiziSinema.Business.Concrete
             return Response<NoContent>.Success(200);
         }
 
+
         public async Task<Response<int>> GetActiveSerialTvCount()
         {
             var count = await _repository.GetCountAsync(s => s.IsActive && !s.IsDeleted);
@@ -126,6 +127,18 @@ namespace DiziSinema.Business.Concrete
         {
             var count = await _repository.GetCountAsync(s => !s.IsDeleted);
             return Response<int>.Success(count, 200);
+        }
+
+
+        public async Task<Response<List<SerialTvDTO>>> GetSerialTvByGenreIdAsync(int genreId)
+        {
+            var serialTvList = await _repository.GetSerialTvByGenreIdAsync(genreId);
+            if (serialTvList == null)
+            {
+                return Response<List<SerialTvDTO>>.Fail("Bu kategoride hiç ürün bulunamadı", 301);
+            }
+            var serialTvDtoList = _mapper.Map<List<SerialTvDTO>>(serialTvList);
+            return Response<List<SerialTvDTO>>.Success(serialTvDtoList, 200);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MiniShop.MVC.Helpers
+﻿namespace DiziSinema.MVC.Helpers
 {
     public static class Jobs
     {

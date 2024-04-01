@@ -32,7 +32,7 @@ namespace DiziSinema.Data.Concrete.Repositories
             await DiziSinemaDbContext.SaveChangesAsync();
         }
 
-        public async Task<List<Movie>> GetMovieByGenreIdAsync(int genreId)
+        public async Task<List<Movie>> GetMoviesByGenresIdAsync(int genreId)
         {
             List<Movie> Movies = await DiziSinemaDbContext
                 .Movies

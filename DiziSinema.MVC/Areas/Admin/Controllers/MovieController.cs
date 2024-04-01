@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Text;
 using DiziSinema.MVC.Areas.Admin.Models.Genre;
-using MiniShop.MVC.Helpers;
-using MiniShop.MVC.Extensions;
+using DiziSinema.MVC.Helpers;
+using DiziSinema.MVC.Extensions;
 
 
 namespace DiziSinema.MVC.Areas.Admin.Controllers
@@ -13,10 +13,6 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
     [Area("Admin")]
     public class MovieController : Controller
     {
-
-
-
-        #region Action
         public async Task<IActionResult> Index(bool id = false)
         {
             Response<List<MovieViewModel>> response = new Response<List<MovieViewModel>>();
@@ -29,6 +25,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
             ViewBag.ShowDeleted = id;
             return View(response.Data);
         }
+
 
         public async Task<IActionResult> UpdateIsActive(int id)
         {
@@ -45,6 +42,21 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+
+        [NonAction]
+        public async Task<List<GenreViewModel>> GetGenresAsync()
+        {
+            Response<List<GenreViewModel>> response = new Response<List<GenreViewModel>>();
+            using (HttpClient httpClient = new HttpClient())
+            {
+                HttpResponseMessage responseApi = await httpClient.GetAsync("http://localhost:4100/Genres");
+                string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
+                response = JsonSerializer.Deserialize<Response<List<GenreViewModel>>>(contentResponseApi);
+            }
+            return response.Data;
+        }
+
+
         [HttpGet]
         public async Task<IActionResult> Create()
         {
@@ -54,6 +66,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
             };
             return View(model);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Create(AddMovieViewModel model, IFormFile image)
@@ -70,7 +83,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                         var imageContent = new MultipartFormDataContent();
                         byte[] bytes = stream.ToByteArray();
                         imageContent.Add(new ByteArrayContent(bytes), "image", image.FileName);
-                        HttpResponseMessage httpResponseMessage = await httpClient.PostAsync("http://localhost:4100/Movie/ImageUpload", imageContent);
+                        HttpResponseMessage httpResponseMessage = await httpClient.PostAsync("http://localhost:4100/Movies/ImageUpload", imageContent);
                         string httpResponseMessageImageUrl = await httpResponseMessage.Content.ReadAsStringAsync();
                         if (httpResponseMessageImageUrl != null && httpResponseMessageImageUrl != "")
                         {
@@ -78,7 +91,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                             //Product Kayıt İşlemi
                             var serializeModel = JsonSerializer.Serialize(model);
                             StringContent stringContent = new StringContent(serializeModel, Encoding.UTF8, "application/json");
-                            var result = await httpClient.PostAsync("http://localhost:4100/Movie/Create", stringContent);
+                            var result = await httpClient.PostAsync("http://localhost:4100/Movies/Create", stringContent);
                             if (result.IsSuccessStatusCode)
                             {
                                 return RedirectToAction("Index");
@@ -94,7 +107,36 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
             return View(model);
         }
 
-        //AutoMappper İle Yapılacak
+
+        [NonAction]
+        public async Task<MovieViewModel> GetMovieAsync(int id)
+        {
+            Response<MovieViewModel> response = new Response<MovieViewModel>();
+            using (HttpClient httpClient = new HttpClient())
+            {
+                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Movies/GetWithGenres/{id}");
+                string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
+                response = JsonSerializer.Deserialize<Response<MovieViewModel>>(contentResponseApi);
+            }
+            return response.Data;
+        }
+
+
+        [NonAction]
+        public async Task<MovieViewModel> GetByIdAsync(int id)
+        {
+            Response<MovieViewModel> response = new Response<MovieViewModel>();
+            using (HttpClient httpClient = new HttpClient())
+            {
+                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Movies/{id}");
+                string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
+                response = JsonSerializer.Deserialize<Response<MovieViewModel>>(contentResponseApi);
+            }
+            return response.Data;
+        }
+
+
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             
@@ -109,11 +151,12 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                 IsActive = movieViewModel.IsActive,
                 MovIntro = movieViewModel.MovIntro,
                 Url = movieViewModel.Url,
-                GenreIds = movieViewModel.Genres.Select(c => c.Id).ToList(),
+                GenreIds = movieViewModel.Genres.Select(m => m.Id).ToList(),
                 GenreList = await GetGenresAsync()
             };
             return View(model);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Edit(EditMovieViewModel model, IFormFile image, string oldImageUrl)
@@ -136,7 +179,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                             var imageContent = new MultipartFormDataContent();
                             byte[] bytes = stream.ToByteArray();
                             imageContent.Add(new ByteArrayContent(bytes), "image", image.FileName);
-                            HttpResponseMessage httpResponseMessage = await httpClient.PostAsync("http://localhost:4100/Movie/ImageUpload", imageContent);
+                            HttpResponseMessage httpResponseMessage = await httpClient.PostAsync("http://localhost:4100/Movies/ImageUpload", imageContent);
                             string httpResponseMessageImageUrl = await httpResponseMessage.Content.ReadAsStringAsync();
                             if (httpResponseMessageImageUrl != null && httpResponseMessageImageUrl != "")
                             {
@@ -150,7 +193,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
 
                         var serializeModel = JsonSerializer.Serialize(model);
                         StringContent stringContent = new StringContent(serializeModel, Encoding.UTF8, "application/json");
-                        var result = await httpClient.PutAsync("http://localhost:7700/Products/Update", stringContent);
+                        var result = await httpClient.PutAsync("http://localhost:4100/Movies/Update", stringContent);
                         if (result.IsSuccessStatusCode)
                         {
                             return RedirectToAction("Index");
@@ -164,6 +207,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
             model.GenreList = await GetGenresAsync();
             return View(model);
         }
+
 
         //AutoMapper İle Yapılacak
         [HttpGet]
@@ -182,71 +226,27 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
             return View(model);
         }
 
+
         [HttpGet]
         public async Task<IActionResult> HardDelete(int id)
         {
             using (var httpClient = new HttpClient())
             {
-                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/Movie/HardDelete/{id}");
+                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/Movies/HardDelete/{id}");
             }
             return RedirectToAction("Index");
         }
+
 
         [HttpGet]
         public async Task<IActionResult> SoftDelete(int id)
         {
             using (var httpClient = new HttpClient())
             {
-                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/Movie/SoftDelete/{id}");
+                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/Movies/SoftDelete/{id}");
             }
             var movieViewModel = await GetByIdAsync(id);
             return Redirect($"/Admin/Movie/Index/{!movieViewModel.IsDeleted}");
         }
-
-
-        #endregion
-
-        #region NonActions
-        [NonAction]
-        public async Task<List<GenreViewModel>> GetGenresAsync()
-        {
-            Response<List<GenreViewModel>> response = new Response<List<GenreViewModel>>();
-            using (HttpClient httpClient = new HttpClient())
-            {
-                HttpResponseMessage responseApi = await httpClient.GetAsync("http://localhost:4100/Genres");
-                string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
-                response = JsonSerializer.Deserialize<Response<List<GenreViewModel>>>(contentResponseApi);
-            }
-            return response.Data;
-        }
-
-        [NonAction]
-        public async Task<MovieViewModel> GetMovieAsync(int id)
-        {
-            Response<MovieViewModel> response = new Response<MovieViewModel>();
-            using (HttpClient httpClient = new HttpClient())
-            {
-                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Movies/GetWithCategories/{id}");
-                string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
-                response = JsonSerializer.Deserialize<Response<MovieViewModel>>(contentResponseApi);
-            }
-            return response.Data;
-        }
-
-        [NonAction]
-        public async Task<MovieViewModel> GetByIdAsync(int id)
-        {
-            Response<MovieViewModel> response = new Response<MovieViewModel>();
-            using (HttpClient httpClient = new HttpClient())
-            {
-                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Movies/{id}");
-                string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
-                response = JsonSerializer.Deserialize<Response<MovieViewModel>>(contentResponseApi);
-            }
-            return response.Data;
-        }
-        #endregion
-
-
     }
 }
