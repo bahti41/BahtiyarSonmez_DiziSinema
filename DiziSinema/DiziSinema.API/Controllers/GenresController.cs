@@ -43,6 +43,14 @@ namespace DiziSinema.API.Controllers
             return Ok(jsonResponse);
         }
 
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update(EditGenreDTO editGenreDTO)
+        {
+            var response = await _genreManager.UpdateAsync(editGenreDTO);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
         [HttpDelete("HardDeleted/{id}")]
         public async Task<IActionResult> HardDeleted(int id)
         {
@@ -58,15 +66,6 @@ namespace DiziSinema.API.Controllers
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
-
-        [HttpPut("Update")]
-        public async Task<IActionResult> Update(EditGenreDTO editGenreDTO)
-        {
-            var response = await _genreManager.UpdateAsync(editGenreDTO);
-            var jsonResponse = JsonSerializer.Serialize(response);
-            return Ok(jsonResponse);
-        }
-
 
         [HttpGet("NonDeleteds/{isDeleted?}")]
         public async Task<IActionResult> GetNonDeleted(bool isDeleted = false)

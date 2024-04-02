@@ -1,4 +1,4 @@
-﻿@model AddMovieViewModel
+﻿@model EditSerialTvViewModel
  <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between mb-2">
                 <div>
-                    <h1>Yeni Film</h1>
+                    <h1>Ürün Güncelleme</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -18,24 +18,31 @@
                 <div class="col-12">
                     <form
                         asp-area="Admin"
-                        asp-controller="Movie"
-                        asp-action="Create"
+                        asp-controller="SerialTv"
+                        asp-action="Edit"
                         method="post"
                         enctype="multipart/form-data"
                     >
-                    <!--Ürün Bilgileri-->
+                    <input type="hidden" asp-for="ImageUrl" />
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Film Bilgileri</h3>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h3 class="card-title">Ürün Bilgileri</h3>
+                                </div>
+                                <div>
+                                    <a asp-area="Admin" asp-controller="SerilTv" asp-action="SoftDelete" asp-route-id="@Model.Id" class="btn btn-warning">Çöp Kutusuna Gönder</a>
+                                </div>
+                            </div>
+     
                         </div>
                         <div class="card-body">
                                 <div class="row">
-
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label asp-for="MovName"></label>
-                                            <input asp-for="MovName" type="text" class="form-control" placeholder="Film adını giriniz...">
-                                            <span asp-validation-for="MovName" class="text-danger"></span>
+                                            <label asp-for="SerName"></label>
+                                            <input asp-for="SerName" type="text" class="form-control" placeholder="Film adını giriniz...">
+                                            <span asp-validation-for="SerName" class="text-danger"></span>
                                         </div>
                                     </div>
 
@@ -48,39 +55,39 @@
                                             </div>
                                         </div>
                                     </div>
-                                  
+
                                     @* MovLanguage icin ayrı bir tablo yapılacak *@
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label asp-for="Movlanguage"></label>
-                                            <input asp-for="Movlanguage" type="text" class="form-control" placeholder="Film dublaj adını giriniz...">
-                                            <span asp-validation-for="Movlanguage" class="text-danger"></span>
+                                            <label asp-for="Serlanguage"></label>
+                                            <input asp-for="Serlanguage" type="text" class="form-control" placeholder="Film dublaj adını giriniz...">
+                                            <span asp-validation-for="Serlanguage" class="text-danger"></span>
                                         </div>
                                     </div>
-
 
                                     <div class="col-sm-9">
-                                        <label asp-for="MovIntro"></label>
-                                        <textarea asp-for="MovIntro"></textarea>
-                                        <span asp-validation-for="MovIntro" class="text-danger"></span>
+                                        <label asp-for="SerIntro"></label>
+                                        <textarea asp-for="SerIntro"></textarea>
+                                        <span asp-validation-for="SerIntro" class="text-danger"></span>
                                     </div>
 
 
-                                        <div class="col-sm-3">
+                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Film Resmi</label>
+                                            <label>Ürün Resmi</label>
+                                            <input type="hidden" value="@Model.ImageUrl"  id="oldImageUrl"/>
                                             <input id="image" name="image" type="file" class="d-none" accept="image/png, image/jpg, image/jpeg" />
                                             <div class="mt-2">
-                                                <label class="btn btn-success" for="image">Ürün Resmi Yükle</label>
+                                                <label class="btn btn-success" for="image">Ürün Resmini Değiştir</label>
                                             </div>
                                             <span class="text-danger">@ViewBag.ImageErrorMessage</span>
-                                            <img id="image-viewer" class="img-fluid" style="height:200px;" />
+                                            <img src="http://localhost:4100/images/SerialTvs/@Model.ImageUrl" id="image-viewer" class="img-fluid" style="height:200px;" />
                                         </div>
                                     </div> 
-                                    
+
 
                                 </div>
-                            </div>
+
                         </div>
                         <!--Ürün Kategoriler-->
                         <div class="card card-warning">
@@ -88,23 +95,22 @@
                                 <h3 class="card-title">Tür Seç(En Az Bir Tür Seçmelisiniz!)</h3>
                             </div>
                             <div class="card-body">
-                                    <div class="card-body">
-                                        @foreach (var g in Model.GenreList)
-                                        {
-                                            <div class="icheck-primary d-inline mr-3">
-                                                <input name="genreIds" value="@g.Id" id="genre_checkbox_@g.Id" type="checkbox"
-                                                @(Model.GenreIds.Any(genId => genId == g.Id) ? "checked" : "") />
-                                                <label for="genre_checkbox_@g.Id">@g.GenreName</label>
-                                            </div>
-                                        }
+                                @foreach (var g in Model.GenreList)
+                                {
+                                    <div class="icheck-primary d-inline mr-3">
+                                        <input name="genreIds" value="@g.Id" id="genre_checkbox_@g.Id" type="checkbox"
+                                            @(Model.GenreIds.Any(genId => genId == g.Id) ? "checked" : "") />
+                                            <label for="genre_checkbox_@g.Id">@g.GenreName</label>
                                     </div>
+                                }
                                 <div class="text-danger mt-2">@ViewBag.GenreErrorMessage</div>
                             </div>
                             
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Kaydet</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Değişiklikleri Kaydet</button>
                         </div>
+                    </div>
                     </form>
                 </div>
             </div>
@@ -122,15 +128,15 @@
 
 @section Scripts{
     @await Html.PartialAsync("_SummerNotePartial")
-    <script>
-        document.getElementById("image").addEventListener("change", function () {
-
-        });
+     <script>
 
         $("#image").on("change", function (e) {
             const selectedFiles = e.target.files;
-            
-            $("#image-viewer").attr("src", window.URL.createObjectURL(selectedFiles[0]));
+            if (selectedFiles.length > 0) {
+                $("#image-viewer").attr("src", window.URL.createObjectURL(selectedFiles[0]));
+            } else {
+                $("#image-viewer").attr("src", "http://localhost:4100/images/SerialTvs/" + $("#oldImageUrl").val());
+            }
         });
     </script>
-}
+} 

@@ -27,6 +27,7 @@
                                     <tr>
                                         <th width="55">Id</th>
                                         <th>Ürün</th>
+                                        <th>Resim</th>
                                         <th>Dublaj</th>
                                         <th>Aktif</th>
                                         <th width="55">#</th>
@@ -37,12 +38,15 @@
                                     {
                                         <tr>
                                             <td>@s.Id</td>
+                                            <td>
+                                                <img style="width:150px;" src="http://localhost:4100/images/SerialTvs/@s.ImageUrl" />
+                                            </td>
                                             <td>@s.SerName</td>
                                             <td>@s.Serlanguage</td>
                                             <td>
                                                 <form id="isActiveForm_@s.Id"
                                                       asp-area="Admin"
-                                                      asp-controller="Movie"
+                                                      asp-controller="SerialTv"
                                                       asp-action="UpdateIsActive"
                                                       asp-route-id="@s.Id"
                                                       method="post">

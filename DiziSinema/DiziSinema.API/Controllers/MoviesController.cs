@@ -31,10 +31,42 @@ namespace DiziSinema.API.Controllers
             return Ok(jsonResponse);
         }
 
+        [HttpGet("GetAllNonDeleted/{isDeleted?}")]
+        public async Task<IActionResult> GetAllNonDeleted(bool isDeleted = false)
+        {
+            var response = await _movieManager.GetAllNonDeletedAsync(isDeleted);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpGet("GetAllWithGenres")]
+        public async Task<IActionResult> GetAllWithGenres()
+        {
+            var response = await _movieManager.GetAllMoviesWithGenresAsync();
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var response = await _movieManager.GetByIdAsync(id);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpGet("GetWithGenres/{id}")]
+        public async Task<IActionResult> GetWithCategories(int id)
+        {
+            var response = await _movieManager.GetMovieWithGenresAsync(id);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpGet("GetByGenreId/{genreId}")]
+        public async Task<IActionResult> GetByCategoryId(int genreId)
+        {
+            var response = await _movieManager.GetMoviesByGenreIdAsync(genreId);
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
@@ -44,22 +76,6 @@ namespace DiziSinema.API.Controllers
         {
             var respponse = await _movieManager.CreateAsync(addMovieDTO);
             var jsonResponse = JsonSerializer.Serialize(respponse);
-            return Ok(jsonResponse);
-        }
-
-        [HttpDelete("HardDeleted/{id}")]
-        public async Task<IActionResult> HardDeleted(int id)
-        {
-            var response = await _movieManager.HardDeleteAsync(id);
-            var jsonResponse = JsonSerializer.Serialize(response);
-            return Ok(jsonResponse);
-        }
-
-        [HttpGet("SoftDeleted/{id}")]
-        public async Task<IActionResult> SoftDeleted(int id)
-        {
-            var response = await _movieManager.SoftDeleteAsync(id);
-            var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
 
@@ -79,6 +95,22 @@ namespace DiziSinema.API.Controllers
             return Ok(jsonResponse);
         }
 
+        [HttpDelete("HardDeleted/{id}")]
+        public async Task<IActionResult> HardDeleted(int id)
+        {
+            var response = await _movieManager.HardDeleteAsync(id);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
+        [HttpGet("SoftDeleted/{id}")]
+        public async Task<IActionResult> SoftDeleted(int id)
+        {
+            var response = await _movieManager.SoftDeleteAsync(id);
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
+
         [HttpGet("ActiveCount")]
         public async Task<IActionResult> GetActiveCount()
         {
@@ -91,22 +123,6 @@ namespace DiziSinema.API.Controllers
         public async Task<IActionResult> GetCount()
         {
             var response = await _movieManager.GetMovieCount();
-            var jsonResponse = JsonSerializer.Serialize(response);
-            return Ok(jsonResponse);
-        }
-
-        [HttpGet("GetAllNonDeleted/{isDeleted?}")]
-        public async Task<IActionResult> GetAllNonDeleted(bool isDeleted = false)
-        {
-            var response = await _movieManager.GetAllNonDeletedAsync(isDeleted);
-            var jsonResponse = JsonSerializer.Serialize(response);
-            return Ok(jsonResponse);
-        }
-
-        [HttpGet("GetWithGenres/{id}")]
-        public async Task<IActionResult> GetWithCategories(int id)
-        {
-            var response = await _movieManager.GetMoviesByGenresIdAsync(id);
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }

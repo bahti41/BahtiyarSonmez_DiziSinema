@@ -29,7 +29,9 @@ namespace DiziSinema.Business.Absract
         Task<Response<NoContent>> UpdateIsActiveAsync(int id);
         Task<Response<int>> GetActiveMovieCount();
         Task<Response<int>> GetMovieCount();
-        Task<Response<List<MovieDTO>>> GetMoviesByGenresIdAsync(int id);
+        Task<Response<MovieDTO>> GetMovieWithGenresAsync(int id);
+        Task<Response<List<MovieDTO>>> GetMoviesByGenreIdAsync (int genreId);
+        Task<Response<List<MovieDTO>>> GetAllMoviesWithGenresAsync ();
         #endregion
     }
 }

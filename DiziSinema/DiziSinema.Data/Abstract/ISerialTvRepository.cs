@@ -9,7 +9,7 @@ namespace DiziSinema.Data.Abstract
 {
     public interface ISerialTvRepository:IGenericRepository<SerialTv>
     {
-        Task<List<SerialTv>> GetSerialTvByGenreIdAsync(int genreId);
+        Task<List<SerialTv>> GetSerialTvsByGenreIdAsync(int genreId);
         Task ClearSerialTvGenreAsync(int serialTvId, int[] genreIds);
     }
 }

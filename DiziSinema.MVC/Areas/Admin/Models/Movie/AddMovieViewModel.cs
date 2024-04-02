@@ -53,7 +53,6 @@ namespace DiziSinema.MVC.Areas.Admin.Models.Movie
 
 
         [DisplayName("Türler")]
-        [JsonPropertyName("GenreList")]
         public List<GenreViewModel> GenreList { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model AddMovieViewModel
+﻿@model AddSerialTvViewModel
  <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -18,7 +18,7 @@
                 <div class="col-12">
                     <form
                         asp-area="Admin"
-                        asp-controller="Movie"
+                        asp-controller="SerialTv"
                         asp-action="Create"
                         method="post"
                         enctype="multipart/form-data"
@@ -33,9 +33,9 @@
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label asp-for="MovName"></label>
-                                            <input asp-for="MovName" type="text" class="form-control" placeholder="Film adını giriniz...">
-                                            <span asp-validation-for="MovName" class="text-danger"></span>
+                                            <label asp-for="SerName"></label>
+                                            <input asp-for="SerName" type="text" class="form-control" placeholder="Dizi adını giriniz...">
+                                            <span asp-validation-for="SerName" class="text-danger"></span>
                                         </div>
                                     </div>
 
@@ -49,26 +49,26 @@
                                         </div>
                                     </div>
                                   
-                                    @* MovLanguage icin ayrı bir tablo yapılacak *@
+                                    @* SerLanguage icin ayrı bir tablo yapılacak *@
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label asp-for="Movlanguage"></label>
-                                            <input asp-for="Movlanguage" type="text" class="form-control" placeholder="Film dublaj adını giriniz...">
-                                            <span asp-validation-for="Movlanguage" class="text-danger"></span>
+                                            <label asp-for="Serlanguage"></label>
+                                            <input asp-for="Serlanguage" type="text" class="form-control" placeholder="Dizi dublaj adını giriniz...">
+                                            <span asp-validation-for="Serlanguage" class="text-danger"></span>
                                         </div>
                                     </div>
 
 
                                     <div class="col-sm-9">
-                                        <label asp-for="MovIntro"></label>
-                                        <textarea asp-for="MovIntro"></textarea>
-                                        <span asp-validation-for="MovIntro" class="text-danger"></span>
+                                        <label asp-for="SerIntro"></label>
+                                        <textarea asp-for="SerIntro"></textarea>
+                                        <span asp-validation-for="SerIntro" class="text-danger"></span>
                                     </div>
 
 
                                         <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Film Resmi</label>
+                                            <label>Dizi Resmi</label>
                                             <input id="image" name="image" type="file" class="d-none" accept="image/png, image/jpg, image/jpeg" />
                                             <div class="mt-2">
                                                 <label class="btn btn-success" for="image">Ürün Resmi Yükle</label>

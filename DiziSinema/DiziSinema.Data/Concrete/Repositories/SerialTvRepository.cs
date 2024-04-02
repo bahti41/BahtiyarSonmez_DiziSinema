@@ -32,7 +32,7 @@ namespace DiziSinema.Data.Concrete.Repositories
             await DiziSinemaDbContext.SaveChangesAsync();
         }
 
-        public async Task<List<SerialTv>> GetSerialTvByGenreIdAsync(int genreId)
+        public async Task<List<SerialTv>> GetSerialTvsByGenreIdAsync(int genreId)
         {
             List<SerialTv> serialTvs = await DiziSinemaDbContext
                 .SerialTvs

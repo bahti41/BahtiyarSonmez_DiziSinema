@@ -7,6 +7,7 @@ using DiziSinema.Shared.DTOs.Core.Add;
 using DiziSinema.Shared.DTOs.Core.Edit;
 using DiziSinema.Shared.DTOs.In;
 using DiziSinema.Shared.ReponseDTOs;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,26 +39,17 @@ namespace DiziSinema.Business.Concrete
             return Response<SerialTvDTO>.Success(addSerialDto, 200);
         }
 
-        public async Task<Response<List<SerialTvDTO>>> GetAllAsync()
+        public async Task<Response<SerialTvDTO>> UpdateAsync(EditSerialTvDTO editSerialTvDTO)
         {
-            var serialTvList = await _repository.GetAllAsync();
-            if (serialTvList == null)
+            var editedSerialTv = _mapper.Map<SerialTv>(editSerialTvDTO);
+            if (editedSerialTv == null)
             {
-                return Response<List<SerialTvDTO>>.Fail("Hiç Dizi bulunamadı", 301);
+                return Response<SerialTvDTO>.Fail("Böyle Bir Dizi Bulunamadı", 404);
             }
-            var serialTvListDtoList = _mapper.Map<List<SerialTvDTO>>(serialTvList);
-            return Response<List<SerialTvDTO>>.Success(serialTvListDtoList, 200);
-        }
-
-        public async Task<Response<SerialTvDTO>> GetByIdAsync(int id)
-        {
-            var serialTv = await _repository.GetByIdAsync(m => m.Id == id);
-            if (serialTv == null)
-            {
-                return Response<SerialTvDTO>.Fail("ilgili Dizi bulunamadı.", 404);
-            }
-            var serialTvDto = _mapper.Map<SerialTvDTO>(serialTv);
-            return Response<SerialTvDTO>.Success(serialTvDto, 200);
+            editedSerialTv.ModifiedDate = DateTime.Now;
+            await _repository.UpdateAsync(editedSerialTv);
+            var editedSerialTvDto = _mapper.Map<SerialTvDTO>(editedSerialTv);
+            return Response<SerialTvDTO>.Success(editedSerialTvDto, 200);
         }
 
         public async Task<Response<NoContent>> HardDeleteAsync(int id)
@@ -89,32 +81,66 @@ namespace DiziSinema.Business.Concrete
             return Response<NoContent>.Success(200);
         }
 
-        public async Task<Response<SerialTvDTO>> UpdateAsync(EditSerialTvDTO editSerialTvDTO)
+        public async Task<Response<SerialTvDTO>> GetByIdAsync(int id)
         {
-            var editedSerialTv = _mapper.Map<SerialTv>(editSerialTvDTO);
-            if (editedSerialTv == null)
-            {
-                return Response<SerialTvDTO>.Fail("Böyle Bir film Bulunamadı", 404);
-            }
-            editedSerialTv.ModifiedDate = DateTime.Now;
-            await _repository.UpdateAsync(editedSerialTv);
-            var editedSerialTvDto = _mapper.Map<SerialTvDTO>(editedSerialTv);
-            return Response<SerialTvDTO>.Success(editedSerialTvDto, 200);
-        }
-
-        public async Task<Response<NoContent>> UpdateIsActiveAsync(int id)
-        {
-            var serialTv = await _repository.GetByIdAsync(s => s.Id == id);
+            var serialTv = await _repository.GetByIdAsync(m => m.Id == id);
             if (serialTv == null)
             {
-                return Response<NoContent>.Fail("İlgili ürün bulunamadı.", 404);
+                return Response<SerialTvDTO>.Fail("ilgili Dizi bulunamadı.", 404);
             }
-            serialTv.IsActive = !serialTv.IsActive;
-            serialTv.ModifiedDate = DateTime.Now;
-            await _repository.UpdateAsync(serialTv);
-            return Response<NoContent>.Success(200);
+            var serialTvDto = _mapper.Map<SerialTvDTO>(serialTv);
+            return Response<SerialTvDTO>.Success(serialTvDto, 200);
         }
 
+        public async Task<Response<List<SerialTvDTO>>> GetAllAsync()
+        {
+            var serialTvList = await _repository.GetAllAsync();
+            if (serialTvList == null)
+            {
+                return Response<List<SerialTvDTO>>.Fail("Hiç Dizi bulunamadı", 301);
+            }
+            var serialTvListDtoList = _mapper.Map<List<SerialTvDTO>>(serialTvList);
+            return Response<List<SerialTvDTO>>.Success(serialTvListDtoList, 200);
+        }
+
+        public async Task<Response<List<SerialTvDTO>>> GetAllSerialTvsWithGenresAsync()
+        {
+            var serialTvlist = await _repository.GetAllAsync(s => s.IsActive && !s.IsDeleted,
+                source => source
+                    .Include(s => s.SerialTvGenres)
+                    .ThenInclude(sg => sg.Genre));
+            if (serialTvlist == null)
+            {
+                return Response<List<SerialTvDTO>>.Fail("Hiç Dizi bulunamadı", 301);
+            }
+            var serialTvDtoList = _mapper.Map<List<SerialTvDTO>>(serialTvlist);
+            return Response<List<SerialTvDTO>>.Success(serialTvDtoList, 200);
+        }
+
+        public async Task<Response<List<SerialTvDTO>>> GetSerialTvsByGenreIdAsync(int genreId)
+        {
+            var serialTvList = await _repository.GetSerialTvsByGenreIdAsync(genreId);
+            if (serialTvList == null)
+            {
+                return Response<List<SerialTvDTO>>.Fail("Bu Türde hiç ürün bulunamadı", 301);
+            }
+            var serialTvDtoList = _mapper.Map<List<SerialTvDTO>>(serialTvList);
+            return Response<List<SerialTvDTO>>.Success(serialTvDtoList, 200);
+        }
+
+        public async Task<Response<SerialTvDTO>> GetSerialTvWithGenresAsync(int id)
+        {
+            var serialTv = await _repository.GetByIdAsync(s => !s.IsDeleted && s.Id == id,
+                    source => source
+                 .Include(s => s.SerialTvGenres)
+                 .ThenInclude(sg => sg.Genre));
+            if (serialTv == null)
+            {
+                return Response<SerialTvDTO>.Fail("İlgili Dizi bulunamadı.", 404);
+            }
+            var serialTvDto = _mapper.Map<SerialTvDTO>(serialTv);
+            return Response<SerialTvDTO>.Success(serialTvDto, 200);
+        }
 
         public async Task<Response<int>> GetActiveSerialTvCount()
         {
@@ -130,15 +156,30 @@ namespace DiziSinema.Business.Concrete
         }
 
 
-        public async Task<Response<List<SerialTvDTO>>> GetSerialTvByGenreIdAsync(int genreId)
+        public async Task<Response<NoContent>> UpdateIsActiveAsync(int id)
         {
-            var serialTvList = await _repository.GetSerialTvByGenreIdAsync(genreId);
+            var serialTv = await _repository.GetByIdAsync(s => s.Id == id);
+            if (serialTv == null)
+            {
+                return Response<NoContent>.Fail("İlgili Dizi bulunamadı.", 404);
+            }
+            serialTv.IsActive = !serialTv.IsActive;
+            serialTv.ModifiedDate = DateTime.Now;
+            await _repository.UpdateAsync(serialTv);
+            return Response<NoContent>.Success(200);
+        }
+
+        public async Task<Response<List<SerialTvDTO>>> GetAllNonDeletedAsync(bool isDeleled = false)
+        {
+            var serialTvList = await _repository.GetAllAsync(s => s.IsDeleted == isDeleled);
             if (serialTvList == null)
             {
-                return Response<List<SerialTvDTO>>.Fail("Bu kategoride hiç ürün bulunamadı", 301);
+                return Response<List<SerialTvDTO>>.Fail("Hiç Dizi bulunamadı", 301);
             }
             var serialTvDtoList = _mapper.Map<List<SerialTvDTO>>(serialTvList);
             return Response<List<SerialTvDTO>>.Success(serialTvDtoList, 200);
         }
+
+
     }
 }

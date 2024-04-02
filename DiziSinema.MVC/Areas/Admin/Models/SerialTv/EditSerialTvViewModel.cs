@@ -1,24 +1,24 @@
-﻿using DiziSinema.MVC.Areas.Admin.Models.Genre;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using DiziSinema.MVC.Areas.Admin.Models.Genre;
 
-namespace DiziSinema.MVC.Areas.Admin.Models.Movie
+namespace DiziSinema.MVC.Areas.Admin.Models.SerialTv
 {
-    public class EditMovieViewModel
+    public class EditSerialTvViewModel
     {
         public int Id { get; set; }
 
 
-        [JsonPropertyName("MovName")]
-        [DisplayName("Film")]
+        [JsonPropertyName("SerName")]
+        [DisplayName("Dizi")]
         [Required(ErrorMessage = "{0} alanı boş bırakılamaz.")]
-        public string MovName { get; set; }
+        public string SerName { get; set; }
 
 
-        [JsonPropertyName("MovIntro")]
-        [DisplayName("Film Özellikleri")]
-        public string MovIntro { get; set; }
+        [JsonPropertyName("SerIntro")]
+        [DisplayName("Dizi Özellikleri")]
+        public string SerIntro { get; set; }
 
 
         [JsonPropertyName("ImageUrl")]
@@ -26,8 +26,8 @@ namespace DiziSinema.MVC.Areas.Admin.Models.Movie
         public string ImageUrl { get; set; }
 
 
-        [JsonPropertyName("Movlanguage")]
-        public string Movlanguage { get; set; }
+        [JsonPropertyName("Serlanguage")]
+        public string Serlanguage { get; set; }
 
 
         [JsonPropertyName("Url")]

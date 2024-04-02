@@ -74,6 +74,7 @@
                                 asp-area="Admin"
                                asp-controller="SerialTv"
                                asp-action="Index"
+                               asp-route-id="false"
                                 class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Diziler</p>
@@ -81,9 +82,9 @@
                         </li>
                         <li class="nav-item">
                             <a 
-                                asp-area=""
-                               asp-controller=""
-                               asp-action=""
+                                asp-area="Admin"
+                               asp-controller="SerialTv"
+                               asp-action="Create"
                                 class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Dizi Ekle</p>
@@ -91,9 +92,10 @@
                         </li>
                         <li class="nav-item">
                             <a 
-                                asp-area=""
-                               asp-controller=""
-                               asp-action=""
+                                asp-area="Admin"
+                               asp-controller="SerialTv"
+                               asp-action="Index"
+                               asp-route-id="true"
                                 class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Cöp Kutusu</p>

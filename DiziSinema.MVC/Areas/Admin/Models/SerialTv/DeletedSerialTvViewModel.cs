@@ -1,9 +1,8 @@
-﻿using DiziSinema.MVC.Areas.Admin.Models.Genre;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace DiziSinema.MVC.Areas.Admin.Models.SerialTv
 {
-    public class SerialTvViewModel
+    public class DeletedSerialTvViewModel
     {
         [JsonPropertyName("Id")]
         public int Id { get; set; }
@@ -13,24 +12,8 @@ namespace DiziSinema.MVC.Areas.Admin.Models.SerialTv
         public string SerName { get; set; }
 
 
-        [JsonPropertyName("SerIntro")]
-        public string SerIntro { get; set; }
-
-
-        [JsonPropertyName("ImageUrl")]
-        public string ImageUrl { get; set; }
-
-
         [JsonPropertyName("Serlanguage")]
         public string Serlanguage { get; set; }
-
-
-        [JsonPropertyName("Url")]
-        public string Url { get; set; }
-
-
-        [JsonPropertyName("IsActive")]
-        public bool IsActive { get; set; }
 
 
         [JsonPropertyName("IsDeleted")]
@@ -43,9 +26,5 @@ namespace DiziSinema.MVC.Areas.Admin.Models.SerialTv
 
         [JsonPropertyName("ModifiedDate")]
         public DateTime ModifiedDate { get; set; }
-
-
-        [JsonPropertyName("GenreList")]
-        public List<GenreViewModel> Genres { get; set; }
     }
 }

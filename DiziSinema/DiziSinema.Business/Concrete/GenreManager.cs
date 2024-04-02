@@ -7,6 +7,7 @@ using DiziSinema.Shared.DTOs.Core.Add;
 using DiziSinema.Shared.DTOs.Core.Edit;
 using DiziSinema.Shared.DTOs.In;
 using DiziSinema.Shared.ReponseDTOs;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace DiziSinema.Business.Concrete
         public async Task<Response<List<GenreDTO>>> GetAllAsync()
         {
             var genreList = await _repository.GetAllAsync();
-            if (genreList == null)
+            if (genreList.Count == 0)
             {
                 return Response<List<GenreDTO>>.Fail("Hiç tür bulunamadı", 301);
             }
@@ -51,7 +52,11 @@ namespace DiziSinema.Business.Concrete
 
         public async Task<Response<GenreDTO>> GetByIdAsync(int id)
         {
-            var genre = await _repository.GetByIdAsync(g => g.Id == id);
+            var genre = await _repository.GetByIdAsync(g => g.Id == id, source => source
+            .Include(m=>m.MovieGenres)
+            .ThenInclude(mg=>mg.Movie)
+            .Include(s => s.SerialTvGenres)
+            .ThenInclude(sg => sg.SerialTv));
             if (genre == null)
             {
                 return Response<GenreDTO>.Fail("ilgili tür bulunamadı.", 404);
@@ -102,18 +107,6 @@ namespace DiziSinema.Business.Concrete
             return Response<GenreDTO>.Success(editedGenreDto, 200);
         }
 
-        public async Task<Response<int>> GetActiveGenreCount()
-        {
-            var count = await _repository.GetCountAsync(c => c.IsActive && !c.IsDeleted);
-            return Response<int>.Success(count, 200);
-        }
-
-        public async Task<Response<int>> GetGenreCount()
-        {
-            var count = await _repository.GetCountAsync(c => !c.IsDeleted);
-            return Response<int>.Success(count, 200);
-        }
-
         public async Task<Response<List<GenreDTO>>> GetNonDeletedGenre(bool isDeleted = false)
         {
             var genreList = await _repository.GetAllAsync(g => g.IsDeleted == isDeleted);
@@ -136,6 +129,19 @@ namespace DiziSinema.Business.Concrete
             }
             var GenreDtoList = _mapper.Map<List<GenreDTO>>(GenreList);
             return Response<List<GenreDTO>>.Success(GenreDtoList, 200);
+
+        }
+
+        public async Task<Response<int>> GetActiveGenreCount()
+        {
+            var count = await _repository.GetCountAsync(c => c.IsActive && !c.IsDeleted);
+            return Response<int>.Success(count, 200);
+        }
+
+        public async Task<Response<int>> GetGenreCount()
+        {
+            var count = await _repository.GetCountAsync(c => !c.IsDeleted);
+            return Response<int>.Success(count, 200);
         }
     }
 }

@@ -17,6 +17,7 @@ namespace DiziSinema.Business.Absract
         #region Generic
         Task<Response<SerialTvDTO>> GetByIdAsync(int id);
         Task<Response<List<SerialTvDTO>>> GetAllAsync();
+        Task<Response<List<SerialTvDTO>>> GetAllNonDeletedAsync(bool id = false);
         Task<Response<SerialTvDTO>> CreateAsync(AddSerialTvDTO addSerialTvDTO);
         Task<Response<SerialTvDTO>> UpdateAsync(EditSerialTvDTO editSerialTvDTO);
         Task<Response<NoContent>> HardDeleteAsync(int id);
@@ -27,7 +28,9 @@ namespace DiziSinema.Business.Absract
         Task<Response<NoContent>> UpdateIsActiveAsync(int id);
         Task<Response<int>> GetActiveSerialTvCount();
         Task<Response<int>> GetSerialTvCount();
-        Task<Response<List<SerialTvDTO>>> GetSerialTvByGenreIdAsync(int genreId);
+        Task<Response<SerialTvDTO>> GetSerialTvWithGenresAsync(int id);
+        Task<Response<List<SerialTvDTO>>> GetSerialTvsByGenreIdAsync(int genreId);
+        Task<Response<List<SerialTvDTO>>> GetAllSerialTvsWithGenresAsync();
         #endregion
     }
 }

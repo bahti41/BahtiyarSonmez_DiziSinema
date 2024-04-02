@@ -38,17 +38,29 @@
                         </div>
                         <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label asp-for="MovName"></label>
-                                            <input asp-for="MovName" type="text" class="form-control" placeholder="Ürün adını giriniz...">
+                                            <input asp-for="MovName" type="text" class="form-control" placeholder="Film adını giriniz...">
                                             <span asp-validation-for="MovName" class="text-danger"></span>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+
+                                    <div class="col-sm-6">
+                                        <label>Seçenekler</label>
+                                        <div class="form-group d-flex">
+                                            <div class="icheck-primary">
+                                                <input asp-for="IsActive" type="checkbox" />
+                                                <label asp-for="IsActive" for="IsActive"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @* MovLanguage icin ayrı bir tablo yapılacak *@
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <label asp-for="Movlanguage"></label>
-                                            <input asp-for="Movlanguage" type="text" class="form-control" placeholder="Ürün fiyatını giriniz...">
+                                            <input asp-for="Movlanguage" type="text" class="form-control" placeholder="Film dublaj adını giriniz...">
                                             <span asp-validation-for="Movlanguage" class="text-danger"></span>
                                         </div>
                                     </div>
