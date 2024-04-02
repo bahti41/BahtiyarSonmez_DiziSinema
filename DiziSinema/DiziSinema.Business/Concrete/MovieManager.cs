@@ -145,7 +145,6 @@ namespace DiziSinema.Business.Concrete
             return Response<List<MovieDTO>>.Success(movieDtoList, 200);
         }
 
-
         public async Task<Response<MovieDTO>> GetMovieWithGenresAsync(int id)
         {
             var movie = await _repository.GetByIdAsync(m => !m.IsDeleted && m.Id == id,
@@ -159,6 +158,8 @@ namespace DiziSinema.Business.Concrete
             var movietDto = _mapper.Map<MovieDTO>(movie);
             return Response<MovieDTO>.Success(movietDto, 200);
         }
+
+        // UpdateIsHomeAsync -- Yapılcak
 
         public async Task<Response<int>> GetActiveMovieCount()
         {

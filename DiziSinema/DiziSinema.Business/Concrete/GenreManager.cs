@@ -39,30 +39,17 @@ namespace DiziSinema.Business.Concrete
             return Response<GenreDTO>.Success(addGenreDto, 200);
         }
 
-        public async Task<Response<List<GenreDTO>>> GetAllAsync()
+        public async Task<Response<GenreDTO>> UpdateAsync(EditGenreDTO editGenreDTO)
         {
-            var genreList = await _repository.GetAllAsync();
-            if (genreList.Count == 0)
+            var editedGenre = _mapper.Map<Genre>(editGenreDTO);
+            if (editedGenre == null)
             {
-                return Response<List<GenreDTO>>.Fail("Hiç tür bulunamadı", 301);
+                return Response<GenreDTO>.Fail("Böyle Bir Tür Bulunamadı", 404);
             }
-            var genreDtoList = _mapper.Map<List<GenreDTO>>(genreList);
-            return Response<List<GenreDTO>>.Success(genreDtoList, 200);
-        }
-
-        public async Task<Response<GenreDTO>> GetByIdAsync(int id)
-        {
-            var genre = await _repository.GetByIdAsync(g => g.Id == id, source => source
-            .Include(m=>m.MovieGenres)
-            .ThenInclude(mg=>mg.Movie)
-            .Include(s => s.SerialTvGenres)
-            .ThenInclude(sg => sg.SerialTv));
-            if (genre == null)
-            {
-                return Response<GenreDTO>.Fail("ilgili tür bulunamadı.", 404);
-            }
-            var genreDto = _mapper.Map<GenreDTO>(genre);
-            return Response<GenreDTO>.Success(genreDto, 200);
+            editedGenre.ModifiedDate = DateTime.Now;
+            await _repository.UpdateAsync(editedGenre);
+            var editedGenreDto = _mapper.Map<GenreDTO>(editedGenre);
+            return Response<GenreDTO>.Success(editedGenreDto, 200);
         }
 
         public async Task<Response<NoContent>> HardDeleteAsync(int id)
@@ -94,26 +81,27 @@ namespace DiziSinema.Business.Concrete
             return Response<NoContent>.Success(200);
         }
 
-        public async Task<Response<GenreDTO>> UpdateAsync(EditGenreDTO editGenreDTO)
+        public async Task<Response<GenreDTO>> GetByIdAsync(int id)
         {
-            var editedGenre = _mapper.Map<Genre>(editGenreDTO);
-            if (editedGenre == null)
+            var genre = await _repository.GetByIdAsync(g => g.Id == id, source => source
+            .Include(m => m.MovieGenres)
+            .ThenInclude(mg => mg.Movie)
+            .Include(s => s.SerialTvGenres)
+            .ThenInclude(sg => sg.SerialTv));
+            if (genre == null)
             {
-                return Response<GenreDTO>.Fail("Böyle Bir Tür Bulunamadı", 404);
+                return Response<GenreDTO>.Fail("ilgili tür bulunamadı.", 404);
             }
-            editedGenre.ModifiedDate = DateTime.Now;
-            await _repository.UpdateAsync(editedGenre);
-            var editedGenreDto = _mapper.Map<GenreDTO>(editedGenre);
-            return Response<GenreDTO>.Success(editedGenreDto, 200);
+            var genreDto = _mapper.Map<GenreDTO>(genre);
+            return Response<GenreDTO>.Success(genreDto, 200);
         }
 
-        public async Task<Response<List<GenreDTO>>> GetNonDeletedGenre(bool isDeleted = false)
+        public async Task<Response<List<GenreDTO>>> GetAllAsync()
         {
-            var genreList = await _repository.GetAllAsync(g => g.IsDeleted == isDeleted);
-            string status = isDeleted ? "silinmiş" : "silinmemiş";
+            var genreList = await _repository.GetAllAsync();
             if (genreList.Count == 0)
             {
-                return Response<List<GenreDTO>>.Fail($"Hiç {status} Tür Bulunamadı", 301);
+                return Response<List<GenreDTO>>.Fail("Hiç tür bulunamadı", 301);
             }
             var genreDtoList = _mapper.Map<List<GenreDTO>>(genreList);
             return Response<List<GenreDTO>>.Success(genreDtoList, 200);
@@ -130,6 +118,18 @@ namespace DiziSinema.Business.Concrete
             var GenreDtoList = _mapper.Map<List<GenreDTO>>(GenreList);
             return Response<List<GenreDTO>>.Success(GenreDtoList, 200);
 
+        }
+
+        public async Task<Response<List<GenreDTO>>> GetNonDeletedGenre(bool isDeleted = false)
+        {
+            var genreList = await _repository.GetAllAsync(g => g.IsDeleted == isDeleted);
+            string status = isDeleted ? "silinmiş" : "silinmemiş";
+            if (genreList.Count == 0)
+            {
+                return Response<List<GenreDTO>>.Fail($"Hiç {status} Tür Bulunamadı", 301);
+            }
+            var genreDtoList = _mapper.Map<List<GenreDTO>>(genreList);
+            return Response<List<GenreDTO>>.Success(genreDtoList, 200);
         }
 
         public async Task<Response<int>> GetActiveGenreCount()

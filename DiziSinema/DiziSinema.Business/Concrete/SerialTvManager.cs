@@ -142,6 +142,8 @@ namespace DiziSinema.Business.Concrete
             return Response<SerialTvDTO>.Success(serialTvDto, 200);
         }
 
+        // UpdateIsHomeAsync -- Yapılcak
+
         public async Task<Response<int>> GetActiveSerialTvCount()
         {
             var count = await _repository.GetCountAsync(s => s.IsActive && !s.IsDeleted);
