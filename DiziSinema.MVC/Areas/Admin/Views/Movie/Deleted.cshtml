@@ -38,8 +38,8 @@
                     </div>
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <a asp-area="Admin" asp-controller="Movie" asp-action="Index" class="btn btn-info">Vazgeç</a>
-                        <a asp-area="Admin" asp-controller="Movie" asp-action="HardDelete" asp-route-id="@Model.Id" class="btn btn-danger">Kalıcı Olarak Sil</a>
-                        <a asp-area="Admin" asp-controller="Movie" asp-action="SoftDelete" asp-route-id="@Model.Id" class="btn btn-warning">Çöp Kutusuna Gönder</a>
+                        <a asp-area="Admin" asp-controller="Movie" asp-action="HardDeleted" asp-route-id="@Model.Id" class="btn btn-danger">Kalıcı Olarak Sil</a>
+                        <a asp-area="Admin" asp-controller="Movie" asp-action="SoftDeleted" asp-route-id="@Model.Id" class="btn btn-warning">Çöp Kutusuna Gönder</a>
                     </div>
                 </div>
             </div>

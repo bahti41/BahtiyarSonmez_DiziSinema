@@ -4,11 +4,15 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Tür Listeleri</h1>
+            <div class="d-flex justify-content-between mb-2">
+                <div>
+                    <h1>Ürün Listesi</h1>
                 </div>
-                <div class="col-sm-6">
+                <div>
+                    <a asp-area="Admin"
+                       asp-controller="Genre"
+                       asp-action="Create"
+                       class="btn btn-success btn-sm">Tür Ekle</a>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -27,6 +31,7 @@
                                     <tr>
                                         <th width="55">Id</th>
                                         <th>Ürün</th>
+                                        <th>Aktif</th>
                                         <th width="55">#</th>
                                     </tr>
                                 </thead>
@@ -37,16 +42,32 @@
                                             <td>@g.Id</td>
                                             <td>@g.GenreName</td>
                                             <td>
-                                                <a asp-area="Admin"
-                                                   asp-controller="Genre"
-                                                   asp-action="Edit"
-                                                   asp-route-id="@g.Id"
-                                                   class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
-                                                <a asp-area="Admin"
-                                                   asp-controller="Genre"
-                                                   asp-action="Delete"
-                                                   asp-route-id="@g.Id"
-                                                   class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                                <form id="isActiveForm_@g.Id"
+                                                      asp-area="Admin"
+                                                      asp-controller="Genre"
+                                                      asp-action="UpdateIsActive"
+                                                      asp-route-id="@g.Id"
+                                                      method="post">
+                                                    <div class="custom-control custom-switch">
+                                                        <input onchange="document.getElementById('isActiveForm_@g.Id').submit();"
+                                                               type="checkbox" class="custom-control-input" id="isActive_@g.Id"
+                                                        @(g.IsActive ? "checked" : "") />
+                                                        <label class="custom-control-label" for="isActive_@g.Id"></label>
+                                                    </div>
+                                                </form>
+
+                                            </td>
+                                            <td class="text-center">
+                                                {
+                                                    <a asp-area="Admin"
+                                                       asp-controller="Genre"
+                                                       asp-action="Deleted"
+                                                       asp-route-id="@g.Id"
+                                                       class="btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                }
+
                                             </td>
                                         </tr>
                                     }
@@ -74,3 +95,4 @@
 @section Scripts {
     @await Html.PartialAsync("_DataTablesJsPartial")
 }
+2

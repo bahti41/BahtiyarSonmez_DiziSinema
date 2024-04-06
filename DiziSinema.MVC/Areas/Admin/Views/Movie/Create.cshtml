@@ -73,7 +73,7 @@
                                             <div class="mt-2">
                                                 <label class="btn btn-success" for="image">Ürün Resmi Yükle</label>
                                             </div>
-                                            <span class="text-danger">@ViewBag.ImageErrorMessage</span>
+                                            <span class="text-danger">@ViewBag.MovieImageErrorMessage</span>
                                             <img id="image-viewer" class="img-fluid" style="height:200px;" />
                                         </div>
                                     </div> 
@@ -123,9 +123,6 @@
 @section Scripts{
     @await Html.PartialAsync("_SummerNotePartial")
     <script>
-        document.getElementById("image").addEventListener("change", function () {
-
-        });
 
         $("#image").on("change", function (e) {
             const selectedFiles = e.target.files;

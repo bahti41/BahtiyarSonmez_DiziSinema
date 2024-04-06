@@ -128,11 +128,11 @@ namespace DiziSinema.Data.Migrations
                 columns: new[] { "Id", "CreatedDate", "Description", "GenreName", "ImageUrl", "IsActive", "IsDeleted", "ModifiedDate", "Url" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(1853), "korku Kategorisi", "Korku", null, true, false, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(1865), "korku" },
-                    { 2, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(1866), "Romantik Kategorisi", "Romantik", null, true, false, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(1867), "dram" },
-                    { 3, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(1868), "Komedi Kategorisi", "Komedi", null, true, false, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(1868), "komedi" },
-                    { 4, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(1869), "Bilim Kurgu Kategorisi", "Bilim Kurgu", null, true, false, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(1870), "bilim-kurgu" },
-                    { 5, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(1871), "Anime Kategorisi", "Anime", null, true, false, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(1871), "anime" }
+                    { 1, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1635), "korku Kategorisi", "Korku", null, true, false, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1648), "korku" },
+                    { 2, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1681), "Romantik Kategorisi", "Romantik", null, true, false, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1682), "dram" },
+                    { 3, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1683), "Komedi Kategorisi", "Komedi", null, true, false, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1684), "komedi" },
+                    { 4, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1685), "Bilim Kurgu Kategorisi", "Bilim Kurgu", null, true, false, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1685), "bilim-kurgu" },
+                    { 5, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1686), "Anime Kategorisi", "Anime", null, true, false, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1687), "anime" }
                 });
 
             migrationBuilder.InsertData(
@@ -140,12 +140,12 @@ namespace DiziSinema.Data.Migrations
                 columns: new[] { "Id", "CreatedDate", "ImageUrl", "IsActive", "IsDeleted", "ModifiedDate", "MovIntro", "MovLanguage", "MovName", "Url" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4722), "1.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4726), "Title", "türkce dublaj", "Film1", "film-1" },
-                    { 2, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4753), "2.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4754), "Title", "türkce dublaj", "Film2", "film-2" },
-                    { 3, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4756), "3.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4756), "Title", "türkce dublaj", "Film3", "film-3" },
-                    { 4, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4758), "4.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4758), "Title", "türkce dublaj", "Film4", "film-4" },
-                    { 5, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4759), "5.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4760), "Title", "türkce dublaj", "Film5", "film-5" },
-                    { 6, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4761), "6.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 229, DateTimeKind.Local).AddTicks(4762), "Title", "türkce dublaj", "Film6", "film-6" }
+                    { 1, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4344), "1.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4348), "Title", "türkce dublaj", "Film1", "film-1" },
+                    { 2, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4350), "2.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4351), "Title", "türkce dublaj", "Film2", "film-2" },
+                    { 3, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4352), "3.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4352), "Title", "türkce dublaj", "Film3", "film-3" },
+                    { 4, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4354), "4.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4354), "Title", "türkce dublaj", "Film4", "film-4" },
+                    { 5, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4356), "5.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4356), "Title", "türkce dublaj", "Film5", "film-5" },
+                    { 6, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4357), "6.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4358), "Title", "türkce dublaj", "Film6", "film-6" }
                 });
 
             migrationBuilder.InsertData(
@@ -153,12 +153,12 @@ namespace DiziSinema.Data.Migrations
                 columns: new[] { "Id", "CreatedDate", "ImageUrl", "IsActive", "IsDeleted", "ModifiedDate", "SerIntro", "SerLanguage", "SerName", "Url" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(702), "d1.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(708), "Title", "Türkce dublaj", "Dizi1", "dizi-1" },
-                    { 2, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(711), "d2.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(711), "Title", "Türkce dublaj", "Dizi2", "dizi-2" },
-                    { 3, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(713), "d3.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(713), "Title", "Türkce dublaj", "Dizi3", "dizi-3" },
-                    { 4, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(715), "d4.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(715), "Title", "Türkce dublaj", "Dizi4", "dizi-4" },
-                    { 5, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(716), "d5.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(717), "Title", "Türkce dublaj", "Dizi5", "dizi-5" },
-                    { 6, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(718), "d6.jpg", true, false, new DateTime(2024, 4, 1, 16, 28, 7, 230, DateTimeKind.Local).AddTicks(719), "Title", "Türkce dublaj", "Dizi6", "dizi-6" }
+                    { 1, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(229), "d1.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(237), "Title", "Türkce dublaj", "Dizi1", "dizi-1" },
+                    { 2, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(238), "d2.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(239), "Title", "Türkce dublaj", "Dizi2", "dizi-2" },
+                    { 3, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(240), "d3.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(241), "Title", "Türkce dublaj", "Dizi3", "dizi-3" },
+                    { 4, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(242), "d4.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(243), "Title", "Türkce dublaj", "Dizi4", "dizi-4" },
+                    { 5, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(244), "d5.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(244), "Title", "Türkce dublaj", "Dizi5", "dizi-5" },
+                    { 6, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(246), "d6.jpg", true, false, new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(246), "Title", "Türkce dublaj", "Dizi6", "dizi-6" }
                 });
 
             migrationBuilder.InsertData(

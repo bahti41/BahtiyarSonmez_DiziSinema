@@ -31,7 +31,7 @@
                                     <h3 class="card-title">Ürün Bilgileri</h3>
                                 </div>
                                 <div>
-                                    <a asp-area="Admin" asp-controller="Movie" asp-action="SoftDelete" asp-route-id="@Model.Id" class="btn btn-warning">Çöp Kutusuna Gönder</a>
+                                    <a asp-area="Admin" asp-controller="Movie" asp-action="SoftDeleted" asp-route-id="@Model.Id" class="btn btn-warning">Çöp Kutusuna Gönder</a>
                                 </div>
                             </div>
      
@@ -75,7 +75,7 @@
                                      <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Ürün Resmi</label>
-                                            <input type="hidden" value="@Model.ImageUrl"  id="oldImageUrl"></input>
+                                            <input type="hidden" value="@Model.ImageUrl"  id="oldImageUrl"/>
                                             <input id="image" name="image" type="file" class="d-none" accept="image/png, image/jpg, image/jpeg" />
                                             <div class="mt-2">
                                                 <label class="btn btn-success" for="image">Ürün Resmini Değiştir</label>

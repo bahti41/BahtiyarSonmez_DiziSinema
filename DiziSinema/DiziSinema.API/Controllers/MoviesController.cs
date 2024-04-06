@@ -18,6 +18,7 @@ namespace DiziSinema.API.Controllers
         private readonly IMovieService _movieManager;
         private readonly IImageHelper _imageHelper;
 
+
         public MoviesController(IMovieService movieManager, IImageHelper imageHelper)
         {
             _movieManager = movieManager;
@@ -31,6 +32,7 @@ namespace DiziSinema.API.Controllers
             return Ok(jsonResponse);
         }
 
+
         [HttpGet("GetAllNonDeleted/{isDeleted?}")]
         public async Task<IActionResult> GetAllNonDeleted(bool isDeleted = false)
         {
@@ -38,6 +40,7 @@ namespace DiziSinema.API.Controllers
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
+
 
         [HttpGet("GetAllWithGenres")]
         public async Task<IActionResult> GetAllWithGenres()
@@ -47,6 +50,7 @@ namespace DiziSinema.API.Controllers
             return Ok(jsonResponse);
         }
 
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -54,6 +58,7 @@ namespace DiziSinema.API.Controllers
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
+
 
         [HttpGet("GetWithGenres/{id}")]
         public async Task<IActionResult> GetWithCategories(int id)
@@ -63,6 +68,7 @@ namespace DiziSinema.API.Controllers
             return Ok(jsonResponse);
         }
 
+
         [HttpGet("GetByGenreId/{genreId}")]
         public async Task<IActionResult> GetByCategoryId(int genreId)
         {
@@ -70,6 +76,7 @@ namespace DiziSinema.API.Controllers
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
+
 
         [HttpPost("Create")]
         public async Task<IActionResult> Create(AddMovieDTO addMovieDTO)
@@ -79,6 +86,7 @@ namespace DiziSinema.API.Controllers
             return Ok(jsonResponse);
         }
 
+
         [HttpPut("Update")]
         public async Task<IActionResult> Update(EditMovieDTO editMovieDTO)
         {
@@ -86,6 +94,7 @@ namespace DiziSinema.API.Controllers
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
+
 
         [HttpPost("UpdateIsActive/{id}")]
         public async Task<IActionResult> UpdateIsActive(int id)
@@ -95,6 +104,7 @@ namespace DiziSinema.API.Controllers
             return Ok(jsonResponse);
         }
 
+
         [HttpDelete("HardDeleted/{id}")]
         public async Task<IActionResult> HardDeleted(int id)
         {
@@ -102,6 +112,7 @@ namespace DiziSinema.API.Controllers
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
+
 
         [HttpGet("SoftDeleted/{id}")]
         public async Task<IActionResult> SoftDeleted(int id)
@@ -111,6 +122,7 @@ namespace DiziSinema.API.Controllers
             return Ok(jsonResponse);
         }
 
+
         [HttpGet("ActiveCount")]
         public async Task<IActionResult> GetActiveCount()
         {
@@ -119,6 +131,7 @@ namespace DiziSinema.API.Controllers
             return Ok(jsonResponse);
         }
 
+
         [HttpGet("Count")]
         public async Task<IActionResult> GetCount()
         {
@@ -126,6 +139,7 @@ namespace DiziSinema.API.Controllers
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
+
 
         [HttpPost("ImageUpload")]
         public async Task<IActionResult> ImageUpload(IFormFile image)

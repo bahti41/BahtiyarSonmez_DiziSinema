@@ -15,6 +15,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
+                <!--Movie Menüsü-->
                 <li class="nav-item menu-open">
                     <a class="nav-link active">
                         <i class="fas fa-user-cog"></i>
@@ -23,7 +24,6 @@
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <!--Movie Menüsü-->
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a 
@@ -125,12 +125,21 @@
                         </li>
                         <li class="nav-item">
                             <a 
-                                asp-area=""
-                                asp-controller=""
-                                asp-action=""
+                                asp-area="Admin"
+                                asp-controller="Genre"
+                               asp-action="Create"
                                 class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tür ekle</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="Admin"
+                               asp-controller=""
+                               asp-action=""
+                               class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cöp Kutusu</p>
                             </a>
                         </li>
                     </ul>

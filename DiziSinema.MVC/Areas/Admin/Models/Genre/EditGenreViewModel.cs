@@ -1,18 +1,22 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace DiziSinema.MVC.Areas.Admin.Models.Genre
 {
-    public class GenreViewModel
+    public class EditAddGenreViewModel
     {
-        [JsonPropertyName("Id")]
         public int Id { get; set; }
 
-
         [JsonPropertyName("GenreName")]
+        [DisplayName("Tür")]
+        [Required(ErrorMessage = "{0} alanı boş bırakılamaz.")]
         public string GenreName { get; set; }
 
 
         [JsonPropertyName("Description")]
+        [DisplayName("Tür")]
+        [Required(ErrorMessage = "{0} alanı boş bırakılamaz.")]
         public string Description { get; set; }
 
 
@@ -25,6 +29,7 @@ namespace DiziSinema.MVC.Areas.Admin.Models.Genre
 
 
         [JsonPropertyName("IsActive")]
+        [DisplayName("Aktif Türler")]
         public bool IsActive { get; set; }
 
 

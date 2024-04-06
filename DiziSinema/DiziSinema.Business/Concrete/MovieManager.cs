@@ -50,6 +50,7 @@ namespace DiziSinema.Business.Concrete
             return Response<MovieDTO>.Success(addMovieDto, 200);
         }
 
+
         public async Task<Response<MovieDTO>> UpdateAsync(EditMovieDTO editMovieDTO)
         {
             var editedMovie = _mapper.Map<Movie>(editMovieDTO);
@@ -73,6 +74,7 @@ namespace DiziSinema.Business.Concrete
             return Response<MovieDTO>.Success(editedMovieDto, 200);
         }
 
+
         public async Task<Response<NoContent>> HardDeleteAsync(int id)
         {
             var movie = await _repository.GetByIdAsync(c => c.Id == id);
@@ -83,6 +85,7 @@ namespace DiziSinema.Business.Concrete
             await _repository.HardDeleteAsync(movie);
             return Response<NoContent>.Success(200);
         }
+
 
         public async Task<Response<NoContent>> SoftDeleteAsync(int id)
         {
@@ -98,6 +101,7 @@ namespace DiziSinema.Business.Concrete
             return Response<NoContent>.Success(200);
         }
 
+
         public async Task<Response<MovieDTO>> GetByIdAsync(int id)
         {
             var movie = await _repository.GetByIdAsync(m => m.Id == id);
@@ -109,6 +113,7 @@ namespace DiziSinema.Business.Concrete
             return Response<MovieDTO>.Success(movieDto, 200);
         }
 
+
         public async Task<Response<List<MovieDTO>>> GetAllAsync()
         {
             var movietList = await _repository.GetAllAsync();
@@ -119,6 +124,7 @@ namespace DiziSinema.Business.Concrete
             var movieDtoList = _mapper.Map<List<MovieDTO>>(movietList);
             return Response<List<MovieDTO>>.Success(movieDtoList, 200);
         }
+
 
         public async Task<Response<List<MovieDTO>>> GetAllMoviesWithGenresAsync()
         {
@@ -134,6 +140,7 @@ namespace DiziSinema.Business.Concrete
             return Response<List<MovieDTO>>.Success(movieDtoList, 200);
         }
 
+
         public async Task<Response<List<MovieDTO>>> GetMoviesByGenreIdAsync(int genreId)
         {
             var movieList = await _repository.GetMoviesByGenreIdAsync(genreId);
@@ -145,6 +152,7 @@ namespace DiziSinema.Business.Concrete
             return Response<List<MovieDTO>>.Success(movieDtoList, 200);
         }
 
+
         public async Task<Response<MovieDTO>> GetMovieWithGenresAsync(int id)
         {
             var movie = await _repository.GetByIdAsync(m => !m.IsDeleted && m.Id == id,
@@ -155,11 +163,10 @@ namespace DiziSinema.Business.Concrete
             {
                 return Response<MovieDTO>.Fail("İlgili film bulunamadı.", 404);
             }
-            var movietDto = _mapper.Map<MovieDTO>(movie);
-            return Response<MovieDTO>.Success(movietDto, 200);
+            var movieDto = _mapper.Map<MovieDTO>(movie);
+            return Response<MovieDTO>.Success(movieDto, 200);
         }
 
-        // UpdateIsHomeAsync -- Yapılcak
 
         public async Task<Response<int>> GetActiveMovieCount()
         {
@@ -167,11 +174,13 @@ namespace DiziSinema.Business.Concrete
             return Response<int>.Success(count, 200);
         }
 
+
         public async Task<Response<int>> GetMovieCount()
         {
             var count = await _repository.GetCountAsync(m => !m.IsDeleted);
             return Response<int>.Success(count, 200);
         }
+
 
         public async Task<Response<NoContent>> UpdateIsActiveAsync(int id)
         {

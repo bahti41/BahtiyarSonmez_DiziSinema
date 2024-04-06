@@ -22,7 +22,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                 string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
                 response = JsonSerializer.Deserialize<Response<List<MovieViewModel>>>(contentResponseApi);
             }
-            ViewBag.ShowDeleted = id;
+            ViewBag.MovieShowDeleted = id;
             return View(response.Data);
         }
 
@@ -100,8 +100,8 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                     }
                 }
             }
-            ViewBag.CategoryErrorMessage = model.GenreIds.Count == 0 ? "Herhangi bir kategori seçmeden, ürün kaydı yapılamaz" : null;
-            ViewBag.ImageErrorMessage = model.ImageUrl == null || model.ImageUrl == "" ? "Resim hatalı!" : null;
+            ViewBag.MovieGenreErrorMessage = model.GenreIds.Count == 0 ? "Herhangi bir kategori seçmeden, ürün kaydı yapılamaz" : null;
+            ViewBag.MovieImageErrorMessage = model.ImageUrl == null || model.ImageUrl == "" ? "Resim hatalı!" : null;
             model.GenreList = await GetGenresAsync();
 
             return View(model);
@@ -139,8 +139,6 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            
-
             MovieViewModel movieViewModel = await GetMovieAsync(id);
             EditMovieViewModel model = new EditMovieViewModel
             {
@@ -169,8 +167,6 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                 using (var httpClient = new HttpClient())
                 {
 
-
-
                     //Resim Yükleme İşlemi
                     using (var stream = image != null ? image.OpenReadStream() : null)
                     {
@@ -184,12 +180,8 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                             if (httpResponseMessageImageUrl != null && httpResponseMessageImageUrl != "")
                             {
                                 model.ImageUrl = httpResponseMessageImageUrl;
-
                             }
                         }
-
-
-
 
                         var serializeModel = JsonSerializer.Serialize(model);
                         StringContent stringContent = new StringContent(serializeModel, Encoding.UTF8, "application/json");
@@ -198,20 +190,18 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                         {
                             return RedirectToAction("Index");
                         }
-
-
                     }
                 }
             }
-            ViewBag.CategoryErrorMessage = model.GenreIds.Count == 0 ? "Herhangi bir kategori seçmeden, ürün kaydı yapılamaz" : null;
+            ViewBag.GenreErrorMessage = model.GenreIds.Count == 0 ? "Herhangi bir kategori seçmeden, ürün kaydı yapılamaz" : null;
             model.GenreList = await GetGenresAsync();
             return View(model);
         }
 
 
-        //AutoMapper İle Yapılacak
+        
         [HttpGet]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Deleted(int id)
         {
             MovieViewModel movieViewModel = await GetMovieAsync(id);
             DeletedMovieViewModel model = new DeletedMovieViewModel
@@ -228,22 +218,22 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> HardDelete(int id)
+        public async Task<IActionResult> HardDeleted(int id)
         {
             using (var httpClient = new HttpClient())
             {
-                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/Movies/HardDelete/{id}");
+                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/Movies/HardDeleted/{id}");
             }
             return RedirectToAction("Index");
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> SoftDelete(int id)
+        public async Task<IActionResult> SoftDeleted(int id)
         {
             using (var httpClient = new HttpClient())
             {
-                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/Movies/SoftDelete/{id}");
+                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/Movies/SoftDeleted/{id}");
             }
             var movieViewModel = await GetByIdAsync(id);
             return Redirect($"/Admin/Movie/Index/{!movieViewModel.IsDeleted}");

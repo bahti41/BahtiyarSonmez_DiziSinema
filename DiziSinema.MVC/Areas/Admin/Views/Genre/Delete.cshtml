@@ -1,4 +1,4 @@
-﻿@model DeletedSerialTvViewModel
+﻿@model DeletedGenreViewModel
  <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -22,11 +22,11 @@
                     </div>
                     <div>
                         <label>Ürün:</label>
-                        <span>@Model.SerName</span>
+                        <span>@Model.GenreName</span>
                     </div>
                     <div>
                         <label>Fiyat:</label>
-                        <span>@(Model.Serlanguage)</span>
+                        <span>@Model.Description</span>
                     </div>
                     <div>
                         <label>Oluşturulma Tarihi:</label>
@@ -37,12 +37,20 @@
                         <span>@Model.ModifiedDate</span>
                     </div>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <a asp-area="Admin" asp-controller="SerialTv" asp-action="Index" class="btn btn-info">Vazgeç</a>
-                        <a asp-area="Admin" asp-controller="SerialTv" asp-action="HardDelete" asp-route-id="@Model.Id" class="btn btn-danger">Kalıcı Olarak Sil</a>
-                        <a asp-area="Admin" asp-controller="SerialTv" asp-action="SoftDelete" asp-route-id="@Model.Id" class="btn btn-warning">Çöp Kutusuna Gönder</a>
+                        <a asp-area="Admin" asp-controller="Genre" asp-action="Index" class="btn btn-info">Vazgeç</a>
+                        <a asp-area="Admin" asp-controller="Genre" asp-action="HardDelete" asp-route-id="@Model.Id" class="btn btn-danger">Kalıcı Olarak Sil</a>
+                        <a asp-area="Admin" asp-controller="Genre" asp-action="SoftDelete" asp-route-id="@Model.Id" class="btn btn-warning">Çöp Kutusuna Gönder</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
+
+
+@section Styles{
+
+}
+
+@section Scripts{
+}

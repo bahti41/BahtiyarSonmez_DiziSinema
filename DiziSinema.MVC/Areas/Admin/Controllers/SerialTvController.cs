@@ -22,7 +22,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                 string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
                 response = JsonSerializer.Deserialize<Response<List<SerialTvViewModel>>>(contentResponseApi);
             }
-            ViewBag.ShowDeleted = id;
+            ViewBag.SerialTvShowDeleted = id;
             return View(response.Data);
         }
 
@@ -100,7 +100,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                     }
                 }
             }
-            ViewBag.CategoryErrorMessage = model.GenreIds.Count == 0 ? "Herhangi bir Tür seçmeden, Dizi kaydı yapılamaz" : null;
+            ViewBag.GenreErrorMessage = model.GenreIds.Count == 0 ? "Herhangi bir Tür seçmeden, Dizi kaydı yapılamaz" : null;
             ViewBag.ImageErrorMessage = model.ImageUrl == null || model.ImageUrl == "" ? "Resim hatalı!" : null;
             model.GenreList = await GetGenresAsync();
 
@@ -109,7 +109,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
 
 
         [NonAction]
-        public async Task<SerialTvViewModel> GetMovieAsync(int id)
+        public async Task<SerialTvViewModel> GetSerialTvAsync(int id)
         {
             Response<SerialTvViewModel> response = new Response<SerialTvViewModel>();
             using (HttpClient httpClient = new HttpClient())
@@ -141,7 +141,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
         {
 
 
-            SerialTvViewModel SerialTvViewModel = await GetMovieAsync(id);
+            SerialTvViewModel SerialTvViewModel = await GetSerialTvAsync(id);
             EditSerialTvViewModel model = new EditSerialTvViewModel
             {
                 Id = SerialTvViewModel.Id,
@@ -209,11 +209,10 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
         }
 
 
-        //AutoMapper İle Yapılacak
         [HttpGet]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Deleted(int id)
         {
-            SerialTvViewModel serialTvViewModel = await GetMovieAsync(id);
+            SerialTvViewModel serialTvViewModel = await GetSerialTvAsync(id);
             DeletedSerialTvViewModel model = new DeletedSerialTvViewModel
             {
                 Id = serialTvViewModel.Id,
@@ -228,22 +227,22 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> HardDelete(int id)
+        public async Task<IActionResult> HardDeleted(int id)
         {
             using (var httpClient = new HttpClient())
             {
-                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/SerialTvs/HardDelete/{id}");
+                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/SerialTvs/HardDeleted/{id}");
             }
             return RedirectToAction("Index");
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> SoftDelete(int id)
+        public async Task<IActionResult> SoftDeleted(int id)
         {
             using (var httpClient = new HttpClient())
             {
-                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/SerialTvs/SoftDelete/{id}");
+                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/SerialTvs/SoftDeleted/{id}");
             }
             var serialTvViewModel = await GetByIdAsync(id);
             return Redirect($"/Admin/SerialTv/Index/{!serialTvViewModel.IsDeleted}");
