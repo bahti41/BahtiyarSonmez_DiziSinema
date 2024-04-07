@@ -118,6 +118,7 @@
                                 asp-area="Admin"
                                asp-controller="Genre"
                                asp-action="Index"
+                               asp-route-id="false"
                                 class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Türler</p>
@@ -135,8 +136,9 @@
                         </li>
                         <li class="nav-item">
                             <a asp-area="Admin"
-                               asp-controller=""
-                               asp-action=""
+                               asp-controller="Genre"
+                               asp-action="Index"
+                               asp-route-id="true"
                                class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Cöp Kutusu</p>

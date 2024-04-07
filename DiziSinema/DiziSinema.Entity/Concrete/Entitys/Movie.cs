@@ -13,6 +13,8 @@ namespace DiziSinema.Entity.Concrete.Entitys
         public string MovName { get; set; }
         public string MovIntro { get; set; }
         public string MovLanguage { get; set; }
+        public bool IsActive { get; set; } = true;
+        public bool IsDeleted { get; set; }
         public List<MovieGenre> MovieGenres { get; set; }
     }
 }

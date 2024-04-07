@@ -143,5 +143,7 @@ namespace DiziSinema.Business.Concrete
             var count = await _repository.GetCountAsync(c => !c.IsDeleted);
             return Response<int>.Success(count, 200);
         }
+
+
     }
 }

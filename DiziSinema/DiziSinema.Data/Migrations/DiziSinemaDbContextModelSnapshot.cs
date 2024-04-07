@@ -61,56 +61,56 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1635),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(6327),
                             Description = "korku Kategorisi",
                             GenreName = "Korku",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1648),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(6338),
                             Url = "korku"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1681),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(6339),
                             Description = "Romantik Kategorisi",
                             GenreName = "Romantik",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1682),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(6339),
                             Url = "dram"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1683),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(6340),
                             Description = "Komedi Kategorisi",
                             GenreName = "Komedi",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1684),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(6341),
                             Url = "komedi"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1685),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(6342),
                             Description = "Bilim Kurgu Kategorisi",
                             GenreName = "Bilim Kurgu",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1685),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(6342),
                             Url = "bilim-kurgu"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1686),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(6344),
                             Description = "Anime Kategorisi",
                             GenreName = "Anime",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(1687),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(6344),
                             Url = "anime"
                         });
                 });
@@ -170,11 +170,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4344),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9252),
                             ImageUrl = "1.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4348),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9255),
                             MovIntro = "Title",
                             MovLanguage = "türkce dublaj",
                             MovName = "Film1",
@@ -183,11 +183,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4350),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9258),
                             ImageUrl = "2.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4351),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9258),
                             MovIntro = "Title",
                             MovLanguage = "türkce dublaj",
                             MovName = "Film2",
@@ -196,11 +196,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4352),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9259),
                             ImageUrl = "3.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4352),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9260),
                             MovIntro = "Title",
                             MovLanguage = "türkce dublaj",
                             MovName = "Film3",
@@ -209,11 +209,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4354),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9261),
                             ImageUrl = "4.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4354),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9262),
                             MovIntro = "Title",
                             MovLanguage = "türkce dublaj",
                             MovName = "Film4",
@@ -222,11 +222,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4356),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9263),
                             ImageUrl = "5.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4356),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9263),
                             MovIntro = "Title",
                             MovLanguage = "türkce dublaj",
                             MovName = "Film5",
@@ -235,11 +235,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4357),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9265),
                             ImageUrl = "6.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 449, DateTimeKind.Local).AddTicks(4358),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 666, DateTimeKind.Local).AddTicks(9265),
                             MovIntro = "Title",
                             MovLanguage = "türkce dublaj",
                             MovName = "Film6",
@@ -302,11 +302,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(229),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5197),
                             ImageUrl = "d1.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(237),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5202),
                             SerIntro = "Title",
                             SerLanguage = "Türkce dublaj",
                             SerName = "Dizi1",
@@ -315,11 +315,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(238),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5205),
                             ImageUrl = "d2.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(239),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5206),
                             SerIntro = "Title",
                             SerLanguage = "Türkce dublaj",
                             SerName = "Dizi2",
@@ -328,11 +328,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(240),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5207),
                             ImageUrl = "d3.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(241),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5207),
                             SerIntro = "Title",
                             SerLanguage = "Türkce dublaj",
                             SerName = "Dizi3",
@@ -341,11 +341,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(242),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5209),
                             ImageUrl = "d4.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(243),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5209),
                             SerIntro = "Title",
                             SerLanguage = "Türkce dublaj",
                             SerName = "Dizi4",
@@ -354,11 +354,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(244),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5211),
                             ImageUrl = "d5.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(244),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5211),
                             SerIntro = "Title",
                             SerLanguage = "Türkce dublaj",
                             SerName = "Dizi5",
@@ -367,11 +367,11 @@ namespace DiziSinema.Data.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(246),
+                            CreatedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5213),
                             ImageUrl = "d6.jpg",
                             IsActive = true,
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2024, 4, 6, 13, 48, 47, 450, DateTimeKind.Local).AddTicks(246),
+                            ModifiedDate = new DateTime(2024, 4, 7, 14, 31, 30, 667, DateTimeKind.Local).AddTicks(5213),
                             SerIntro = "Title",
                             SerLanguage = "Türkce dublaj",
                             SerName = "Dizi6",

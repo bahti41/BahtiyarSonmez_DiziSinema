@@ -20,12 +20,11 @@ namespace DiziSinema.MVC.Areas.Admin.Models.Genre
         public string Url { get; set; }
 
 
-        [JsonPropertyName("IsDeleted")]
-        public bool IsDeleted { get; set; }
-
-
         [JsonPropertyName("IsActive")]
         public bool IsActive { get; set; }
+
+        [JsonPropertyName("IsDeleted")]
+        public bool IsDeleted { get; set; }
 
 
         [JsonPropertyName("CreatedDate")]

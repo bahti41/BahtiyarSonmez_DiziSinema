@@ -29,43 +29,41 @@
                                 <h3 class="card-title">Ürün Bilgileri</h3>
                             </div>
                             <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label asp-for="GenreName"></label>
-                                                <input asp-for="GenreName" type="text" class="form-control" placeholder="Ürün adını giriniz...">
-                                                <span asp-validation-for="GenreName" class="text-danger"></span>
-                                            </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label asp-for="GenreName"></label>
+                                            <input asp-for="GenreName" type="text" class="form-control" placeholder="Ürün adını giriniz...">
+                                            <span asp-validation-for="GenreName" class="text-danger"></span>
                                         </div>
+                                    </div>
                                   
-                                        <div class="col-sm-4">
-                                            <label>Seçenekler</label>
-                                            <div class="form-group d-flex">
-                                                <div class="icheck-primary">
-                                                    <input asp-for="IsActive" type="checkbox" />
-                                                    <label asp-for="IsActive" for="IsActive"></label>
-                                                </div>
+                                    <div class="col-sm-4">
+                                        <label>Seçenekler</label>
+                                        <div class="form-group d-flex">
+                                            <div class="icheck-primary">
+                                                <input asp-for="IsActive" type="checkbox" />
+                                                <label asp-for="IsActive" for="IsActive"></label>
                                             </div>
                                         </div>
-
-
-                                        <div class="col-sm-9">
-                                            <label asp-for="Description"></label>
-                                            <textarea asp-for="Description"></textarea>
-                                            <span asp-validation-for="Description" class="text-danger"></span>
-                                        </div>
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Kaydet</button>
                                     </div>
+
+
+                                    <div class="col-sm-9">
+                                        <label asp-for="Description"></label>
+                                        <textarea asp-for="Description"></textarea>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Kaydet</button>
+                                </div>
 
                                     
                                     
 
-                                    </div>
                                 </div>
                             </div>
-                        
-                        
+                        </div>
                     </form>
                 </div>
             </div>

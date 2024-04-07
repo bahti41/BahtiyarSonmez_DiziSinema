@@ -233,7 +233,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/Movies/SoftDeleted/{id}");
+                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Movies/SoftDeleted/{id}");
             }
             var movieViewModel = await GetByIdAsync(id);
             return Redirect($"/Admin/Movie/Index/{!movieViewModel.IsDeleted}");
