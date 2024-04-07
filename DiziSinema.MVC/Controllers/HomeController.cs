@@ -10,5 +10,6 @@ namespace DiziSinema.MVC.Controllers
         {
             return View();
         }
+
     }
 }
