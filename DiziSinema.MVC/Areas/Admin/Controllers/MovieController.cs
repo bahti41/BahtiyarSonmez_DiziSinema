@@ -203,7 +203,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Deleted(int id)
         {
-            MovieViewModel movieViewModel = await GetMovieAsync(id);
+            MovieViewModel movieViewModel = await GetByIdAsync(id);
             DeletedMovieViewModel model = new DeletedMovieViewModel
             {
                 Id = movieViewModel.Id,

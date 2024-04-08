@@ -1,8 +1,9 @@
-﻿@model List<MovieViewModel>
+﻿
+
 <main id="main">
 
     <!-- Hero Section - Home Page -->
-    <section id="hero" class="hero">
+    <section id="hero" class="hero" style="height: 20%;">
 
 
         <div class="container">
@@ -38,48 +39,15 @@
 
                 <ul class="portfolio-filters isotope-filters"  >
                     <li data-filter="*" class="filter-active">Tümü</li>
-                    <li data-filter=".filter-app">Dizi</li>
-                    <li data-filter=".filter-product">Film</li>
+                    <li data-filter=".filter-app">Filmler</li>
+                    <li data-filter=".filter-product">Diziler</li>
+
                 </ul><!-- End Portfolio Filters -->
-
                 <div class="row gy-4 isotope-container"  >
-
-                    @foreach (var m in Model)
-                    {
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <img src="~/templet/assets/img/masonry-portfolio/film1.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 1</h4>
-                                <p>Lorem ipsum, dolor sit</p>
-                                <a href="~/templet/assets/img/masonry-portfolio/film1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-
-                        <!-- End Portfolio Item -->
-                    }
-                   
+                    @await Component.InvokeAsync("MovieMain")
 
 
-                    
-@*                     @foreach (var s in Model)
-                    {
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                            <img src="~/templet/assets/img/masonry-portfolio/film2.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Product 1</h4>
-                                <p>Lorem ipsum, dolor sit</p>
-                                <a href="~/templet/assets/img/masonry-portfolio/film2.jpg" title="Product 1" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-
-                        <!-- End Portfolio Item -->
-                    } *@
-                    @* sadece movieler cekilecek *@
-                   
-
-
+                    @await Component.InvokeAsync("SerialTvMain")
                 </div><!-- End Portfolio Container -->
 
             </div>
