@@ -1,28 +1,28 @@
 ﻿using DiziSinema.MVC.Areas.Admin.Models.Genre;
 using System.Text.Json.Serialization;
 
-namespace DiziSinema.MVC.Models
+namespace DiziSinema.MVC.Models.SerialTvViewModels
 {
-    public class MovieMainViewModel
+    public class SerialTvMainViewModel
     {
         [JsonPropertyName("Id")]
         public int Id { get; set; }
 
 
-        [JsonPropertyName("MovName")]
-        public string MovName { get; set; }
+        [JsonPropertyName("SerName")]
+        public string SerName { get; set; }
 
 
-        [JsonPropertyName("MovIntro")]
-        public string MovIntro { get; set; }
+        [JsonPropertyName("SerIntro")]
+        public string SerIntro { get; set; }
 
 
         [JsonPropertyName("ImageUrl")]
         public string ImageUrl { get; set; }
 
 
-        [JsonPropertyName("Movlanguage")]
-        public string Movlanguage { get; set; }
+        [JsonPropertyName("Serlanguage")]
+        public string Serlanguage { get; set; }
 
 
         [JsonPropertyName("Url")]

@@ -2,7 +2,7 @@
 using DiziSinema.MVC.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-using DiziSinema.MVC.Models;
+using DiziSinema.MVC.Models.MovieViewModels;
 
 namespace DiziSinema.MVC.Controllers
 {

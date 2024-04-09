@@ -1,6 +1,9 @@
 ﻿using DiziSinema.Data.Concrete.Configs;
+using DiziSinema.Data.Extensions;
 using DiziSinema.Entity.Concrete.Entitys;
+using DiziSinema.Entity.Concrete.Identity;
 using DiziSinema.Entity.Concrete.JunctionClasses;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DiziSinema.Data.Concrete.Context
 {
-    public class DiziSinemaDbContext:DbContext
+    public class DiziSinemaDbContext:IdentityDbContext<User, Role, string>
     {
         public DiziSinemaDbContext(DbContextOptions options):base(options)
         {
@@ -23,6 +26,7 @@ namespace DiziSinema.Data.Concrete.Context
         public DbSet<SerialTvGenre> SerialTvGenres { get; set;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.SeedData();
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(GenreConfig).Assembly);
             base.OnModelCreating(modelBuilder);
         }

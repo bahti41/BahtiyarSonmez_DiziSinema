@@ -8,6 +8,7 @@ using DiziSinema.Shared.Helpers.Abstract;
 using DiziSinema.Shared.Helpers.Concrete;
 using DiziSinema.Entity.Concrete.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,45 +20,26 @@ builder.Services.AddDbContext<DiziSinemaDbContext>(option => option.UseSqlite(bu
 
 
 builder.Services.AddIdentity<User, Role>()
-    .AddEntityFrameworkStores<DiziSinemaDbContext>()
-    .AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<DiziSinemaDbContext>();
 
-builder.Services.Configure<IdentityOptions>(option =>
+builder.Services.Configure<IdentityOptions>(options =>
 {
-    #region Parola Ýþlemleri
-    option.Password.RequiredLength = 6;
-    option.Password.RequireDigit = true;
-    option.Password.RequireNonAlphanumeric = true;
-    option.Password.RequireUppercase = true;
-    option.Password.RequireLowercase = true;
+    #region Parola Ayarlarý
+    options.Password.RequiredLength = 6; 
+    options.Password.RequireDigit = true; 
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true; 
+    options.Password.RequireLowercase = true; 
     #endregion
 
-    #region Hesap Kitleme
-    option.Lockout.MaxFailedAccessAttempts = 3;
-    option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(15);
+    #region Hesap Kilitleme Ayarlarý
+    options.Lockout.MaxFailedAccessAttempts = 3;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(15);
     #endregion
 
-    option.User.RequireUniqueEmail = true;
+    options.User.RequireUniqueEmail = true;
+    options.SignIn.RequireConfirmedEmail = false;
 });
-
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.LoginPath = "/Account/Login";
-    options.LogoutPath = "/";
-    options.AccessDeniedPath = "/Account/AccessDenied";
-    options.ExpireTimeSpan = TimeSpan.FromDays(20);
-    options.SlidingExpiration = true;
-    options.Cookie = new CookieBuilder
-    {
-        Name = "DiziSinema.Security.Cookie",
-        HttpOnly = true,
-        SameSite = SameSiteMode.Strict
-    };
-});
-
-
-
-
 
 
 
@@ -87,10 +69,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

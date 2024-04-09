@@ -104,24 +104,25 @@ namespace DiziSinema.Data.Extensions
                 new IdentityUserRole<string>
                 {
                     UserId=users[0].Id,
-                    RoleId=users[0].Id,
+                    RoleId=roles[0].Id,
                 },
                 new IdentityUserRole<string>
                 {
                     UserId=users[1].Id,
-                    RoleId=users[1].Id,
+                    RoleId=roles[1].Id,
                 },
                 new IdentityUserRole<string>
                 {
                     UserId=users[2].Id,
-                    RoleId=users[2].Id,
+                    RoleId=roles[2].Id,
                 },
                 new IdentityUserRole<string>
                 {
                     UserId=users[3].Id,
-                    RoleId=users[2].Id,
+                    RoleId=roles[2].Id,
                 }
             };
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(userRoles);
             #endregion
         }
     }

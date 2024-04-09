@@ -1,20 +1,28 @@
 ﻿using DiziSinema.MVC.Areas.Admin.Models.Genre;
 using System.Text.Json.Serialization;
 
-namespace DiziSinema.MVC.Models
+namespace DiziSinema.MVC.Models.MovieViewModels
 {
-    public class GenreMainViewModel
+    public class MovieMainViewModel
     {
         [JsonPropertyName("Id")]
         public int Id { get; set; }
 
 
-        [JsonPropertyName("GenreName")]
-        public string GenreName { get; set; }
+        [JsonPropertyName("MovName")]
+        public string MovName { get; set; }
 
 
-        [JsonPropertyName("Description")]
-        public string Description { get; set; }
+        [JsonPropertyName("MovIntro")]
+        public string MovIntro { get; set; }
+
+
+        [JsonPropertyName("ImageUrl")]
+        public string ImageUrl { get; set; }
+
+
+        [JsonPropertyName("Movlanguage")]
+        public string Movlanguage { get; set; }
 
 
         [JsonPropertyName("Url")]
@@ -23,6 +31,7 @@ namespace DiziSinema.MVC.Models
 
         [JsonPropertyName("IsActive")]
         public bool IsActive { get; set; }
+
 
         [JsonPropertyName("IsDeleted")]
         public bool IsDeleted { get; set; }
@@ -34,5 +43,9 @@ namespace DiziSinema.MVC.Models
 
         [JsonPropertyName("ModifiedDate")]
         public DateTime ModifiedDate { get; set; }
+
+
+        [JsonPropertyName("GenreList")]
+        public List<GenreViewModel> Genres { get; set; }
     }
 }
