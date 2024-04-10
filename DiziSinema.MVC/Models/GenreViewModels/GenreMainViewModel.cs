@@ -1,4 +1,7 @@
 ﻿using DiziSinema.MVC.Areas.Admin.Models.Genre;
+using DiziSinema.MVC.Models.MovieViewModels;
+using DiziSinema.MVC.Models.SerialTvViewModels;
+using DiziSinema.MVC.ViewComponents;
 using System.Text.Json.Serialization;
 
 namespace DiziSinema.MVC.Models.GenreViewModels
@@ -34,5 +37,13 @@ namespace DiziSinema.MVC.Models.GenreViewModels
 
         [JsonPropertyName("ModifiedDate")]
         public DateTime ModifiedDate { get; set; }
+
+
+        [JsonPropertyName("SerialTvList")]
+        public List<SerialTvMainViewModel> SerialTvList { get; set; }
+
+
+        [JsonPropertyName("MovieList")]
+        public List<MovieMainViewModel> MovieList { get; set; }
     }
 }

@@ -1,0 +1,12 @@
+﻿@model List<GenreViewModel>
+
+<!-- Portfolio Item-->
+@foreach (var g in Model)
+{
+    <a asp-area="" asp-controller="Movie" asp-action="Index" asp-route-id="@g.Id">@g.GenreName</a>
+@*     <ul class="dd-box-shadow">
+        <li></li>
+    </ul> *@
+
+    <!-- End Portfolio Item -->
+}

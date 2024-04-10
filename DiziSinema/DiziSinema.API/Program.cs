@@ -25,11 +25,11 @@ builder.Services.AddIdentity<User, Role>()
 builder.Services.Configure<IdentityOptions>(options =>
 {
     #region Parola Ayarlarý
-    options.Password.RequiredLength = 6; 
-    options.Password.RequireDigit = true; 
+    options.Password.RequiredLength = 6;
+    options.Password.RequireDigit = true;
     options.Password.RequireNonAlphanumeric = true;
-    options.Password.RequireUppercase = true; 
-    options.Password.RequireLowercase = true; 
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
     #endregion
 
     #region Hesap Kilitleme Ayarlarý
@@ -39,6 +39,21 @@ builder.Services.Configure<IdentityOptions>(options =>
 
     options.User.RequireUniqueEmail = true;
     options.SignIn.RequireConfirmedEmail = false;
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login";
+    options.LogoutPath = "/";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.ExpireTimeSpan = TimeSpan.FromSeconds(45);
+    options.SlidingExpiration = true;
+    options.Cookie = new CookieBuilder
+    {
+        Name = "MiniShop.Security.Cookie",
+        HttpOnly = true,
+        SameSite = SameSiteMode.Strict
+    };
 });
 
 

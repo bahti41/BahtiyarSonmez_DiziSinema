@@ -14,12 +14,7 @@
             <a><span>Seçiniz</span> <i class="bi bi-chevron-down"></i></a>
             <ul class="dd-box-shadow">
                 <li class="dropdown has-dropdown">
-                    <a><span>Türler</span> <i class="bi bi-chevron-down"></i></a>
-                        <ul class="dd-box-shadow">
-                            <li><a asp-area="" asp-controller="" asp-action="">korku</a></li>
-                            <li><a asp-area="" asp-controller="" asp-action="">korku</a></li>
-                            <li><a asp-area="" asp-controller="" asp-action="">korku</a></li>
-                        </ul>
+                    @await Component.InvokeAsync("GenreMain")
                 </li>
                 <li><a asp-area="" asp-controller="" asp-action="">Filmler</a></li>
                 <li><a asp-area="" asp-controller="" asp-action="">Diziler</a></li>

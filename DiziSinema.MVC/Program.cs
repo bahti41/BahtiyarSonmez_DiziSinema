@@ -5,28 +5,6 @@ builder.Services.AddControllersWithViews();
 
 
 
-
-
-
-
-
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.LoginPath = "/Account/Login";
-    options.LogoutPath = "/";
-    options.AccessDeniedPath = "/Account/AccessDenied";
-    options.ExpireTimeSpan = TimeSpan.FromSeconds(45);
-    options.SlidingExpiration = true;
-    options.Cookie = new CookieBuilder
-    {
-        Name = "MiniShop.Security.Cookie",
-        HttpOnly = true,
-        SameSite = SameSiteMode.Strict
-    };
-});
-
-
-
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
