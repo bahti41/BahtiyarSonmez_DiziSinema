@@ -144,6 +144,15 @@ namespace DiziSinema.Business.Concrete
             return Response<int>.Success(count, 200);
         }
 
-
+        public async Task<Response<List<GenreDTO>>> GetGenres()
+        {
+            var genreList = await _repository.GetGenres();
+            if (genreList.Count == 0)
+            {
+                return Response<List<GenreDTO>>.Fail($"Hiç kategori bulunamadı",404);
+            }
+            var genreDtoList = _mapper.Map<List<GenreDTO>>(genreList);
+            return Response<List<GenreDTO>>.Success(genreDtoList,200);
+        }
     }
 }

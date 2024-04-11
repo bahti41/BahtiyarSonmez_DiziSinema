@@ -98,5 +98,14 @@ namespace DiziSinema.API.Controllers
             var jsonResponse = JsonSerializer.Serialize(response);
             return Ok(jsonResponse);
         }
+
+
+        [HttpGet("GetGenres")]
+        public async Task<IActionResult> GetGenres()
+        {
+            var response = await _genreManager.GetGenres();
+            var jsonResponse = JsonSerializer.Serialize(response);
+            return Ok(jsonResponse);
+        }
     }
 }

@@ -3,7 +3,10 @@
 <!-- Portfolio Item-->
 @foreach (var g in Model)
 {
-    <a asp-area="" asp-controller="Movie" asp-action="Index" asp-route-id="@g.Id">@g.GenreName</a>
+    <li>
+        <a asp-area="" asp-controller="Movie" asp-action="Genre" asp-route-id="@g.Id">@g.GenreName</a>
+    </li>
+    
 @*     <ul class="dd-box-shadow">
         <li></li>
     </ul> *@

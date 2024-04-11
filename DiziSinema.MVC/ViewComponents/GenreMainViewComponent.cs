@@ -14,7 +14,7 @@ namespace DiziSinema.MVC.ViewComponents
             Response<List<GenreViewModel>> response = new Response<List<GenreViewModel>>();
             using (HttpClient httpClient = new HttpClient())
             {
-                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Genres");
+                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Genres/GetGenres");
                 string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
                 response = JsonSerializer.Deserialize<Response<List<GenreViewModel>>>(contentResponseApi);
             }

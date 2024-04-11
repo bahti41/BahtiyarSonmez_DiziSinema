@@ -9,6 +9,6 @@ namespace DiziSinema.Data.Abstract
 {
     public interface IGenreRepository: IGenericRepository<Genre>
     {
-
+        Task<List<Genre>> GetGenres();
     }
 }
