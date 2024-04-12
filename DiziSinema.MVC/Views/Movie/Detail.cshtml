@@ -1,4 +1,4 @@
-﻿@model MovieDetailViewModel
+﻿@model EditMovieViewModel
 
 
 <main id="main">
@@ -31,6 +31,7 @@
             <div class="row g-5">
 
                 <div class="col-lg-8">
+
                     <article class="article">
 
                         <div class="post-img">
@@ -41,7 +42,15 @@
 
                         <div class="meta-top">
                             <ul>
-                                <li class="d-flex align-items-center">@ViewBag.MovieList<a href="blog-details.html"></a></li>
+                                @foreach (var g in Model.GenreList)
+                                {
+                                    <li name="genreIds" value="@g.Id" class="d-flex align-items-center"><a @(Model.GenreIds.Any(genId => genId == g.Id) ? "GenreName" : "hidden") 
+                                        asp-area=""
+                                        asp-controller=""
+                                        asp-action=""
+                                       >@g.GenreName</a></li>
+                                }
+                               
                                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
                                 <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">@Model.Movlanguage</a></li>
                             </ul>

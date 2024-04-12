@@ -1,9 +1,9 @@
-﻿@model List<MovieMainViewModel>
-<section class="container">
-    <div class="section-title">
-        <h4>@ViewBag.Genre</h4>
-    </div>
+﻿@model 
 
+<section class="container">
+    <div class="genre">
+
+    <h3>Türler</h3>
     <!-- Portfolio Item-->
     @foreach (var m in Model)
     {
@@ -13,11 +13,10 @@
                 <h4>@m.MovName</h4>
                 <p>@m.MovIntro</p>
                 <a href="http://localhost:4100/images/Movies/@m.ImageUrl" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a asp-area="" asp-controller="Movie" asp-action="Index" asp-route-id="@m.Id" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                <a asp-area="" asp-controller="Movie" asp-action="Detail" asp-route-id="@m.Id" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
             </div>
         </div>
-
-        <!-- End Portfolio Item -->
     }
+
+    </div>
 </section>
-    

@@ -1,7 +1,6 @@
-﻿@model List<MovieMainViewModel>
+﻿@model List<MovieViewModel>
 
     <div class="container py-5">
-        <h1>Filmleri Listesi</h1>
     </div>
 <!-- Portfolio Item-->
 @foreach (var m in Model)
@@ -13,7 +12,7 @@
                 <h4>@m.MovName</h4>
                 <p>@m.MovIntro</p>
                 <a href="http://localhost:4100/images/Movies/@m.ImageUrl"><i class="bi bi-zoom-in"></i></a>
-                <a asp-area="" asp-controller="Movie" asp-action="Detail" asp-route-id="@m.Id" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                <a asp-area="" asp-controller="Movie" asp-action="Detail" asp-route-id="@m.Id" class="details-link"><i typeof="button" class="btn btn-primary">Detay</i></a>
             </div>
         </div>
         

@@ -11,61 +11,93 @@ namespace DiziSinema.MVC.Controllers
 {
     public class MovieController : Controller
     {
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-            Response<List<MovieMainViewModel>> response = new Response<List<MovieMainViewModel>>();
+            Response<List<MovieViewModel>> response = new Response<List<MovieViewModel>>();
             using (HttpClient httpClient = new HttpClient())
             {
-                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Movies");
+                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Movies/GetAllNonDeleted");
                 string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
-                response = JsonSerializer.Deserialize<Response<List<MovieMainViewModel>>>(contentResponseApi);
+                response = JsonSerializer.Deserialize<Response<List<MovieViewModel>>>(contentResponseApi);
             }
             return View(response.Data);
         }
 
+
         [NonAction]
-        public async Task<GenreViewModel> GetGenresIdAsync(int id)
+        public async Task<MovieViewModel> GetAllMovie()
         {
-            Response<GenreViewModel> response = new Response<GenreViewModel>();
+            Response<MovieViewModel> response = new Response<MovieViewModel>();
             using (HttpClient httpClient = new HttpClient())
             {
-                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Genres/{id}");
+                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Movies/GetAllNonDeleted");
                 string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
-                response = JsonSerializer.Deserialize<Response<GenreViewModel>>(contentResponseApi);
+                response = JsonSerializer.Deserialize<Response<MovieViewModel>>(contentResponseApi);
                 return response.Data;
             }
         }
 
+
         [NonAction]
-        public async Task<MovieDetailViewModel> GetGenresAsync(int id)
+        public async Task<MovieViewModel> DetailMovieAsync(int id)
         {
-            Response<MovieDetailViewModel> response = new Response<MovieDetailViewModel>();
+            Response<MovieViewModel> response = new Response<MovieViewModel>();
             using (HttpClient httpClient = new HttpClient())
             {
                 HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Movies/GetWithGenres/{id}");
                 string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
-                response = JsonSerializer.Deserialize<Response<MovieDetailViewModel>>(contentResponseApi);
+                response = JsonSerializer.Deserialize<Response<MovieViewModel>>(contentResponseApi);
                 return response.Data;
             }
         }
 
-        public async Task<IActionResult> Detail(int? id= null)
+
+        [NonAction]
+        public async Task<List<GenreViewModel>> GetGenresAsync()
         {
-            Response<MovieDetailViewModel> response = new Response<MovieDetailViewModel>();
+            Response<List<GenreViewModel>> response = new Response<List<GenreViewModel>>();
             using (HttpClient httpClient = new HttpClient())
             {
-                await GetGenresAsync(Convert.ToInt32(id));
-                var genre = id != null ? await GetGenresIdAsync(Convert.ToInt32(id)): null;
-                ViewBag.MovieList = genre. !=null ? response.Data. : null;
+                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Genres");
+                string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
+                response = JsonSerializer.Deserialize<Response<List<GenreViewModel>>>(contentResponseApi);
+                return response.Data;
             }
-            return View(response.Data);
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> Detail(int id)
+        {
+            MovieViewModel movieViewModel = await DetailMovieAsync(id);
+            EditMovieViewModel model = new EditMovieViewModel
+            {
+                Id = movieViewModel.Id,
+                MovName = movieViewModel.MovName,
+                Movlanguage = movieViewModel.Movlanguage,
+                ImageUrl = movieViewModel.ImageUrl,
+                IsActive = movieViewModel.IsActive,
+                MovIntro = movieViewModel.MovIntro,
+                Url = movieViewModel.Url,
+                GenreIds = movieViewModel.Genres.Select(m => m.Id).ToList(),
+                GenreList = await GetGenresAsync()
+            };
+            return View(model);
+        }
 
 
-
-
-
+        [HttpGet]
+        public async Task<IActionResult> Genre(int id)
+        {
+            Response<GenreViewModel> response = new Response<GenreViewModel>();
+            using (HttpClient httpClient = new HttpClient())
+            {
+                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Movies/GetWithGenres{id}");
+                string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
+                response = JsonSerializer.Deserialize<Response<GenreViewModel>>(contentResponseApi);
+            }
+            return View(response.Data);
+        }
     }
 }
