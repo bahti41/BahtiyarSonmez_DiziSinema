@@ -149,7 +149,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                 IsActive = movieViewModel.IsActive,
                 MovIntro = movieViewModel.MovIntro,
                 Url = movieViewModel.Url,
-                GenreIds = movieViewModel.Genres.Select(m => m.Id).ToList(),
+                GenreIds = movieViewModel.GenreList.Select(m => m.Id).ToList(),
                 GenreList = await GetGenresAsync()
             };
             return View(model);
