@@ -1,17 +1,12 @@
-﻿using DiziSinema.Entity.Concrete.Identity;
+﻿using DiziSinema.MVC.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DiziSinema.Data.Extensions
+namespace DiziSinema.MVC.Extensions
 {
     public static class ModelBuilderExtension
     {
-        public static void SeedData(this ModelBuilder modelBuilder)
+        public static void SeedData(this ModelBuilder modelBuilder) 
         {
             #region Rol bilgileri
             List<Role> roles = new List<Role>
@@ -88,10 +83,10 @@ namespace DiziSinema.Data.Extensions
                 }
             };
             modelBuilder.Entity<User>().HasData(users);
-                #endregion
+            #endregion
 
             #region Şifre İşlemleri
-            var passwordHasher= new PasswordHasher<User>();
+            var passwordHasher = new PasswordHasher<User>();
             users[0].PasswordHash = passwordHasher.HashPassword(users[0], "Qwe123.");
             users[1].PasswordHash = passwordHasher.HashPassword(users[1], "Qwe123.");
             users[2].PasswordHash = passwordHasher.HashPassword(users[2], "Qwe123.");
@@ -127,4 +122,3 @@ namespace DiziSinema.Data.Extensions
         }
     }
 }
-

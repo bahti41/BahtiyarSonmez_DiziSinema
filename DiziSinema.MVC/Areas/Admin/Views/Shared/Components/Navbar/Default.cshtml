@@ -9,8 +9,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        @await Component.InvokeAsync("NavbarMessages")
-        @await Component.InvokeAsync("NavbarNotifications")
+        <li><a asp-area="" asp-controller="Account" asp-action="Register"><i class="fas fa-sign-in-alt"></i></a></li>
         <!-- full Screen-->
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">

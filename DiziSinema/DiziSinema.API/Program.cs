@@ -6,9 +6,6 @@ using DiziSinema.Data.Concrete.Repositories;
 using Microsoft.EntityFrameworkCore;
 using DiziSinema.Shared.Helpers.Abstract;
 using DiziSinema.Shared.Helpers.Concrete;
-using DiziSinema.Entity.Concrete.Identity;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,45 +14,6 @@ builder.Services.AddControllers();
 
 
 builder.Services.AddDbContext<DiziSinemaDbContext>(option => option.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnectiom")));
-
-
-builder.Services.AddIdentity<User, Role>()
-    .AddEntityFrameworkStores<DiziSinemaDbContext>();
-
-builder.Services.Configure<IdentityOptions>(options =>
-{
-    #region Parola Ayarlarý
-    options.Password.RequiredLength = 6;
-    options.Password.RequireDigit = true;
-    options.Password.RequireNonAlphanumeric = true;
-    options.Password.RequireUppercase = true;
-    options.Password.RequireLowercase = true;
-    #endregion
-
-    #region Hesap Kilitleme Ayarlarý
-    options.Lockout.MaxFailedAccessAttempts = 3;
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(15);
-    #endregion
-
-    options.User.RequireUniqueEmail = true;
-    options.SignIn.RequireConfirmedEmail = false;
-});
-
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.LoginPath = "/Account/Login";
-    options.LogoutPath = "/";
-    options.AccessDeniedPath = "/Account/AccessDenied";
-    options.ExpireTimeSpan = TimeSpan.FromSeconds(45);
-    options.SlidingExpiration = true;
-    options.Cookie = new CookieBuilder
-    {
-        Name = "MiniShop.Security.Cookie",
-        HttpOnly = true,
-        SameSite = SameSiteMode.Strict
-    };
-});
-
 
 
 
