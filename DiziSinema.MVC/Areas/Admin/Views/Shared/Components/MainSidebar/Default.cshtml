@@ -158,34 +158,32 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a 
-                                asp-area=""
-                               asp-controller=""
-                               asp-action=""
+                                asp-area="Admin"
+                               asp-controller="UserRoles"
+                               asp-action="Index"
                                 class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Kullanıcılar</p>
+                                <p>Kullanıcılar/Rol Atama</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a 
-                                asp-area=""
-                               asp-controller=""
-                               asp-action=""
-                                class="nav-link">
+                            <a asp-area="Admin"
+                               asp-controller="UserRoles"
+                               asp-action="Roles"
+                               class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Rol Atama</p>
+                                <p>Roller</p>
                             </a>
                         </li>
-                       
                     </ul>
                 </li>
                 <!--exit Barı-->
                 <li class="nav-item">
-                    <a class="nav-link">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
                         <i class="fas fa-door-open"></i>
                         <p>
                             Cıkış
-                            <span class="right badge badge-danger">Web Sayfasına Dön</span>
+                            <span class="right badge badge-danger">Web Sayfaya Dön</span>
                         </p>
                     </a>
                 </li>

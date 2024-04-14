@@ -21,7 +21,29 @@
             </ul>
         </li>
         <li><a asp-area="" asp-controller="Contact" asp-action="Index">İletişim</a></li>
-        <li><a asp-area="" asp-controller="Account" asp-action="Login">Giriş Yap</a></li>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <li><a asp-area="" 
+                asp-controller="Account" 
+                asp-action="Login">Giriş Yap</a>
+            </li>
+        }
+        else
+        {
+            if(User.IsInRole("SuperAdmin")|| User.IsInRole("Admin"))
+            {
+                <li>
+                    <a asp-area="Admin"
+                       asp-controller="Home"
+                       asp-action="Index">Admin Paneli</a>
+                </li>
+            }
+            <li>
+                <a asp-area=""
+                   asp-controller="Account"
+                   asp-action="Logout">Çıkış Yap</a>
+            </li>
+        }
     </ul>
 
     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

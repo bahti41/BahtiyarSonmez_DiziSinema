@@ -71,15 +71,21 @@ namespace DiziSinema.MVC.Controllers
                 ModelState.AddModelError("", "Şifre Hatalı");
                 return View(loginViewModel);
             }
-            return RedirectToAction("Index", "Home");
+            return Redirect("~/Admin/Home/Index");
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> Logut()
+        public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return Redirect("~/");
+        }
+
+
+        public async Task<IActionResult> AccessDenied()
+        {
+            return View();
         }
     }
 }

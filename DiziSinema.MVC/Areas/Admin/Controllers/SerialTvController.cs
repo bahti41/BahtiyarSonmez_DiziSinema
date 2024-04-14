@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Text;
 using DiziSinema.MVC.Areas.Admin.Models.SerialTv;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DiziSinema.MVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "SuperAdmin, Admin")]
     [Area("Admin")]
     public class SerialTvController : Controller
     {

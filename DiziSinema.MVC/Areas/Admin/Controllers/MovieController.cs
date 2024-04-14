@@ -6,10 +6,12 @@ using System.Text;
 using DiziSinema.MVC.Areas.Admin.Models.Genre;
 using DiziSinema.MVC.Helpers;
 using DiziSinema.MVC.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace DiziSinema.MVC.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "SuperAdmin, Admin")]
     [Area("Admin")]
     public class MovieController : Controller
     {
