@@ -34,6 +34,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "dizi-1",
                     ImageUrl = "d1.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 },
                 new SerialTv
                 {
@@ -44,6 +45,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "dizi-2",
                     ImageUrl = "d2.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 },
                 new SerialTv
                 {
@@ -54,6 +56,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "dizi-3",
                     ImageUrl = "d3.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 },
                 new SerialTv
                 {
@@ -64,6 +67,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "dizi-4",
                     ImageUrl = "d4.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 },
                 new SerialTv
                 {
@@ -74,6 +78,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "dizi-5",
                     ImageUrl = "d5.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 },
                 new SerialTv
                 {
@@ -84,6 +89,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "dizi-6",
                     ImageUrl = "d6.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 }
             );
         }

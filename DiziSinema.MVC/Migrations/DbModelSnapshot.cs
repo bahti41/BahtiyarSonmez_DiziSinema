@@ -48,24 +48,17 @@ namespace DiziSinema.MVC.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9c5fef93-57f9-4cbc-b4cc-c614e4f5c715",
+                            Id = "ad8b0ac8-272d-4260-b1bd-2b5875b9db23",
                             Description = "Süper Yönetici haklarını taşıyan rol",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
-                            Id = "93e80a57-b370-458d-819d-24f1dfc2d234",
+                            Id = "ade4c864-3f3b-4814-9a18-4505d3e60825",
                             Description = "Yönetici haklarını taşıyan rol",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "7f348f76-6992-4e93-898f-496fef9a18e6",
-                            Description = "Müşteri haklarını taşıyan rol",
-                            Name = "Customer",
-                            NormalizedName = "CUSTOMER"
                         });
                 });
 
@@ -153,11 +146,11 @@ namespace DiziSinema.MVC.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "97659c42-b29f-439b-9be2-a9458232facd",
+                            Id = "99c4f7f7-e064-46c1-a639-1cfa346b6491",
                             AccessFailedCount = 0,
                             Address = "Kocaeli/Karamürsel/Kırık Merdiven",
                             City = "Kocaeli",
-                            ConcurrencyStamp = "c670925b-4d50-405b-8435-c06af349f788",
+                            ConcurrencyStamp = "2c043171-0701-497c-87ed-6cd39b61eeca",
                             DateOfBirth = new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "talutsonmez@gmail.com",
                             EmailConfirmed = true,
@@ -167,20 +160,20 @@ namespace DiziSinema.MVC.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TALUTSONMEZ@GMAIL.COM",
                             NormalizedUserName = "TALUTSONMEZ",
-                            PasswordHash = "AQAAAAIAAYagAAAAELXrN8lQcOSUwPea/RoS7I/Kgsamt8S/JCDMXMky/FsF5+ihHgTjwWV0NTn1vTgTSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENSqNQs8Nngv3yzLvPo5St4nKVuO+UxCmpo+sKYvXe09oHKLbboWS01ZzIFYPoOU5A==",
                             PhoneNumber = "5558779955",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aab7152a-924c-49d0-9eed-2dbb62003616",
+                            SecurityStamp = "7022ec65-b221-4224-8bb1-5be1deca468a",
                             TwoFactorEnabled = false,
                             UserName = "talutsonmez"
                         },
                         new
                         {
-                            Id = "c7e4af16-55f5-4057-be05-e7deea18d852",
+                            Id = "37417331-5c8b-43d2-bea2-7b2f8b8c68a3",
                             AccessFailedCount = 0,
                             Address = "Kocaeli/Karamürsel/Kırık Merdiven",
                             City = "Kocaeli",
-                            ConcurrencyStamp = "d597eb95-335d-4eb7-8043-5de489683a9c",
+                            ConcurrencyStamp = "35d36324-e63f-4c81-997a-d49bd073f858",
                             DateOfBirth = new DateTime(1990, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "bahtiyarsonmez@gmail.com",
                             EmailConfirmed = true,
@@ -190,20 +183,20 @@ namespace DiziSinema.MVC.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BAHTIYARSONMEZ@GMAIL.COM",
                             NormalizedUserName = "BAHTIYARSONMEZ",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMFWCyK3uTuVpsXw6w0YsTbEhys/By81osvlFl3pWYFmkJpa+u1GKrlgWw/ESxnq/A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELWIJelfH+QtMAgf7GYHTGbFv52FtsBLhiV9+IcbuHFUTlBLFMD4v+yF/64UPLJhJA==",
                             PhoneNumber = "5558779966",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5cb14827-3e15-4704-a60d-7b9980bc6565",
+                            SecurityStamp = "bad51558-0bf4-40ce-b5b5-949b6442de8e",
                             TwoFactorEnabled = false,
                             UserName = "bahtiyarsonmez"
                         },
                         new
                         {
-                            Id = "dbebfd8a-130a-4857-aa5e-778e643d9fec",
+                            Id = "386e5b9c-ac9c-495a-89ab-5b504e110e1d",
                             AccessFailedCount = 0,
                             Address = "Kocaeli/Karamürsel/Kırık Merdiven",
                             City = "Kocaeli",
-                            ConcurrencyStamp = "95e2eb4e-514c-49b1-ac63-8123fa29dafb",
+                            ConcurrencyStamp = "7882cb71-fb0e-4917-b28a-632dc5f48747",
                             DateOfBirth = new DateTime(1990, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "emrullahkaraca@gmail.com",
                             EmailConfirmed = true,
@@ -213,20 +206,20 @@ namespace DiziSinema.MVC.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EMRULLAHKARACA@GMAIL.COM",
                             NormalizedUserName = "EMRULLAHKARACA",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDmZZXxq47M+ve9RsEZMLUMXjypuSxL0oCLNGe3Izt62dwg/j+3olvogly5jw9fKsA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKuDJTESZN+nSfwIgaGskKRBwymKeXoWc/kGhyzlXxrQs9E47PLrnwx/LKSrGA9p/w==",
                             PhoneNumber = "5558779911",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e08a898f-3970-40f6-8d56-50a6e0c065a6",
+                            SecurityStamp = "2a202a87-54ef-4f42-9911-2a713b67fb86",
                             TwoFactorEnabled = false,
                             UserName = "emrullahkaraca"
                         },
                         new
                         {
-                            Id = "da1d12ea-99dd-477a-9775-204bb989529b",
+                            Id = "0785c1a0-619b-4904-98a2-06e6d8e651c2",
                             AccessFailedCount = 0,
                             Address = "Kocaeli/Karamürsel/Kırık Merdiven",
                             City = "Kocaeli",
-                            ConcurrencyStamp = "7d23ddb5-0871-460b-8362-839008139040",
+                            ConcurrencyStamp = "072674e3-ad24-481b-a449-4d2979ef4fa1",
                             DateOfBirth = new DateTime(1990, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "numandemirhan@gmail.com",
                             EmailConfirmed = true,
@@ -236,10 +229,10 @@ namespace DiziSinema.MVC.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "NUMANDEMIRHAN@GMAIL.COM",
                             NormalizedUserName = "NUMANDEMIRHAN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFn5sNSZrV6Yhlq7AGn0Q9siy3YatcAZDVwUUd1FjpsWWbzpkAmouO/J3Yix2XCwew==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJP8M0GbHf8e+XnUfBCSQ7jGE7R9WIWg8UmSqSegl6DD9+pP/EW2vMc+BvEb6oNCNg==",
                             PhoneNumber = "5558779911",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e82cc6aa-f4c8-4573-a90b-c1b86b157a22",
+                            SecurityStamp = "46cf9c0c-1279-4259-9f79-1b6753e85160",
                             TwoFactorEnabled = false,
                             UserName = "numandemirhan"
                         });
@@ -330,23 +323,23 @@ namespace DiziSinema.MVC.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "97659c42-b29f-439b-9be2-a9458232facd",
-                            RoleId = "9c5fef93-57f9-4cbc-b4cc-c614e4f5c715"
+                            UserId = "99c4f7f7-e064-46c1-a639-1cfa346b6491",
+                            RoleId = "ad8b0ac8-272d-4260-b1bd-2b5875b9db23"
                         },
                         new
                         {
-                            UserId = "c7e4af16-55f5-4057-be05-e7deea18d852",
-                            RoleId = "93e80a57-b370-458d-819d-24f1dfc2d234"
+                            UserId = "37417331-5c8b-43d2-bea2-7b2f8b8c68a3",
+                            RoleId = "ad8b0ac8-272d-4260-b1bd-2b5875b9db23"
                         },
                         new
                         {
-                            UserId = "dbebfd8a-130a-4857-aa5e-778e643d9fec",
-                            RoleId = "7f348f76-6992-4e93-898f-496fef9a18e6"
+                            UserId = "386e5b9c-ac9c-495a-89ab-5b504e110e1d",
+                            RoleId = "ade4c864-3f3b-4814-9a18-4505d3e60825"
                         },
                         new
                         {
-                            UserId = "da1d12ea-99dd-477a-9775-204bb989529b",
-                            RoleId = "7f348f76-6992-4e93-898f-496fef9a18e6"
+                            UserId = "0785c1a0-619b-4904-98a2-06e6d8e651c2",
+                            RoleId = "ade4c864-3f3b-4814-9a18-4505d3e60825"
                         });
                 });
 

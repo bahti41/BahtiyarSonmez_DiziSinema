@@ -13,7 +13,7 @@ namespace DiziSinema.MVC.Areas.Admin.Models.Genre
 
 
         [JsonPropertyName("Description")]
-        [DisplayName("Tür")]
+        [DisplayName("Acıklama")]
         [Required(ErrorMessage = "{0} alanı boş bırakılamaz.")]
         public string Description { get; set; }
 

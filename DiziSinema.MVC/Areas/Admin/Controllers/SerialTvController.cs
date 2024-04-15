@@ -153,7 +153,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
                 IsActive = SerialTvViewModel.IsActive,
                 SerIntro = SerialTvViewModel.SerIntro,
                 Url = SerialTvViewModel.Url,
-                GenreIds = SerialTvViewModel.Genres.Select(m => m.Id).ToList(),
+                GenreIds = SerialTvViewModel.GenreList.Select(s => s.Id).ToList(),
                 GenreList = await GetGenresAsync()
             };
             return View(model);
@@ -214,7 +214,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Deleted(int id)
         {
-            SerialTvViewModel serialTvViewModel = await GetSerialTvAsync(id);
+            SerialTvViewModel serialTvViewModel = await GetByIdAsync(id);
             DeletedSerialTvViewModel model = new DeletedSerialTvViewModel
             {
                 Id = serialTvViewModel.Id,

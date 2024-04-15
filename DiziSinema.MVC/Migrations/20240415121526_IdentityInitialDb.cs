@@ -170,9 +170,8 @@ namespace DiziSinema.MVC.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "7f348f76-6992-4e93-898f-496fef9a18e6", null, "Müşteri haklarını taşıyan rol", "Customer", "CUSTOMER" },
-                    { "93e80a57-b370-458d-819d-24f1dfc2d234", null, "Yönetici haklarını taşıyan rol", "Admin", "ADMIN" },
-                    { "9c5fef93-57f9-4cbc-b4cc-c614e4f5c715", null, "Süper Yönetici haklarını taşıyan rol", "SuperAdmin", "SUPERADMIN" }
+                    { "ad8b0ac8-272d-4260-b1bd-2b5875b9db23", null, "Süper Yönetici haklarını taşıyan rol", "SuperAdmin", "SUPERADMIN" },
+                    { "ade4c864-3f3b-4814-9a18-4505d3e60825", null, "Yönetici haklarını taşıyan rol", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -180,10 +179,10 @@ namespace DiziSinema.MVC.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "City", "ConcurrencyStamp", "DateOfBirth", "Email", "EmailConfirmed", "FirstName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "97659c42-b29f-439b-9be2-a9458232facd", 0, "Kocaeli/Karamürsel/Kırık Merdiven", "Kocaeli", "c670925b-4d50-405b-8435-c06af349f788", new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "talutsonmez@gmail.com", true, "Talut", "Erkek", "Sönmez", false, null, "TALUTSONMEZ@GMAIL.COM", "TALUTSONMEZ", "AQAAAAIAAYagAAAAELXrN8lQcOSUwPea/RoS7I/Kgsamt8S/JCDMXMky/FsF5+ihHgTjwWV0NTn1vTgTSw==", "5558779955", false, "aab7152a-924c-49d0-9eed-2dbb62003616", false, "talutsonmez" },
-                    { "c7e4af16-55f5-4057-be05-e7deea18d852", 0, "Kocaeli/Karamürsel/Kırık Merdiven", "Kocaeli", "d597eb95-335d-4eb7-8043-5de489683a9c", new DateTime(1990, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "bahtiyarsonmez@gmail.com", true, "Bahtiyar", "Erkek", "Sönmez", false, null, "BAHTIYARSONMEZ@GMAIL.COM", "BAHTIYARSONMEZ", "AQAAAAIAAYagAAAAEMFWCyK3uTuVpsXw6w0YsTbEhys/By81osvlFl3pWYFmkJpa+u1GKrlgWw/ESxnq/A==", "5558779966", false, "5cb14827-3e15-4704-a60d-7b9980bc6565", false, "bahtiyarsonmez" },
-                    { "da1d12ea-99dd-477a-9775-204bb989529b", 0, "Kocaeli/Karamürsel/Kırık Merdiven", "Kocaeli", "7d23ddb5-0871-460b-8362-839008139040", new DateTime(1990, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "numandemirhan@gmail.com", true, "Numan", "Erkek", "Demirhan", false, null, "NUMANDEMIRHAN@GMAIL.COM", "NUMANDEMIRHAN", "AQAAAAIAAYagAAAAEFn5sNSZrV6Yhlq7AGn0Q9siy3YatcAZDVwUUd1FjpsWWbzpkAmouO/J3Yix2XCwew==", "5558779911", false, "e82cc6aa-f4c8-4573-a90b-c1b86b157a22", false, "numandemirhan" },
-                    { "dbebfd8a-130a-4857-aa5e-778e643d9fec", 0, "Kocaeli/Karamürsel/Kırık Merdiven", "Kocaeli", "95e2eb4e-514c-49b1-ac63-8123fa29dafb", new DateTime(1990, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "emrullahkaraca@gmail.com", true, "Emrullah", "Erkek", "Karaca", false, null, "EMRULLAHKARACA@GMAIL.COM", "EMRULLAHKARACA", "AQAAAAIAAYagAAAAEDmZZXxq47M+ve9RsEZMLUMXjypuSxL0oCLNGe3Izt62dwg/j+3olvogly5jw9fKsA==", "5558779911", false, "e08a898f-3970-40f6-8d56-50a6e0c065a6", false, "emrullahkaraca" }
+                    { "0785c1a0-619b-4904-98a2-06e6d8e651c2", 0, "Kocaeli/Karamürsel/Kırık Merdiven", "Kocaeli", "072674e3-ad24-481b-a449-4d2979ef4fa1", new DateTime(1990, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "numandemirhan@gmail.com", true, "Numan", "Erkek", "Demirhan", false, null, "NUMANDEMIRHAN@GMAIL.COM", "NUMANDEMIRHAN", "AQAAAAIAAYagAAAAEJP8M0GbHf8e+XnUfBCSQ7jGE7R9WIWg8UmSqSegl6DD9+pP/EW2vMc+BvEb6oNCNg==", "5558779911", false, "46cf9c0c-1279-4259-9f79-1b6753e85160", false, "numandemirhan" },
+                    { "37417331-5c8b-43d2-bea2-7b2f8b8c68a3", 0, "Kocaeli/Karamürsel/Kırık Merdiven", "Kocaeli", "35d36324-e63f-4c81-997a-d49bd073f858", new DateTime(1990, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "bahtiyarsonmez@gmail.com", true, "Bahtiyar", "Erkek", "Sönmez", false, null, "BAHTIYARSONMEZ@GMAIL.COM", "BAHTIYARSONMEZ", "AQAAAAIAAYagAAAAELWIJelfH+QtMAgf7GYHTGbFv52FtsBLhiV9+IcbuHFUTlBLFMD4v+yF/64UPLJhJA==", "5558779966", false, "bad51558-0bf4-40ce-b5b5-949b6442de8e", false, "bahtiyarsonmez" },
+                    { "386e5b9c-ac9c-495a-89ab-5b504e110e1d", 0, "Kocaeli/Karamürsel/Kırık Merdiven", "Kocaeli", "7882cb71-fb0e-4917-b28a-632dc5f48747", new DateTime(1990, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "emrullahkaraca@gmail.com", true, "Emrullah", "Erkek", "Karaca", false, null, "EMRULLAHKARACA@GMAIL.COM", "EMRULLAHKARACA", "AQAAAAIAAYagAAAAEKuDJTESZN+nSfwIgaGskKRBwymKeXoWc/kGhyzlXxrQs9E47PLrnwx/LKSrGA9p/w==", "5558779911", false, "2a202a87-54ef-4f42-9911-2a713b67fb86", false, "emrullahkaraca" },
+                    { "99c4f7f7-e064-46c1-a639-1cfa346b6491", 0, "Kocaeli/Karamürsel/Kırık Merdiven", "Kocaeli", "2c043171-0701-497c-87ed-6cd39b61eeca", new DateTime(2018, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "talutsonmez@gmail.com", true, "Talut", "Erkek", "Sönmez", false, null, "TALUTSONMEZ@GMAIL.COM", "TALUTSONMEZ", "AQAAAAIAAYagAAAAENSqNQs8Nngv3yzLvPo5St4nKVuO+UxCmpo+sKYvXe09oHKLbboWS01ZzIFYPoOU5A==", "5558779955", false, "7022ec65-b221-4224-8bb1-5be1deca468a", false, "talutsonmez" }
                 });
 
             migrationBuilder.InsertData(
@@ -191,10 +190,10 @@ namespace DiziSinema.MVC.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "9c5fef93-57f9-4cbc-b4cc-c614e4f5c715", "97659c42-b29f-439b-9be2-a9458232facd" },
-                    { "93e80a57-b370-458d-819d-24f1dfc2d234", "c7e4af16-55f5-4057-be05-e7deea18d852" },
-                    { "7f348f76-6992-4e93-898f-496fef9a18e6", "da1d12ea-99dd-477a-9775-204bb989529b" },
-                    { "7f348f76-6992-4e93-898f-496fef9a18e6", "dbebfd8a-130a-4857-aa5e-778e643d9fec" }
+                    { "ade4c864-3f3b-4814-9a18-4505d3e60825", "0785c1a0-619b-4904-98a2-06e6d8e651c2" },
+                    { "ad8b0ac8-272d-4260-b1bd-2b5875b9db23", "37417331-5c8b-43d2-bea2-7b2f8b8c68a3" },
+                    { "ade4c864-3f3b-4814-9a18-4505d3e60825", "386e5b9c-ac9c-495a-89ab-5b504e110e1d" },
+                    { "ad8b0ac8-272d-4260-b1bd-2b5875b9db23", "99c4f7f7-e064-46c1-a639-1cfa346b6491" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -48,6 +48,15 @@ namespace DiziSinema.Business.Concrete
             }
             editedSerialTv.ModifiedDate = DateTime.Now;
             await _repository.UpdateAsync(editedSerialTv);
+            await _repository.ClearSerialTvGenreAsync(editedSerialTv.Id, editSerialTvDTO.GenreIds);
+            editedSerialTv.SerialTvGenres = editSerialTvDTO
+                .GenreIds
+                .Select(genId => new Entity.Concrete.JunctionClasses.SerialTvGenre
+                {
+                    SerialTvId = editedSerialTv.Id,
+                    GenreId = genId
+                }).ToList();
+            await _repository.UpdateAsync(editedSerialTv);
             var editedSerialTvDto = _mapper.Map<SerialTvDTO>(editedSerialTv);
             return Response<SerialTvDTO>.Success(editedSerialTvDto, 200);
         }
@@ -74,7 +83,7 @@ namespace DiziSinema.Business.Concrete
             {
                 return Response<NoContent>.Fail("Bu Dizi Zaten Silinmiş.", 404);
             }
-            deletedSerialTv.IsDeleted = true;
+            deletedSerialTv.IsDeleted = !deletedSerialTv.IsDeleted;
             deletedSerialTv.IsActive = false;
             deletedSerialTv.ModifiedDate = DateTime.Now;
             await _repository.UpdateAsync(deletedSerialTv);

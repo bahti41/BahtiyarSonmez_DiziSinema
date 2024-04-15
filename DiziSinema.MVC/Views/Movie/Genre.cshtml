@@ -1,22 +1,22 @@
 ﻿@model List<MovieViewModel>
 
 <div class="container py-5">
+    <h1 class="text-white ">Türler</h1>
 </div>
-<h1 class="text-white d-flex ">Türler</h1>
-    <!-- Portfolio Item-->
-    @foreach (var m in Model)
-    {
-        <div class="container">
-            <div class="row">
+
+<!-- Portfolio Item-->
+@foreach (var m in Model)
+{
+    <div class="container">
+        <div class="row">
+            <div class="card bg-black m-3">
                 <img src="http://localhost:4100/images/Movies/@m.ImageUrl" class="img-fluid">
-                <div class="portfolio-info">
-                    <h4>@m.MovName</h4>
-                    <p>@m.MovIntro</p>
-                    <a href="http://localhost:4100/images/Movies/@m.ImageUrl" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                    <a asp-area="" asp-controller="Movie" asp-action="Detail" asp-route-id="@m.Id" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
+                <h4>@m.MovName</h4>
+                <p>@m.MovIntro</p>
+                <a href="http://localhost:4100/images/Movies/@m.ImageUrl" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a asp-area="" asp-controller="Movie" asp-action="Detail" asp-route-id="@m.Id" class="details-link"><i typeof="button" class="btn btn-primary">Detay</i></a>
             </div>
         </div>
-        
-    }
+    </div>
+}
 

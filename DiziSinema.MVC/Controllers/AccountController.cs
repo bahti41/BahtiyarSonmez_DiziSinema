@@ -83,7 +83,7 @@ namespace DiziSinema.MVC.Controllers
         }
 
 
-        public async Task<IActionResult> AccessDenied()
+        public IActionResult AccessDenied()
         {
             return View();
         }

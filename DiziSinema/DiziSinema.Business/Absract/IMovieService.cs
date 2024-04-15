@@ -22,7 +22,6 @@ namespace DiziSinema.Business.Absract
         Task<Response<MovieDTO>> UpdateAsync(EditMovieDTO editMovieDTO);
         Task<Response<NoContent>> HardDeleteAsync(int id);
         Task<Response<NoContent>> SoftDeleteAsync(int id);
-
         #endregion
 
         #region Movie

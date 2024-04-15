@@ -34,6 +34,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "film-1",
                     ImageUrl = "1.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 },
                 new Movie
                 {
@@ -44,6 +45,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "film-2",
                     ImageUrl = "2.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 },
                 new Movie
                 {
@@ -54,6 +56,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "film-3",
                     ImageUrl = "3.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 },
                 new Movie
                 {
@@ -64,6 +67,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "film-4",
                     ImageUrl = "4.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 },
                 new Movie
                 {
@@ -74,6 +78,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "film-5",
                     ImageUrl = "5.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 },
                 new Movie
                 {
@@ -84,6 +89,7 @@ namespace DiziSinema.Data.Concrete.Configs
                     Url = "film-6",
                     ImageUrl = "6.jpg",
                     IsActive = true,
+                    IsDeleted = false
                 }
                 );
         }

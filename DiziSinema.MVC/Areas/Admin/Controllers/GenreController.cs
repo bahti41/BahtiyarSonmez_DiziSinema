@@ -26,7 +26,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
             ViewBag.GenreShowDeleted = id;
             return View(response.Data);
         }
-
+        [HttpGet]
         public async Task<IActionResult> UpdateIsActive(int id)
         {
             HttpClient httpClient = new HttpClient();
@@ -115,7 +115,7 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-                HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Genres/HardDeleted/{id}");
+                HttpResponseMessage responseApi = await httpClient.DeleteAsync($"http://localhost:4100/Genres/HardDeleted/{id}");
             }
             return RedirectToAction("Index");
         }
@@ -128,8 +128,8 @@ namespace DiziSinema.MVC.Areas.Admin.Controllers
             {
                 HttpResponseMessage responseApi = await httpClient.GetAsync($"http://localhost:4100/Genres/SoftDeleted/{id}");
             }
-            var movieViewModel = await GetByIdAsync(id);
-            return Redirect($"/Admin/Movie/Index/{!movieViewModel.IsDeleted}");
+            var genreViewModel = await GetByIdAsync(id);
+            return Redirect($"/Admin/Genre/Index/{!genreViewModel.IsDeleted}");
         }
     }
 }

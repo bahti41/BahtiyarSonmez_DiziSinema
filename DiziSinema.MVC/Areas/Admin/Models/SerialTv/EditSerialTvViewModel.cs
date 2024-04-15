@@ -35,7 +35,7 @@ namespace DiziSinema.MVC.Areas.Admin.Models.SerialTv
 
 
         [JsonPropertyName("IsActive")]
-        [DisplayName("Aktif Film")]
+        [DisplayName("Aktif dizi")]
         public bool IsActive { get; set; }
 
 

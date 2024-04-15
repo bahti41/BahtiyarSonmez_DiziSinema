@@ -13,7 +13,6 @@ namespace DiziSinema.MVC.Extensions
             {
                new Role{Name="SuperAdmin", Description="Süper Yönetici haklarını taşıyan rol", NormalizedName="SUPERADMIN"},
                 new Role{Name="Admin", Description="Yönetici haklarını taşıyan rol", NormalizedName="ADMIN"},
-                new Role{Name="Customer", Description="Müşteri haklarını taşıyan rol", NormalizedName="CUSTOMER"}
             };
             modelBuilder.Entity<Role>().HasData(roles);
             #endregion
@@ -104,17 +103,17 @@ namespace DiziSinema.MVC.Extensions
                 new IdentityUserRole<string>
                 {
                     UserId=users[1].Id,
-                    RoleId=roles[1].Id,
+                    RoleId=roles[0].Id,
                 },
                 new IdentityUserRole<string>
                 {
                     UserId=users[2].Id,
-                    RoleId=roles[2].Id,
+                    RoleId=roles[1].Id,
                 },
                 new IdentityUserRole<string>
                 {
                     UserId=users[3].Id,
-                    RoleId=roles[2].Id,
+                    RoleId=roles[1].Id,
                 }
             };
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(userRoles);

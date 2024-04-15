@@ -1,4 +1,5 @@
 ﻿
+
 <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
     <img src="~/templet/assets/img/logo.png" />
     <h1>DiziSinema</h1>
@@ -14,12 +15,13 @@
             <a><span>Seçiniz</span> <i class="bi bi-chevron-down"></i></a>
             <ul class="dd-box-shadow">
                 <li class="dropdown has-dropdown">
-                    @await Component.InvokeAsync("GenreMain")
+                    @await Component.InvokeAsync("MovieGenreMain")
                 </li>
-                <li><a asp-area="" asp-controller="Movie" asp-action="Index">Filmler</a></li>
-                <li><a asp-area="" asp-controller="" asp-action="">Diziler</a></li>
+                
             </ul>
         </li>
+        <li><a asp-area="" asp-controller="Movie" asp-action="Index">Filmler</a></li>
+        <li><a asp-area="" asp-controller="SerialTv" asp-action="Index">Diziler</a></li>
         <li><a asp-area="" asp-controller="Contact" asp-action="Index">İletişim</a></li>
         @if (!User.Identity.IsAuthenticated)
         {

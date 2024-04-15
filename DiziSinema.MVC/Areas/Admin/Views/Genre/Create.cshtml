@@ -30,7 +30,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label asp-for="GenreName"></label>
                                             <input asp-for="GenreName" type="text" class="form-control" placeholder="Ürün adını giriniz...">
@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                   
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label>Seçenekler</label>
                                         <div class="form-group d-flex">
                                             <div class="icheck-primary">
@@ -49,19 +49,18 @@
                                     </div>
 
 
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-12">
                                         <label asp-for="Description"></label>
-                                        <textarea asp-for="Description"></textarea>
-                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                       <div>
+                                            <textarea class="w-50 " style="height:100px" asp-for="Description"></textarea>
+                                            <span asp-validation-for="Description" class="text-danger"></span>
+                                       </div>
+                                      
                                     </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Kaydet</button>
                                 </div>
-
-                                    
-                                    
-
-                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Kaydet</button>
                             </div>
                         </div>
                     </form>

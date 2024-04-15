@@ -14,9 +14,11 @@
 </head>
 
 <body class="index-page bg-black text-white " data-bs-spy="scroll" data-bs-target="#navmenu">
+    <div class="container">
+        @await Html.PartialAsync("_NavbarPartial")
+    </div>
     <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="container-fluid d-flex align-items-center justify-content-between">
-            @await Html.PartialAsync("_NavbarPartial")
         </div>
     </header>
     @RenderBody()

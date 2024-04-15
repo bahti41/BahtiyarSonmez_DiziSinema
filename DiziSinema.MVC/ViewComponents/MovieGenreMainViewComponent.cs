@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace DiziSinema.MVC.ViewComponents
 {
-    public class GenreMainViewComponent:ViewComponent
+    public class MovieGenreMainViewComponent:ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
