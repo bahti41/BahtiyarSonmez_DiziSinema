@@ -12,12 +12,19 @@
         <li><a href="/" class="active">Ana Sayfa</a></li>
         <li><a asp-area="" asp-controller="About" asp-action="Index">Hakkımızda</a></li>
         <li class="dropdown has-dropdown">
-            <a><span>Seçiniz</span> <i class="bi bi-chevron-down"></i></a>
+           <a><span>Film Türü Seçiniz</span> <i class="bi bi-chevron-down"></i></a>
             <ul class="dd-box-shadow">
                 <li class="dropdown has-dropdown">
-                    @await Component.InvokeAsync("MovieGenreMain")
+                    @await Component.InvokeAsync("MovieGenre")
                 </li>
-                
+            </ul>
+        </li>
+        <li class="dropdown has-dropdown">
+            <a><span>Dizi Türü Seçiniz</span> <i class="bi bi-chevron-down"></i></a>
+            <ul class="dd-box-shadow">
+                <li class="dropdown has-dropdown">
+                    @await Component.InvokeAsync("SerialTvGenre")
+                </li>
             </ul>
         </li>
         <li><a asp-area="" asp-controller="Movie" asp-action="Index">Filmler</a></li>

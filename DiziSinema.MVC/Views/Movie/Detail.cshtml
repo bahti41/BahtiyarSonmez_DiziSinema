@@ -44,11 +44,7 @@
                             <ul>
                                 @foreach (var g in Model.GenreList)
                                 {
-                                    <li name="genreIds" value="@g.Id" class="d-flex align-items-center"><a @(Model.GenreIds.Any(genId => genId == g.Id) ? "GenreName" : "hidden") 
-                                        asp-area=""
-                                        asp-controller=""
-                                        asp-action=""
-                                       >@g.GenreName</a></li>
+                                    <li name="genreIds" value="@g.Id" class="d-flex align-items-center"><a @(Model.GenreIds.Any(genId => genId == g.Id) ? "GenreName" : "hidden")>@g.GenreName</a></li>
                                 }
                                
                                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
@@ -78,7 +74,7 @@
                         <div class="sidebar-item categories">
                             <h3 class="sidebar-title">Türler</h3>
                             <ul class="mt-3">
-                                @await Component.InvokeAsync("GenreMain")
+                                @await Component.InvokeAsync("MovieGenre")
                             </ul>
                         </div><!-- End sidebar categories-->
 
