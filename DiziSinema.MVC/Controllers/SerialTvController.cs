@@ -25,7 +25,7 @@ namespace DiziSinema.MVC.Controllers
 
 
         [NonAction]
-        public async Task<SerialTvViewModel> DetailSerialTvAsync(int id)
+        public async Task<SerialTvViewModel> DetailSerialTvAsync(int? id)
         {
             Response<SerialTvViewModel> response = new Response<SerialTvViewModel>();
             using (HttpClient httpClient = new HttpClient())
@@ -53,10 +53,10 @@ namespace DiziSinema.MVC.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult> Detail(int? id)
         {
             SerialTvViewModel serialViewModel = await DetailSerialTvAsync(id);
-            SerialTvDetailViewModel model = new SerialTvDetailViewModel
+            EditSerialTvViewModel model = new EditSerialTvViewModel
             {
                 Id = serialViewModel.Id,
                 SerName = serialViewModel.SerName,
